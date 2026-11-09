@@ -3,3 +3,4 @@ description: Teaching an AI to finish any Zelda game on one Mac, without memoris
 baseurl: /zelda-agent-devblog
 markdown: kramdown
 permalink: /:year/:month/:day/:title/
+future: true
