@@ -145,16 +145,26 @@
   weakness: Slow (1 s per decision), learns nothing from playing.
   result: Best generaliser so far. Becomes the teacher.
 - name: Bandit Knight
-  current: "leader: decides"
-  real: Learned decider (RL + LLM name embeddings)
+  real: Learned decider (RL value of experiments)
   type: boss
-  status: tamed
-  seen: training now
+  status: defeated
+  seen: Log 002
   nodes: [Candidates, Features + LLM name vectors, Learned value, Pathwalker]
   loop: reward = puzzle flags, new rooms, lasting changes
-  did: Learns from reward which experiments pay off, with the LLM's knowledge built in.
-  weakness: Unknown yet.
-  result: Training in the real game. Scored once on the test bench at the end.
+  did: Tried to learn from reward which experiments pay off.
+  weakness: "Rare, delayed rewards. v1 farmed room changes by shuttling through doors; v2 cancelled its own prior; v3 learned that fighting pays, and died more."
+  result: "Three versions, all worse than the hand-written brain on the dev bench (3-4/15 vs 6). Replaced by Lore Owl."
+- name: Lore Owl
+  current: "leader: ranks experiments"
+  real: Learned action model (what things do when acted on)
+  type: boss
+  status: tamed
+  seen: Log 002
+  nodes: [Every try (name, verb, changed?), Model per verb, Chance this try changes something, Rank experiments]
+  loop: each new try is a new training example
+  did: "Learns from its own labelled tries: pots lift, levers pull, statues push. No credit assignment, no LLM at play time."
+  weakness: "With 19 object names, the LLM name vectors don't yet carry this to unseen kinds of objects. A label bias (only successful pushes logged) made it push pots among enemies."
+  result: "Held-out test: 13/33 solved (LLM brain 14, brain alone 8, random 6), but 10 game overs. Push bias being fixed."
 - name: Labyrinth Egg
   real: Dungeon-graph generator
   type: egg
