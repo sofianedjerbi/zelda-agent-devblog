@@ -26,7 +26,7 @@ A fast simulator (~2,000 steps/s) that builds a new random dungeon every episode
 
 The same real-game training, 300k actions, starting from the simulator weights or from scratch. Then 120 Deepwood starts neither had trained on:
 
-<div class="scroll">
+<div class="scroll" markdown="1">
 
 | | reached a new room | game over |
 |---|---|---|
