@@ -40,8 +40,38 @@ The brain was fine. The layers under it were broken:
 
 </div>
 
+## Watch it
+
+Real game, unedited runs from the bench, about 4x speed. The caption shows the brain's current goal.
+
+<div class="clips">
+  <figure>
+    <video src="{{ '/assets/video/mushroom-room.mp4' | relative_url }}" controls muted loop playsinline preload="metadata"></video>
+    <figcaption>Mushroom lever room: walks over, lines up, pulls the lever</figcaption>
+  </figure>
+  <figure>
+    <video src="{{ '/assets/video/barrel-2.mp4' | relative_url }}" controls muted loop playsinline preload="metadata"></video>
+    <figcaption>Barrel room: button puzzle in 90 actions</figcaption>
+  </figure>
+  <figure>
+    <video src="{{ '/assets/video/barrel-statue.mp4' | relative_url }}" controls muted loop playsinline preload="metadata"></video>
+    <figcaption>Barrel room, another start: 25 actions</figcaption>
+  </figure>
+</div>
+
+These are puzzles from the bench I debugged on, so they show what works, not how often.
+
+## The honest check
+
+Every fix above came from tracing those same 15 puzzles, so I built a **held-out test bench**: 33 other saved states in 5 rooms, two of them never looked at.
+
+- simple brain + planner: **5 / 33** solved, 9 game overs
+- random play: **6 / 33** solved, 16 game overs
+
+On puzzles I hadn't debugged, the lead over random disappears. Survival is clearly better. The puzzle gains were partly tuned to the dev set: overfitting, one level up. The LLM brain's test run is next.
+
 ## Step back
 
 - **The lesson:** test the bottom first. Every clever decision is wasted if the button presses are wrong.
 - **The LLM's edge:** small for now (8 vs 7). Most of the gain came from fixing the layers below.
-- **Next:** more puzzle rooms and more starts on the bench, then a full dungeon in one continuous game.
+- **Next:** find out why the gains don't transfer to the test starts, using only the dev set for diagnosis and the test set only for scoring.

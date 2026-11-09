@@ -60,3 +60,8 @@ footer { text-align: center; font: 9px/1.8 var(--pixel); color: #fff; text-shado
 a.back { font: 11px/1.8 var(--pixel); text-decoration: none; display: inline-flex; gap: 10px; align-items: center; }
 a.back:hover { color: var(--leaf); }
 .scroll table { min-width: 420px; }
+.clips { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin: 16px 0; }
+.clips figure { margin: 0; display: grid; gap: 6px; }
+.clips video { width: 100%; height: auto; image-rendering: pixelated; background: #000;
+  box-shadow: 0 -4px 0 0 var(--wood), 0 4px 0 0 var(--wood), -4px 0 0 0 var(--wood), 4px 0 0 0 var(--wood); }
+.clips figcaption { font: 9px/1.7 var(--pixel); color: var(--wood-2); }
