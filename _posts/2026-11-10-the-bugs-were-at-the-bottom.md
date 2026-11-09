@@ -65,13 +65,22 @@ These are puzzles from the bench I debugged on, so they show what works, not how
 
 Every fix above came from tracing those same 15 puzzles, so I built a **held-out test bench**: 33 other saved states in 5 rooms, two of them never looked at.
 
-- simple brain + planner: **5 / 33** solved, 9 game overs
-- random play: **6 / 33** solved, 16 game overs
+<div class="scroll" markdown="1">
 
-On puzzles I hadn't debugged, the lead over random disappears. Survival is clearly better. The puzzle gains were partly tuned to the dev set: overfitting, one level up. The LLM brain's test run is next.
+| on the held-out test | solved | game over |
+|---|---|---|
+| LLM brain + planner | **13 / 33** | 11 |
+| simple brain + planner | 5 / 33 | 9 |
+| random play | 6 / 33 | 16 |
+
+</div>
+
+- **The LLM brain generalises:** about twice random play, on puzzles I never debugged. Object names plus the model's world knowledge carry over to new situations.
+- **The simple brain doesn't:** its hand-tuned habits were partly fitted to the dev set. Overfitting, one level up.
+- **Since then,** from dev-only diagnosis: chests open only from the front, so the side became part of the experiment; stepping onto things comes first; stuck walks end early. With those, the simple brain went to 8 / 33 on the test.
 
 ## Step back
 
 - **The lesson:** test the bottom first. Every clever decision is wasted if the button presses are wrong.
-- **The LLM's edge:** small for now (8 vs 7). Most of the gain came from fixing the layers below.
+- **The LLM's edge:** small on the dev set (8 vs 7), large on the held-out test (13 vs 5). The test set is the one that counts.
 - **Next:** find out why the gains don't transfer to the test starts, using only the dev set for diagnosis and the test set only for scoring.
