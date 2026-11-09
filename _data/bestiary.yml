@@ -200,3 +200,22 @@
   did: Would keep what worked as reusable skills.
   weakness: Skills tied to one game's objects risk memorising.
   result: Next candidate after the learned decider.
+- name: Borrowed Reflex
+  real: Old real-game RL policy as a reflex
+  type: monster
+  status: defeated
+  seen: Log 002
+  nodes: [Enemy near or damage, Old RL policy takes over, 6 actions, Back to the brain]
+  did: Handed control to the RL policy that cut game overs from 28 to 6 in its own setting.
+  weakness: Trained on the old action macros, with a reward that was not about survival.
+  result: "Held-out, 2 seeds (66 runs): 13 solved and 13 game overs, against 23 and 14 without it. Dropped."
+- name: Guardian Slime
+  real: Survival reflex trained by RL
+  type: monster
+  status: asleep
+  seen: training now
+  nodes: [Danger start (enemy within 4 tiles), RL policy, Current macros]
+  loop: reward = hearts kept, game overs avoided
+  did: "RL where RL is strong: reflexes. Trained only to stay alive near enemies, with today's macros."
+  weakness: "v1 farmed a kill reward: Sluggulas vanish on their own (204 'kills' in 300 steps). Kill reward removed."
+  result: Training. Judged on game overs in the held-out test, with puzzles unchanged.
