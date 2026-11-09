@@ -1,0 +1,188 @@
+# Every design tried or considered. type: boss (whole architecture), monster (a component), egg (considered, never hatched)
+# status: tamed (in use), asleep (parked), defeated (dropped), egg (not tried)
+- name: Pixel Muncher
+  real: PPO on screen pixels
+  type: boss
+  status: defeated
+  seen: Log 001
+  nodes: [Screen pixels, PPO policy, Buttons]
+  loop: reward from RAM (new rooms, score)
+  did: Learned to walk around the overworld from raw pixels and game rewards.
+  weakness: Never found a puzzle on its own. Rewards too rare.
+  result: Explored, never progressed far without help.
+- name: The Archivist
+  real: Go-Explore with save states
+  type: boss
+  status: defeated
+  seen: Log 001
+  nodes: [Archive of saved spots, Pick a promising spot, Explore from it, New spots]
+  loop: save every new place, restart from the best
+  did: Reached Deepwood Shrine rooms 3 to 5. Furthest real progress.
+  weakness: Remembers routes through one game. Memorising, not learning.
+  result: "Dropped as the main path: overfitting by design."
+- name: Breadcrumb Sprite
+  real: Compass / route shaping
+  type: monster
+  status: defeated
+  seen: Log 001
+  nodes: [Known route, Reward for getting closer, Policy]
+  did: Pulled the agent along a path toward the next goal.
+  weakness: The path is a list of hardcoded positions.
+  result: Rejected as hardcoding.
+- name: Bored Wisp
+  real: Boredom / novelty drive
+  type: monster
+  status: asleep
+  seen: Log 001
+  nodes: [What happened before, Novelty score, Penalty for repeats]
+  did: Made repeating the same thing feel costly, like a bored player.
+  weakness: Novelty is not progress. Switching screens counted as new.
+  result: Lives on as the brain's boredom bookkeeping.
+- name: Old Tool Sage
+  real: LLM thinker with tools
+  type: boss
+  status: defeated
+  seen: Log 001
+  nodes: [Room as text, Local LLM, Tools (map, go, do, skills), Game]
+  loop: measured effects of each verb
+  did: Reasoned about rooms and called tools on the real game.
+  weakness: Only as good as the text it got. Water drawn as walls, shifting labels.
+  result: Fixed many data bugs; never moved the frontier itself.
+- name: Dungeon Forge
+  real: Generated-dungeon simulator + PPO
+  type: boss
+  status: asleep
+  seen: Log 001
+  nodes: [Random dungeon generator, Fast simulator, PPO policy]
+  loop: a new dungeon every episode
+  did: 88% of never-seen generated dungeons solved, at 2,000 steps/s.
+  weakness: In the real game it played like random. It fought a Puffstool to death.
+  result: Simulator scores were the wrong yardstick.
+- name: Head-Start Golem
+  real: Simulator pretraining, then real-game RL
+  type: monster
+  status: asleep
+  seen: Log 001
+  nodes: [Simulator weights, Real-game training, Policy]
+  did: Reached a new room from 78 of 120 starts, against 54 from scratch (p about 0.002).
+  weakness: Puzzles stayed at random level.
+  result: Real gain for movement and survival, none for puzzles.
+- name: Memory Slug
+  real: Recurrent (LSTM) policy
+  type: monster
+  status: defeated
+  seen: Log 001
+  nodes: [View, LSTM memory, Policy]
+  did: Could remember that a hit did nothing.
+  weakness: Ten times slower to train. Two days for one run.
+  result: Dropped before it finished.
+- name: Shrug Counter
+  real: Hit-counter input channel
+  type: monster
+  status: defeated
+  seen: Log 001
+  nodes: [Hits an enemy survived, Extra input channel, Policy]
+  did: Let a memoryless policy tell killable enemies from unkillable ones.
+  weakness: A wounded enemy looked like an immortal one. The policy stopped fighting.
+  result: Fighting collapsed from 97% to 13%. Redesigned, then replaced.
+- name: Scroll Mimic
+  real: Fine-tuned LLM planner (text to plan)
+  type: monster
+  status: defeated
+  seen: Log 001
+  nodes: [Dungeon as text, Fine-tuned Qwen, Numbered plan]
+  did: 22 of 30 generated dungeons planned correctly (untuned model, 0).
+  weakness: On a real room it invented chests and looped.
+  result: Never transferred.
+- name: Faceless One
+  real: Name-free affordance view
+  type: monster
+  status: tamed
+  seen: Log 001
+  nodes: [Room shape, Something is here, What my tries did, Policy or brain]
+  did: Replaced object names with what the agent itself learned by acting.
+  weakness: Throws away the names an LLM needs.
+  result: Still the memory layer under every brain.
+- name: Door Farmer
+  real: Goal-conditioned RL hands
+  type: monster
+  status: defeated
+  seen: Log 002
+  nodes: [Goal from the brain, RL hands, Actions]
+  loop: reward for reaching the goal
+  did: 85% of goals in the simulator.
+  weakness: Learned to farm points by stepping back through the door it came in.
+  result: Too slow and too weak in the real game. Replaced by the planner.
+- name: The Experimenter
+  real: Systematic brain (v0)
+  type: boss
+  status: tamed
+  seen: Log 002
+  nodes: [Candidates from memory, Hand-written scores, Boredom, Next experiment]
+  did: "With perfect hands: 37% to 86% of generated dungeons, by reading its failures."
+  weakness: Its hand-tuned habits partly fitted the dev rooms. 8 of 33 on the held-out test.
+  result: Now the candidate list and prior for the learned decider.
+- name: Pathwalker
+  real: Planner hands + tested macros
+  type: monster
+  status: tamed
+  seen: Log 002
+  nodes: [Goal, Path on the map, Align, Tested button macro]
+  did: Walks anywhere the map says, lines up pixel-exactly, pulls levers, opens chests from the front.
+  weakness: No reflexes beyond a hit when an enemy is adjacent.
+  result: The hands in use. Almost every gain came from fixing this layer.
+- name: Qwen Oracle
+  real: LLM brain with object names
+  type: boss
+  status: tamed
+  seen: Log 002
+  nodes: [Room as text with names, Qwen3-30B (local), Pick an experiment, Pathwalker]
+  did: 14 of 33 held-out real puzzles. Random play, 6.
+  weakness: Slow (1 s per decision), learns nothing from playing.
+  result: Best generaliser so far. Becomes the teacher.
+- name: Bandit Knight
+  real: Learned decider (RL + LLM name embeddings)
+  type: boss
+  status: tamed
+  seen: training now
+  nodes: [Candidates, Features + LLM name vectors, Learned value, Pathwalker]
+  loop: reward = puzzle flags, new rooms, lasting changes
+  did: Learns from reward which experiments pay off, with the LLM's knowledge built in.
+  weakness: Unknown yet.
+  result: Training in the real game. Scored once on the test bench at the end.
+- name: Labyrinth Egg
+  real: Dungeon-graph generator
+  type: egg
+  status: egg
+  seen: Log 002
+  nodes: [Room graph, Keys in side rooms, Item wing, Boss door]
+  did: Built, never trained on. For multi-room planning.
+  weakness: Bigger simulated dungeons do not fix real-game gaps.
+  result: Parked until single rooms work.
+- name: Dream Egg
+  real: World model (Dreamer-style)
+  type: egg
+  status: egg
+  seen: considered
+  nodes: [Experience, Learned world model, Plan in imagination]
+  did: Would learn the game's rules and plan inside them.
+  weakness: Expensive on one Mac. Needs lots of real data.
+  result: Not tried.
+- name: Eye Egg
+  real: Vision-language agent on pixels
+  type: egg
+  status: egg
+  seen: considered
+  nodes: [Screenshot, Vision LLM, Buttons]
+  did: Would need no RAM reader per game.
+  weakness: Research shows pixel-only LLM agents finish about 0.5% of games like this.
+  result: Not tried.
+- name: Codex Egg
+  real: Skill library (Voyager-style)
+  type: egg
+  status: egg
+  seen: considered
+  nodes: [Successful action sequence, Saved as a skill, Reused later]
+  did: Would keep what worked as reusable skills.
+  weakness: Skills tied to one game's objects risk memorising.
+  result: Next candidate after the learned decider.

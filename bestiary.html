@@ -1,0 +1,45 @@
+---
+layout: default
+title: Bestiary
+permalink: /bestiary/
+---
+<section class="board">
+  <h1>Bestiary<span class="sub">every design we tried or considered</span></h1>
+  <p>Bosses are whole architectures. Monsters are parts. Eggs were considered but never hatched. Status: <b>tamed</b> means in use, <b>asleep</b> means parked, <b>defeated</b> means dropped.</p>
+  <div class="legend-row">
+    <span class="badge tamed">tamed</span><span class="badge asleep">asleep</span><span class="badge defeated">defeated</span><span class="badge egg">egg</span>
+  </div>
+</section>
+<div class="beasts">
+{% for b in site.data.bestiary %}
+  <article class="board beast {{ b.status }}">
+    <header class="beast-head">
+      {% if b.type == "boss" %}
+      <svg class="sprite-s" width="40" height="40" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><rect x="1" y="2" width="1" height="2" fill="#f2c230"/><rect x="4" y="1" width="2" height="3" fill="#f2c230"/><rect x="8" y="2" width="1" height="2" fill="#f2c230"/><rect x="1" y="4" width="8" height="2" fill="#f2c230"/><rect x="2" y="6" width="6" height="3" fill="#6e3f1b"/><rect x="3" y="7" width="1" height="1" fill="#fff8e1"/><rect x="6" y="7" width="1" height="1" fill="#fff8e1"/></svg>
+      {% elsif b.type == "egg" %}
+      <svg class="sprite-s" width="40" height="40" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><rect x="4" y="1" width="2" height="1" fill="#fff8e1"/><rect x="3" y="2" width="4" height="1" fill="#fff8e1"/><rect x="2" y="3" width="6" height="5" fill="#fff8e1"/><rect x="3" y="8" width="4" height="1" fill="#fff8e1"/><rect x="4" y="4" width="1" height="1" fill="#5dbb46"/><rect x="6" y="6" width="1" height="1" fill="#5dbb46"/><rect x="3" y="6" width="1" height="1" fill="#8fd3f4"/></svg>
+      {% else %}
+      <svg class="sprite-s" width="40" height="40" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><rect x="3" y="3" width="4" height="1" fill="#5dbb46"/><rect x="2" y="4" width="6" height="1" fill="#5dbb46"/><rect x="1" y="5" width="8" height="3" fill="#5dbb46"/><rect x="1" y="8" width="8" height="1" fill="#3d8f2f"/><rect x="3" y="5" width="1" height="1" fill="#2b2118"/><rect x="6" y="5" width="1" height="1" fill="#2b2118"/></svg>
+      {% endif %}
+      <div>
+        <h2 class="beast-name">{{ b.name }}</h2>
+        <div class="beast-real">{{ b.real }}</div>
+      </div>
+      <span class="badge {{ b.status }}">{{ b.status }}</span>
+    </header>
+    <div class="schema" aria-label="schema">
+      {% for n in b.nodes %}
+        <span class="node">{{ n }}</span>
+        {% unless forloop.last %}<svg class="arrow" width="22" height="14" viewBox="0 0 11 7" shape-rendering="crispEdges" aria-hidden="true"><rect x="0" y="3" width="8" height="1" fill="currentColor"/><rect x="7" y="2" width="1" height="3" fill="currentColor"/><rect x="8" y="1" width="1" height="5" fill="currentColor"/><rect x="9" y="2" width="1" height="3" fill="currentColor"/><rect x="10" y="3" width="1" height="1" fill="currentColor"/></svg>{% endunless %}
+      {% endfor %}
+    </div>
+    {% if b.loop %}<div class="loop"><svg class="arrow" width="18" height="14" viewBox="0 0 9 7" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="0" width="5" height="1" fill="currentColor"/><rect x="7" y="1" width="1" height="4" fill="currentColor"/><rect x="2" y="5" width="5" height="1" fill="currentColor"/><rect x="1" y="4" width="1" height="3" fill="currentColor"/><rect x="0" y="5" width="1" height="1" fill="currentColor"/><rect x="2" y="4" width="1" height="3" fill="currentColor"/></svg>loop: {{ b.loop }}</div>{% endif %}
+    <dl class="stats">
+      <dt>Seen</dt><dd>{{ b.seen }}</dd>
+      <dt>Did</dt><dd>{{ b.did }}</dd>
+      <dt>Weakness</dt><dd>{{ b.weakness }}</dd>
+      <dt>Result</dt><dd>{{ b.result }}</dd>
+    </dl>
+  </article>
+{% endfor %}
+</div>
