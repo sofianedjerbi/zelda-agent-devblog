@@ -135,7 +135,6 @@
   weakness: No reflexes beyond a hit when an enemy is adjacent.
   result: The hands in use. Almost every gain came from fixing this layer.
 - name: Qwen Oracle
-  current: "teacher (name vectors)"
   real: LLM brain with object names
   type: boss
   status: tamed
