@@ -1,0 +1,12 @@
+---
+layout: default
+---
+<section class="board">
+  <h1>Devlog</h1>
+  <p>Goal: an AI that can finish any top-down Zelda, running on one Mac, using only local models. One rule above the rest: it must learn skills, not memorise a game.</p>
+  <ul class="posts">
+  {% for post in site.posts %}
+    <li><span class="date">{{ post.date | date: "%-d %b %Y" }}</span><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+  {% endfor %}
+  </ul>
+</section>

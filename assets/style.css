@@ -1,0 +1,58 @@
+/* Tiny Hero Lab: a bright, pixel-art storybook look (grass, sky, wood, kinstone gold). All art is original CSS/SVG. */
+:root {
+  --sky: #8fd3f4; --sky-2: #c8ecfb; --grass: #5dbb46; --grass-2: #3d8f2f; --leaf: #2f6b25;
+  --wood: #9b5f2e; --wood-2: #6e3f1b; --paper: #fff8e1; --ink: #2b2118; --gold: #f2c230; --heart: #e8453c;
+  --pixel: "Press Start 2P", "Courier New", monospace; --read: "VT323", "Courier New", monospace;
+}
+* { box-sizing: border-box; }
+html { background: var(--sky); }
+body {
+  margin: 0; color: var(--ink); font: 22px/1.35 var(--read);
+  background:
+    linear-gradient(var(--sky) 0 260px, transparent 260px),
+    repeating-linear-gradient(90deg, var(--grass) 0 16px, var(--grass-2) 16px 32px) top 260px left 0 / 100% 16px no-repeat,
+    linear-gradient(var(--grass) 0 0) top 276px left 0 / 100% 100% no-repeat;
+  image-rendering: pixelated;
+}
+.cloud { position: absolute; width: 96px; height: 32px; background: #fff;
+  box-shadow: 16px -16px 0 #fff, 48px -16px 0 #fff, 32px -24px 0 #fff; opacity: .9; }
+.wrap { max-width: 860px; margin: 0 auto; padding: 32px max(16px, env(safe-area-inset-right, 0px)) 64px max(16px, env(safe-area-inset-left, 0px)); position: relative; }
+header.site { text-align: center; padding: 24px 0 72px; }
+header.site a { color: inherit; text-decoration: none; }
+.logo { font: 28px/1.3 var(--pixel); color: #fff; text-shadow: 4px 4px 0 var(--leaf); letter-spacing: 1px; }
+.tag { font: 11px/1.8 var(--pixel); color: var(--leaf); margin-top: 14px; }
+.hearts { margin-top: 12px; display: flex; gap: 8px; justify-content: center; }
+.heart { width: 20px; height: 18px; background: var(--heart);
+  clip-path: polygon(0 25%, 25% 0, 50% 22%, 75% 0, 100% 25%, 100% 55%, 50% 100%, 0 55%); }
+.board {
+  background: var(--paper); padding: 28px 28px 24px; position: relative;
+  box-shadow: 0 -6px 0 0 var(--wood), 0 6px 0 0 var(--wood), -6px 0 0 0 var(--wood), 6px 0 0 0 var(--wood),
+              0 12px 0 0 var(--wood-2), 6px 12px 0 0 var(--wood-2), -6px 12px 0 0 var(--wood-2);
+  margin-bottom: 40px;
+}
+h1, h2, h3 { font-family: var(--pixel); line-height: 1.5; text-wrap: balance; }
+h1 { font-size: 20px; margin: 0 0 12px; color: var(--leaf); }
+h2 { font-size: 14px; margin: 32px 0 10px; color: var(--wood-2); }
+h2::before { content: ""; display: inline-block; width: 12px; height: 12px; margin-right: 10px; background: var(--gold);
+  transform: rotate(45deg); box-shadow: 2px 2px 0 var(--wood); vertical-align: 1px; }
+h3 { font-size: 12px; margin: 22px 0 6px; }
+p, li { max-width: 68ch; }
+a { color: var(--wood-2); }
+.meta { font: 10px/1.8 var(--pixel); color: var(--wood); margin-bottom: 18px; }
+ul { padding-left: 1.1em; }
+li { margin: 4px 0; }
+li::marker { color: var(--grass-2); }
+table { border-collapse: collapse; margin: 12px 0; font-size: 20px; width: 100%; }
+.scroll { overflow-x: auto; }
+th, td { text-align: left; padding: 6px 12px 6px 0; border-bottom: 3px dotted #e4d3a8; }
+th { font: 9px/1.6 var(--pixel); color: var(--wood); }
+code { background: #f1e4bf; padding: 0 4px; }
+blockquote { margin: 16px 0; padding: 10px 16px; background: #e8f6d8; border-left: 6px solid var(--grass); }
+.posts { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+.posts li { max-width: none; display: grid; grid-template-columns: 9em minmax(0, 1fr); gap: 12px; align-items: baseline; }
+.posts .date { font: 9px/1.8 var(--pixel); color: var(--wood); }
+.posts a { font: 12px/1.6 var(--pixel); text-decoration: none; color: var(--leaf); }
+.posts a:hover { color: var(--wood-2); }
+@media (max-width: 560px) { .posts li { grid-template-columns: minmax(0, 1fr); gap: 2px; } .logo { font-size: 20px; } body { font-size: 20px; } }
+footer { text-align: center; font: 9px/1.8 var(--pixel); color: #fff; text-shadow: 2px 2px 0 var(--leaf); }
+.sprite { display: block; margin: 0 auto 10px; }

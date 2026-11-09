@@ -1,0 +1,5 @@
+title: Tiny Hero Lab
+description: Teaching an AI to finish any Zelda game on one Mac, without memorising the game.
+baseurl: /zelda-agent-devblog
+markdown: kramdown
+permalink: /:year/:month/:day/:title/

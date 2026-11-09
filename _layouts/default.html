@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+<meta name="description" content="{{ page.description | default: site.description }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap">
+<link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' shape-rendering='crispEdges'><rect x='2' y='1' width='4' height='1' fill='%235dbb46'/><rect x='1' y='2' width='6' height='2' fill='%235dbb46'/><rect x='3' y='0' width='1' height='1' fill='%235dbb46'/><rect x='2' y='4' width='4' height='3' fill='%23f6c99b'/><rect x='3' y='5' width='1' height='1' fill='%232b2118'/><rect x='5' y='5' width='1' height='1' fill='%232b2118'/></svg>">
+</head>
+<body>
+<div class="cloud" style="top:50px;left:8%"></div><div class="cloud" style="top:110px;right:10%"></div>
+<div class="wrap">
+  <header class="site">
+    <a href="{{ '/' | relative_url }}">
+      <svg class="sprite" width="64" height="64" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true">
+        <rect x="6" y="1" width="2" height="1" fill="#3d8f2f"/><rect x="5" y="2" width="4" height="1" fill="#5dbb46"/>
+        <rect x="4" y="3" width="6" height="1" fill="#5dbb46"/><rect x="3" y="4" width="9" height="2" fill="#5dbb46"/>
+        <rect x="11" y="5" width="3" height="1" fill="#5dbb46"/><rect x="13" y="6" width="2" height="1" fill="#3d8f2f"/>
+        <rect x="4" y="6" width="7" height="5" fill="#f6c99b"/><rect x="5" y="8" width="1" height="1" fill="#2b2118"/>
+        <rect x="8" y="8" width="1" height="1" fill="#2b2118"/><rect x="3" y="6" width="1" height="3" fill="#f2c230"/>
+        <rect x="4" y="11" width="7" height="3" fill="#5dbb46"/><rect x="5" y="14" width="2" height="1" fill="#6e3f1b"/>
+        <rect x="8" y="14" width="2" height="1" fill="#6e3f1b"/>
+      </svg>
+      <div class="logo">{{ site.title }}</div>
+    </a>
+    <div class="tag">an AI learning to finish any Zelda · one Mac · no memorising</div>
+    <div class="hearts" aria-hidden="true"><i class="heart"></i><i class="heart"></i><i class="heart"></i></div>
+  </header>
+  {{ content }}
+  <footer>Fan research project · not affiliated with Nintendo · original pixel art · no game files shared</footer>
+</div>
+</body>
+</html>
