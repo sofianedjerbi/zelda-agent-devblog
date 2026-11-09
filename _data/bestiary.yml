@@ -210,12 +210,13 @@
   weakness: Trained on the old action macros, with a reward that was not about survival.
   result: "Held-out, 2 seeds (66 runs): 13 solved and 13 game overs, against 23 and 14 without it. Dropped."
 - name: Guardian Slime
+  current: "reflexes: takes over near danger"
   real: Survival reflex trained by RL
   type: monster
-  status: asleep
-  seen: training now
+  status: tamed
+  seen: Log 003
   nodes: [Danger start (enemy within 4 tiles), RL policy, Current macros]
   loop: reward = hearts kept, game overs avoided
   did: "RL where RL is strong: reflexes. Trained only to stay alive near enemies, with today's macros."
   weakness: "v1 farmed a kill reward: Sluggulas vanish on their own (204 'kills' in 300 steps). Kill reward removed."
-  result: Training. Judged on game overs in the held-out test, with puzzles unchanged.
+  result: "Held-out test, 2 seeds (66 runs): game overs 14 down to 4, puzzles 23 up to 26. In the party."
