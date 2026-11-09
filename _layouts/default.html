@@ -8,30 +8,38 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap">
 <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' shape-rendering='crispEdges'><rect x='2' y='1' width='4' height='1' fill='%235dbb46'/><rect x='1' y='2' width='6' height='2' fill='%235dbb46'/><rect x='3' y='0' width='1' height='1' fill='%235dbb46'/><rect x='2' y='4' width='4' height='3' fill='%23f6c99b'/><rect x='3' y='5' width='1' height='1' fill='%232b2118'/><rect x='5' y='5' width='1' height='1' fill='%232b2118'/></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' shape-rendering='crispEdges'><rect x='3' y='0' width='2' height='1' fill='%23fcd8a8'/><rect x='2' y='1' width='4' height='2' fill='%23fcd8a8'/><rect x='3' y='3' width='2' height='5' fill='%23a3a3a3'/></svg>">
 </head>
 <body>
-<div class="cloud" style="top:50px;left:8%"></div><div class="cloud" style="top:110px;right:10%"></div>
-<div class="wrap">
-  <header class="site">
-    <a href="{{ '/' | relative_url }}">
-      <svg class="sprite" width="64" height="64" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true">
-        <rect x="6" y="1" width="2" height="1" fill="#3d8f2f"/><rect x="5" y="2" width="4" height="1" fill="#5dbb46"/>
-        <rect x="4" y="3" width="6" height="1" fill="#5dbb46"/><rect x="3" y="4" width="9" height="2" fill="#5dbb46"/>
-        <rect x="11" y="5" width="3" height="1" fill="#5dbb46"/><rect x="13" y="6" width="2" height="1" fill="#3d8f2f"/>
-        <rect x="4" y="6" width="7" height="5" fill="#f6c99b"/><rect x="5" y="8" width="1" height="1" fill="#2b2118"/>
-        <rect x="8" y="8" width="1" height="1" fill="#2b2118"/><rect x="3" y="6" width="1" height="3" fill="#f2c230"/>
-        <rect x="4" y="11" width="7" height="3" fill="#5dbb46"/><rect x="5" y="14" width="2" height="1" fill="#6e3f1b"/>
-        <rect x="8" y="14" width="2" height="1" fill="#6e3f1b"/>
-      </svg>
-      <div class="logo">{{ site.title }}</div>
-    </a>
-    <div class="tag">an AI learning to finish any Zelda · one Mac · no memorising</div>
-    <div class="hearts" aria-hidden="true"><i class="heart"></i><i class="heart"></i><i class="heart"></i></div>
-    <nav class="top"><a href="{{ '/' | relative_url }}">Logs</a><a href="{{ '/bestiary/' | relative_url }}">Bestiary</a></nav>
-  </header>
+<header class="hud">
+  <div class="hud-in">
+    <a class="hud-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+    <nav class="items" aria-label="Menu">
+      {% assign here = page.url %}
+      <a class="slot {% if here == '/' or page.layout == 'post' %}on{% endif %}" href="{{ '/' | relative_url }}">
+        <span class="key">B</span>
+        <svg width="28" height="28" viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true"><rect x="1" y="1" width="6" height="6" fill="#fcd8a8"/><rect x="1" y="0" width="6" height="1" fill="#c84c0c"/><rect x="1" y="7" width="6" height="1" fill="#c84c0c"/><rect x="2" y="2" width="4" height="1" fill="#2b2118"/><rect x="2" y="4" width="4" height="1" fill="#2b2118"/><rect x="2" y="6" width="3" height="1" fill="#2b2118"/></svg>
+        <span class="label">Logs</span>
+      </a>
+      <a class="slot {% if here contains 'bestiary' %}on{% endif %}" href="{{ '/bestiary/' | relative_url }}">
+        <span class="key">A</span>
+        <svg width="28" height="28" viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="1" width="4" height="1" fill="#80d010"/><rect x="1" y="2" width="6" height="1" fill="#80d010"/><rect x="0" y="3" width="8" height="3" fill="#80d010"/><rect x="0" y="6" width="8" height="1" fill="#008800"/><rect x="2" y="3" width="1" height="1" fill="#000"/><rect x="5" y="3" width="1" height="1" fill="#000"/><rect x="3" y="5" width="2" height="1" fill="#000"/></svg>
+        <span class="label">Bestiary</span>
+      </a>
+    </nav>
+    <div class="counters">
+      <span><svg width="14" height="18" viewBox="0 0 4 6" shape-rendering="crispEdges" aria-hidden="true"><rect x="1" y="0" width="2" height="1" fill="#80d010"/><rect x="0" y="1" width="4" height="4" fill="#80d010"/><rect x="1" y="1" width="1" height="3" fill="#d8f878"/><rect x="1" y="5" width="2" height="1" fill="#80d010"/></svg>X{{ site.posts | size | prepend: '0' | slice: -2, 2 }}</span>
+      <span><svg width="14" height="18" viewBox="0 0 4 6" shape-rendering="crispEdges" aria-hidden="true"><rect x="1" y="0" width="2" height="2" fill="#fcd8a8"/><rect x="1" y="2" width="1" height="4" fill="#fcd8a8"/><rect x="2" y="4" width="1" height="1" fill="#fcd8a8"/></svg>X{{ site.data.bestiary | size }}</span>
+    </div>
+    <div class="life">
+      <span class="life-label">-LIFE-</span>
+      <span class="hearts" aria-hidden="true">{% for i in (1..5) %}<i class="heart"></i>{% endfor %}<i class="heart empty"></i><i class="heart empty"></i><i class="heart empty"></i></span>
+    </div>
+  </div>
+</header>
+<main class="wrap">
   {{ content }}
-  <footer>Fan research project · not affiliated with Nintendo · original pixel art · no game files shared</footer>
-</div>
+</main>
+<footer class="foot">Fan research project. Not affiliated with Nintendo. Original pixel art, no game files shared.</footer>
 </body>
 </html>
