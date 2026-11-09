@@ -1,6 +1,8 @@
 ---
 layout: post
-title: "The bugs were at the bottom"
+title: "Log 002"
+subtitle: "The bugs were at the bottom"
+permalink: /log/002/
 ---
 
 **Result:** on 15 real *Minish Cap* puzzles the agent never trained on, it now solves **8**. Random play solves 3.

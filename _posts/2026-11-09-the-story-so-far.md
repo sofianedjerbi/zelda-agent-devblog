@@ -1,6 +1,8 @@
 ---
 layout: post
-title: "The story so far"
+title: "Log 001"
+subtitle: "The story so far"
+permalink: /log/001/
 ---
 
 **Goal:** an AI that finishes any top-down Zelda, on one Mac, with local models only.
