@@ -43,7 +43,7 @@
   type: boss
   status: defeated
   seen: Log 001
-  nodes: [Room as text, Local LLM, Tools (map, go, do, skills), Game]
+  nodes: [Room as text, Local LLM, "Tools: map, go, do, skills", Game]
   loop: measured effects of each verb
   did: Reasoned about rooms and called tools on the real game.
   weakness: Only as good as the text it got. Water drawn as walls, shifting labels.
