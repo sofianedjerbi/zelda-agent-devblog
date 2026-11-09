@@ -9,16 +9,16 @@ permalink: /log/003/
 
 <div class="scroll" markdown="1">
 
-| held-out test, 66 runs | solved | game over |
-|---|---|---|
-| brain + action model + survival reflex | **26** | **4** |
-| brain + action model | 23 | 14 |
-| brain alone | 16 | 8 |
-| random play | 12 | 32 |
+| held-out test | runs | solved | game over |
+|---|---|---|---|
+| brain + action model + survival reflex | 66 | **26** | **4** |
+| brain + action model | 66 | 23 | 14 |
+| brain alone | 33 | 8 | 4 |
+| random play | 33 | 6 | 16 |
 
 </div>
 
-The brain-alone and random rows are from one seed, doubled to compare.
+The last two rows were measured on one seed (33 runs), the others on two.
 
 ## Combine RL and reasoning, but where each is good
 
