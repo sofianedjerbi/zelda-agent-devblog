@@ -10,9 +10,23 @@ permalink: /bestiary/
     <span class="badge tamed">tamed</span><span class="badge asleep">asleep</span><span class="badge defeated">defeated</span><span class="badge egg">egg</span>
   </div>
 </section>
+<section class="board party">
+  <h1>Current party<span class="sub">the agent playing right now</span></h1>
+  <div class="schema party-schema" aria-label="current agent">
+    <span class="node">Faceless One<small>memory</small></span>
+    <svg class="arrow" width="22" height="14" viewBox="0 0 11 7" shape-rendering="crispEdges" aria-hidden="true"><rect x="0" y="3" width="8" height="1" fill="currentColor"/><rect x="7" y="2" width="1" height="3" fill="currentColor"/><rect x="8" y="1" width="1" height="5" fill="currentColor"/><rect x="9" y="2" width="1" height="3" fill="currentColor"/><rect x="10" y="3" width="1" height="1" fill="currentColor"/></svg>
+    <span class="node">The Experimenter<small>candidates + prior</small></span>
+    <svg class="arrow" width="22" height="14" viewBox="0 0 11 7" shape-rendering="crispEdges" aria-hidden="true"><rect x="0" y="3" width="8" height="1" fill="currentColor"/><rect x="7" y="2" width="1" height="3" fill="currentColor"/><rect x="8" y="1" width="1" height="5" fill="currentColor"/><rect x="9" y="2" width="1" height="3" fill="currentColor"/><rect x="10" y="3" width="1" height="1" fill="currentColor"/></svg>
+    <span class="node lead">Bandit Knight<small>decides, learns from reward</small></span>
+    <svg class="arrow" width="22" height="14" viewBox="0 0 11 7" shape-rendering="crispEdges" aria-hidden="true"><rect x="0" y="3" width="8" height="1" fill="currentColor"/><rect x="7" y="2" width="1" height="3" fill="currentColor"/><rect x="8" y="1" width="1" height="5" fill="currentColor"/><rect x="9" y="2" width="1" height="3" fill="currentColor"/><rect x="10" y="3" width="1" height="1" fill="currentColor"/></svg>
+    <span class="node">Pathwalker<small>hands</small></span>
+  </div>
+  <p class="party-note">Qwen Oracle teaches without playing: its knowledge of object names is built into the Bandit Knight's inputs. Party members are framed in gold below.</p>
+</section>
 <div class="beasts">
 {% for b in site.data.bestiary %}
-  <article class="board beast {{ b.status }}">
+  <article class="board beast {{ b.status }}{% if b.current %} current{% endif %}">
+    {% if b.current %}<div class="ribbon">IN PARTY: {{ b.current }}</div>{% endif %}
     <header class="beast-head">
       {% if b.type == "boss" %}
       <svg class="sprite-s" width="40" height="40" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><rect x="1" y="2" width="1" height="2" fill="#f2c230"/><rect x="4" y="1" width="2" height="3" fill="#f2c230"/><rect x="8" y="2" width="1" height="2" fill="#f2c230"/><rect x="1" y="4" width="8" height="2" fill="#f2c230"/><rect x="2" y="6" width="6" height="3" fill="#6e3f1b"/><rect x="3" y="7" width="1" height="1" fill="#fff8e1"/><rect x="6" y="7" width="1" height="1" fill="#fff8e1"/></svg>

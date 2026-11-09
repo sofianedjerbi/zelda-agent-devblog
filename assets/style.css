@@ -121,3 +121,11 @@ a.back:hover { color: var(--gold); }
   .stats { grid-template-columns: minmax(0, 1fr); }
   .stats dt { line-height: 1.4; margin-top: 6px; }
 }
+
+/* current party: the agent playing right now */
+.party-schema .node { display: grid; gap: 2px; }
+.party-schema .node small { font: 8px/1.5 var(--pixel); color: inherit; opacity: .8; }
+.party-schema .node.lead { outline: 4px solid var(--gold); outline-offset: 2px; }
+.party-note { margin-top: 12px; }
+.beast.current { box-shadow: 0 0 0 8px var(--gold), 8px 8px 0 8px rgba(0,0,0,.25); }
+.ribbon { font: 9px/1.8 var(--pixel); background: var(--gold); color: #000; padding: 4px 10px; justify-self: start; }
