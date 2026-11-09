@@ -69,7 +69,7 @@ Every fix above came from tracing those same 15 puzzles, so I built a **held-out
 
 | on the held-out test | solved | game over |
 |---|---|---|
-| LLM brain + planner | **13 / 33** | 11 |
+| LLM brain + planner (latest) | **14 / 33** | 8 |
 | simple brain + planner | 5 / 33 | 9 |
 | random play | 6 / 33 | 16 |
 
@@ -83,4 +83,4 @@ Every fix above came from tracing those same 15 puzzles, so I built a **held-out
 
 - **The lesson:** test the bottom first. Every clever decision is wasted if the button presses are wrong.
 - **The LLM's edge:** small on the dev set (8 vs 7), large on the held-out test (13 vs 5). The test set is the one that counts.
-- **Next:** find out why the gains don't transfer to the test starts, using only the dev set for diagnosis and the test set only for scoring.
+- **Next:** in the barrel room, 5 of 8 test starts put the statue out of reach: Link has to leave, go around through other rooms, and come back from the other side. The brain only shuttles between two rooms. It needs a real dungeon map: when a room is used up, head for the nearest unexplored exit.
