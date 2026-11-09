@@ -14,19 +14,12 @@
 <header class="hud">
   <div class="hud-in">
     <a class="hud-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
-    <nav class="items" aria-label="Menu">
-      {% assign here = page.url %}
-      <a class="slot {% if here == '/' or page.layout == 'post' %}on{% endif %}" href="{{ '/' | relative_url }}">
-        <span class="key">B</span>
-        <svg width="28" height="28" viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true"><rect x="1" y="1" width="6" height="6" fill="#fcd8a8"/><rect x="1" y="0" width="6" height="1" fill="#c84c0c"/><rect x="1" y="7" width="6" height="1" fill="#c84c0c"/><rect x="2" y="2" width="4" height="1" fill="#2b2118"/><rect x="2" y="4" width="4" height="1" fill="#2b2118"/><rect x="2" y="6" width="3" height="1" fill="#2b2118"/></svg>
-        <span class="label">Logs</span>
-      </a>
-      <a class="slot {% if here contains 'bestiary' %}on{% endif %}" href="{{ '/bestiary/' | relative_url }}">
-        <span class="key">A</span>
-        <svg width="28" height="28" viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="1" width="4" height="1" fill="#80d010"/><rect x="1" y="2" width="6" height="1" fill="#80d010"/><rect x="0" y="3" width="8" height="3" fill="#80d010"/><rect x="0" y="6" width="8" height="1" fill="#008800"/><rect x="2" y="3" width="1" height="1" fill="#000"/><rect x="5" y="3" width="1" height="1" fill="#000"/><rect x="3" y="5" width="2" height="1" fill="#000"/></svg>
-        <span class="label">Bestiary</span>
-      </a>
+    {% assign here = page.url %}
+    <nav class="menu" aria-label="Menu">
+      <a class="{% if here == '/' or page.layout == 'post' %}on{% endif %}" href="{{ '/' | relative_url }}"><svg class="cursor" width="16" height="14" viewBox="0 0 8 7" shape-rendering="crispEdges" aria-hidden="true"><rect x="1" y="0" width="2" height="1" fill="#d82800"/><rect x="5" y="0" width="2" height="1" fill="#d82800"/><rect x="0" y="1" width="8" height="2" fill="#d82800"/><rect x="1" y="3" width="6" height="1" fill="#d82800"/><rect x="2" y="4" width="4" height="1" fill="#d82800"/><rect x="3" y="5" width="2" height="1" fill="#d82800"/><rect x="1" y="1" width="1" height="1" fill="#fcfcfc"/></svg>LOGS</a>
+      <a class="{% if here contains 'bestiary' %}on{% endif %}" href="{{ '/bestiary/' | relative_url }}"><svg class="cursor" width="16" height="14" viewBox="0 0 8 7" shape-rendering="crispEdges" aria-hidden="true"><rect x="1" y="0" width="2" height="1" fill="#d82800"/><rect x="5" y="0" width="2" height="1" fill="#d82800"/><rect x="0" y="1" width="8" height="2" fill="#d82800"/><rect x="1" y="3" width="6" height="1" fill="#d82800"/><rect x="2" y="4" width="4" height="1" fill="#d82800"/><rect x="3" y="5" width="2" height="1" fill="#d82800"/><rect x="1" y="1" width="1" height="1" fill="#fcfcfc"/></svg>BESTIARY</a>
     </nav>
+    <div class="right">
     <div class="counters">
       <span><svg width="14" height="18" viewBox="0 0 4 6" shape-rendering="crispEdges" aria-hidden="true"><rect x="1" y="0" width="2" height="1" fill="#80d010"/><rect x="0" y="1" width="4" height="4" fill="#80d010"/><rect x="1" y="1" width="1" height="3" fill="#d8f878"/><rect x="1" y="5" width="2" height="1" fill="#80d010"/></svg>X{{ site.posts | size | prepend: '0' | slice: -2, 2 }}</span>
       <span><svg width="14" height="18" viewBox="0 0 4 6" shape-rendering="crispEdges" aria-hidden="true"><rect x="1" y="0" width="2" height="2" fill="#fcd8a8"/><rect x="1" y="2" width="1" height="4" fill="#fcd8a8"/><rect x="2" y="4" width="1" height="1" fill="#fcd8a8"/></svg>X{{ site.data.bestiary | size }}</span>
@@ -34,6 +27,7 @@
     <div class="life">
       <span class="life-label">-LIFE-</span>
       <span class="hearts" aria-hidden="true">{% for i in (1..5) %}<i class="heart"></i>{% endfor %}<i class="heart empty"></i><i class="heart empty"></i><i class="heart empty"></i></span>
+    </div>
     </div>
   </div>
 </header>
