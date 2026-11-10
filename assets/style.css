@@ -280,3 +280,25 @@ h2.band::before { background: var(--red); }
 @media (max-width: 860px) { .ver-grid { grid-template-columns: minmax(0, 1fr); } }
 .room-first { grid-column: 4; justify-self: end; }
 @media (max-width: 640px) { .room-first { grid-column: 2; justify-self: start; } }
+
+/* bestiary: plain answers */
+.badge.trial { background: var(--gold); color: var(--black); }
+.qa { display: grid; gap: 4px; }
+.qa .q { font: 9px/1.8 var(--pixel); color: var(--sky); text-transform: uppercase; letter-spacing: 1px; }
+.qa .a { margin: 0 0 6px; }
+.qa .verdict { padding: 6px 10px; border-left: 6px solid #555; background: #151515; }
+.qa .verdict.tamed { border-color: var(--leaf); }
+.qa .verdict.trial { border-color: var(--gold); }
+.qa .verdict.asleep { border-color: #2038ec; }
+.qa .verdict.defeated { border-color: var(--red); }
+.qa .verdict.egg { border-color: var(--sand); }
+details.more { border-top: 2px dashed #333; padding-top: 8px; }
+details.more summary { cursor: pointer; font: 9px/1.8 var(--pixel); color: var(--grey); }
+details.more summary:hover { color: var(--gold); }
+details.more[open] { display: grid; gap: 10px; }
+.glance { font-size: 19px; min-width: 640px; }
+.glance td { vertical-align: top; padding: 8px 12px 8px 0; }
+.glance td:first-child a { font: 9px/1.6 var(--pixel); color: var(--white); text-decoration: none; white-space: nowrap; }
+.glance td:first-child a:hover { color: var(--gold); }
+.glance tr.defeated td:last-child { color: #f8b8b0; }
+.glance tr.tamed td:last-child { color: #d8f878; }

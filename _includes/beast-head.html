@@ -11,5 +11,5 @@
     <h2 class="beast-name">{{ b.name }}</h2>
     <div class="beast-real">{{ b.real }}</div>
   </div>
-  <span class="badge {{ b.status }}">{{ b.status }}</span>
+  <span class="badge {{ b.status }}">{% include status-label.html s=b.status %}</span>
 </header>
