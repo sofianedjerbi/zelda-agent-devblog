@@ -133,7 +133,17 @@
   nodes: [Goal, Path on the map, Align, Tested button macro]
   did: Walks anywhere the map says, lines up pixel-exactly, pulls levers, opens chests from the front.
   weakness: No reflexes beyond a hit when an enemy is adjacent.
-  result: The hands in use. Almost every gain came from fixing this layer.
+  result: "The hands in use. Almost every gain came from fixing this layer. Log 004: waits after doors, stops a walk that stalls."
+- name: Cartographer Crab
+  current: "map + memory"
+  real: Self-correcting room map
+  type: monster
+  status: tamed
+  seen: Log 004
+  nodes: [RAM tiles, Learned walls that expire, Falls mark water, Two-way doors, Objects by kind + tile]
+  did: "Keeps the room map honest when the game changes it: bridges, resetting statues, deep water that looks like floor."
+  weakness: Still guesses. A wall can be relearned only by bumping into it twice.
+  result: "Continuous game from the Deepwood entrance: 8 to 12 dungeon flags, first time past the lever room."
 - name: Qwen Oracle
   real: LLM brain with object names
   type: boss
