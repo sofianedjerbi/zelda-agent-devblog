@@ -5,5 +5,11 @@ layout: default
   <h1>{{ page.title }}{% if page.subtitle %}<span class="sub">{{ page.subtitle }}</span>{% endif %}</h1>
   <div class="meta">{{ page.date | date: "%-d %b %Y" }}</div>
   {{ content }}
+  {% assign logs = site.posts | sort: "title" %}{% for p in logs %}{% if p.url == page.url %}{% assign i = forloop.index0 %}{% endif %}{% endfor %}
+  {% assign prev_i = i | minus: 1 %}{% assign next_i = i | plus: 1 %}
+  <nav class="pager" aria-label="Other logs">
+    {% if i > 0 %}<a href="{{ logs[prev_i].url | relative_url }}">{{ logs[prev_i].title }}<small>{{ logs[prev_i].subtitle }}</small></a>{% else %}<span></span>{% endif %}
+    {% if next_i < logs.size %}<a class="next" href="{{ logs[next_i].url | relative_url }}">{{ logs[next_i].title }}<small>{{ logs[next_i].subtitle }}</small></a>{% endif %}
+  </nav>
   <p><a class="back" href="{{ '/' | relative_url }}"><svg class="icon" width="20" height="20" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><rect x="1" y="4" width="8" height="2" fill="currentColor"/><rect x="2" y="3" width="2" height="1" fill="currentColor"/><rect x="2" y="6" width="2" height="1" fill="currentColor"/><rect x="3" y="2" width="1" height="1" fill="currentColor"/><rect x="3" y="7" width="1" height="1" fill="currentColor"/></svg>all posts</a></p>
 </article>

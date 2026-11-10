@@ -1,0 +1,9 @@
+# The Experimenter's real top candidates (brain v0 + Lore Owl), first decision on the ledge above Deepwood's giant barrel
+- {s: "3.28", e: "hit the Button", r: true}
+- {s: "3.09", e: "pull the Button", r: true}
+- {s: "3.08", e: "lift / talk to the Button", r: true}
+- {s: "3.05", e: "stand on the Locked Door", r: false}
+- {s: "3.05", e: "stand on the Big Barrel", r: false}
+- {s: "3.05", e: "stand on the Button", r: true}
+- {s: "3.05", e: "stand on the Pushable Statue", r: true}
+- {s: "2.96", e: "pull the Pushable Statue", r: true}

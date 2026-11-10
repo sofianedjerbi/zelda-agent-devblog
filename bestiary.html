@@ -3,58 +3,74 @@ layout: default
 title: Bestiary
 permalink: /bestiary/
 ---
+{% assign party = site.data.bestiary | where_exp: "b", "b.party" | sort: "party" %}
 <section class="board">
-  <h1>Bestiary<span class="sub">every design we tried or considered</span></h1>
-  <p>Bosses are whole architectures. Monsters are parts. Eggs were considered but never hatched. Status: <b>tamed</b> means in use, <b>asleep</b> means parked, <b>defeated</b> means dropped.</p>
-  <div class="legend-row">
-    <span class="badge tamed">tamed</span><span class="badge asleep">asleep</span><span class="badge defeated">defeated</span><span class="badge egg">egg</span>
-  </div>
-</section>
-<section class="board party">
-  <h1>Current party<span class="sub">the agent playing right now</span></h1>
-  <div class="schema party-schema" aria-label="current agent">
-    <span class="node">Faceless One<small>memory</small></span>
-    <svg class="arrow" width="22" height="14" viewBox="0 0 11 7" shape-rendering="crispEdges" aria-hidden="true"><rect x="0" y="3" width="8" height="1" fill="currentColor"/><rect x="7" y="2" width="1" height="3" fill="currentColor"/><rect x="8" y="1" width="1" height="5" fill="currentColor"/><rect x="9" y="2" width="1" height="3" fill="currentColor"/><rect x="10" y="3" width="1" height="1" fill="currentColor"/></svg>
-    <span class="node">The Experimenter<small>candidates + prior</small></span>
-    <svg class="arrow" width="22" height="14" viewBox="0 0 11 7" shape-rendering="crispEdges" aria-hidden="true"><rect x="0" y="3" width="8" height="1" fill="currentColor"/><rect x="7" y="2" width="1" height="3" fill="currentColor"/><rect x="8" y="1" width="1" height="5" fill="currentColor"/><rect x="9" y="2" width="1" height="3" fill="currentColor"/><rect x="10" y="3" width="1" height="1" fill="currentColor"/></svg>
-    <span class="node lead">Lore Owl<small>ranks experiments, learns from every try</small></span>
-    <svg class="arrow" width="22" height="14" viewBox="0 0 11 7" shape-rendering="crispEdges" aria-hidden="true"><rect x="0" y="3" width="8" height="1" fill="currentColor"/><rect x="7" y="2" width="1" height="3" fill="currentColor"/><rect x="8" y="1" width="1" height="5" fill="currentColor"/><rect x="9" y="2" width="1" height="3" fill="currentColor"/><rect x="10" y="3" width="1" height="1" fill="currentColor"/></svg>
-    <span class="node">Pathwalker<small>hands</small></span>
-    <span class="node">Guardian Slime<small>RL reflex near danger</small></span>
-  </div>
-  <p class="party-note">Lore Owl learns what things do from the agent's own labelled tries. Guardian Slime, trained by RL to survive, takes the controls whenever an enemy is close or Link gets hurt. Qwen Oracle stays on the bench as the slower generaliser. Party members are framed in gold below.</p>
-</section>
-<div class="beasts">
-{% for b in site.data.bestiary %}
-  <article class="board beast {{ b.status }}{% if b.current %} current{% endif %}">
-    {% if b.current %}<div class="ribbon">IN PARTY: {{ b.current }}</div>{% endif %}
-    <header class="beast-head">
-      {% if b.type == "boss" %}
-      <svg class="sprite-s" width="40" height="40" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><rect x="1" y="2" width="1" height="2" fill="#f2c230"/><rect x="4" y="1" width="2" height="3" fill="#f2c230"/><rect x="8" y="2" width="1" height="2" fill="#f2c230"/><rect x="1" y="4" width="8" height="2" fill="#f2c230"/><rect x="2" y="6" width="6" height="3" fill="#6e3f1b"/><rect x="3" y="7" width="1" height="1" fill="#fff8e1"/><rect x="6" y="7" width="1" height="1" fill="#fff8e1"/></svg>
-      {% elsif b.type == "egg" %}
-      <svg class="sprite-s" width="40" height="40" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><rect x="4" y="1" width="2" height="1" fill="#fff8e1"/><rect x="3" y="2" width="4" height="1" fill="#fff8e1"/><rect x="2" y="3" width="6" height="5" fill="#fff8e1"/><rect x="3" y="8" width="4" height="1" fill="#fff8e1"/><rect x="4" y="4" width="1" height="1" fill="#5dbb46"/><rect x="6" y="6" width="1" height="1" fill="#5dbb46"/><rect x="3" y="6" width="1" height="1" fill="#8fd3f4"/></svg>
-      {% else %}
-      <svg class="sprite-s" width="40" height="40" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><rect x="3" y="3" width="4" height="1" fill="#5dbb46"/><rect x="2" y="4" width="6" height="1" fill="#5dbb46"/><rect x="1" y="5" width="8" height="3" fill="#5dbb46"/><rect x="1" y="8" width="8" height="1" fill="#3d8f2f"/><rect x="3" y="5" width="1" height="1" fill="#2b2118"/><rect x="6" y="5" width="1" height="1" fill="#2b2118"/></svg>
-      {% endif %}
-      <div>
-        <h2 class="beast-name">{{ b.name }}</h2>
-        <div class="beast-real">{{ b.real }}</div>
-      </div>
-      <span class="badge {{ b.status }}">{{ b.status }}</span>
-    </header>
-    <div class="schema" aria-label="schema">
-      {% for n in b.nodes %}
-        <span class="node">{{ n }}</span>
-        {% unless forloop.last %}<svg class="arrow" width="22" height="14" viewBox="0 0 11 7" shape-rendering="crispEdges" aria-hidden="true"><rect x="0" y="3" width="8" height="1" fill="currentColor"/><rect x="7" y="2" width="1" height="3" fill="currentColor"/><rect x="8" y="1" width="1" height="5" fill="currentColor"/><rect x="9" y="2" width="1" height="3" fill="currentColor"/><rect x="10" y="3" width="1" height="1" fill="currentColor"/></svg>{% endunless %}
-      {% endfor %}
+  <h1>Bestiary<span class="sub">every design we tried, what it is, and what it scored</span></h1>
+  <p>Every part of the agent gets a monster card. <b>Bosses</b> are whole architectures, <b>monsters</b> are parts, <b>eggs</b> were considered but never hatched. Each card lists what it is made of (specs) and only <b>measured</b> results (stats).</p>
+  <div class="howto">
+    <div class="stat demo">
+      <div class="stat-top"><span class="stat-label">How to read a stat</span><span class="stat-val">9<small>/12</small></span></div>
+      <div class="bar"><span class="fill" style="width: 75%"></span><span class="was" style="left: 0%"></span></div>
+      <div class="stat-note"><i class="was-key"></i>white mark: the value before this part existed, or what it is compared with (random play...)</div>
     </div>
-    {% if b.loop %}<div class="loop"><svg class="arrow" width="18" height="14" viewBox="0 0 9 7" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="0" width="5" height="1" fill="currentColor"/><rect x="7" y="1" width="1" height="4" fill="currentColor"/><rect x="2" y="5" width="5" height="1" fill="currentColor"/><rect x="1" y="4" width="1" height="3" fill="currentColor"/><rect x="0" y="5" width="1" height="1" fill="currentColor"/><rect x="2" y="4" width="1" height="3" fill="currentColor"/></svg>loop: {{ b.loop }}</div>{% endif %}
-    <dl class="stats">
-      <dt>Seen</dt><dd>{{ b.seen }}</dd>
-      <dt>Did</dt><dd>{{ b.did }}</dd>
-      <dt>Weakness</dt><dd>{{ b.weakness }}</dd>
-      <dt>Result</dt><dd>{{ b.result }}</dd>
-    </dl>
-  </article>
+    <div class="legend-row">
+      <span class="badge tamed">tamed: in use</span><span class="badge asleep">asleep: parked</span><span class="badge defeated">defeated: dropped</span><span class="badge egg">egg: not tried</span>
+    </div>
+  </div>
+</section>
+
+<section class="board">
+  <h1>How it plays<span class="sub">one decision, from RAM to buttons. Six parts, each with one job</span></h1>
+  <ol class="flow">
+    {% for b in party %}
+    <li class="step{% if b.role == 'SURVIVE' %} side{% endif %}">
+      <span class="step-n">{{ forloop.index }}</span>
+      <span class="step-role">{{ b.role }}</span>
+      <a class="step-name" href="#{{ b.name | slugify }}">{{ b.name }}</a>
+      <span class="step-what">{% case b.role %}{% when 'SEE' %}RAM to a room map{% when 'REMEMBER' %}what each try did{% when 'LIST' %}every experiment worth trying{% when 'RANK' %}which one most likely changes something{% when 'ACT' %}walk, line up, press{% when 'SURVIVE' %}takes the controls near enemies{% endcase %}</span>
+      <span class="step-kind">{% case b.role %}{% when 'SEE' %}code{% when 'REMEMBER' %}table{% when 'LIST' %}rules{% when 'RANK' %}learned{% when 'ACT' %}planner{% when 'SURVIVE' %}RL{% endcase %}</span>
+    </li>
+    {% endfor %}
+  </ol>
+  <div class="flow-loops">
+    <p><svg class="icon" width="20" height="20" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="1" width="6" height="1" fill="#80d010"/><rect x="8" y="2" width="1" height="5" fill="#80d010"/><rect x="2" y="7" width="6" height="1" fill="#80d010"/><rect x="1" y="2" width="1" height="2" fill="#80d010"/><rect x="0" y="3" width="3" height="1" fill="#80d010"/><rect x="1" y="4" width="1" height="1" fill="#80d010"/></svg><b>Every action:</b> the result goes back into the map (1) and the memory (2), then the next decision starts.</p>
+    <p><svg class="icon" width="20" height="20" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="1" width="6" height="1" fill="#80d010"/><rect x="8" y="2" width="1" height="5" fill="#80d010"/><rect x="2" y="7" width="6" height="1" fill="#80d010"/><rect x="1" y="2" width="1" height="2" fill="#80d010"/><rect x="0" y="3" width="3" height="1" fill="#80d010"/><rect x="1" y="4" width="1" height="1" fill="#80d010"/></svg><b>Between games:</b> every try is a labelled example (thing, verb, changed?) and retrains the ranker (4).</p>
+    <p><svg class="icon" width="20" height="20" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><rect x="3" y="1" width="4" height="1" fill="#fcbc3c"/><rect x="2" y="2" width="6" height="5" fill="#fcbc3c"/><rect x="3" y="7" width="4" height="1" fill="#fcbc3c"/><rect x="4" y="8" width="2" height="1" fill="#fcbc3c"/><rect x="4" y="3" width="2" height="3" fill="#000"/></svg><b>Danger:</b> an enemy within 2 tiles, or lost health, hands the controls to the reflex (6) until it is safe.</p>
+  </div>
+  <div class="team">
+    <div class="team-title">The whole party, latest</div>
+    {% include bar.html s=site.data.team.held %}
+    {% include bar.html s=site.data.team.gameover %}
+    {% include bar.html s=site.data.team.ledge %}
+  </div>
+</section>
+
+<h2 class="band">In the party</h2>
+{% for b in party %}
+<article class="board beast big current {{ b.status }}" id="{{ b.name | slugify }}">
+  <div class="ribbon">{{ b.party }}. {{ b.role }} · {{ b.current }}</div>
+  {% include beast-head.html b=b %}
+  <div class="big-grid">
+    <div class="showcase">
+      {% include showcase.html b=b %}
+    </div>
+    <div class="facts">
+      {% include beast-facts.html b=b %}
+    </div>
+  </div>
+</article>
 {% endfor %}
+
+{% assign groups = "asleep,defeated,egg" | split: "," %}
+{% for g in groups %}
+<h2 class="band">{% case g %}{% when 'asleep' %}Asleep: parked, may return{% when 'defeated' %}Defeated: tried and dropped{% when 'egg' %}Eggs: considered, never hatched{% endcase %}</h2>
+<div class="beasts">
+{% for b in site.data.bestiary %}{% if b.status == g and b.party == nil %}
+  <article class="board beast {{ b.status }}" id="{{ b.name | slugify }}">
+    {% include beast-head.html b=b %}
+    {% if b.show %}<div class="showcase small">{% include showcase.html b=b %}</div>{% endif %}
+    {% include beast-facts.html b=b %}
+  </article>
+{% endif %}{% endfor %}
 </div>
+{% endfor %}

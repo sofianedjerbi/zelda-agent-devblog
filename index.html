@@ -5,7 +5,8 @@ layout: default
   <h1>Devlog<span class="sub">an AI learning to finish any Zelda, on one Mac</span></h1>
   <p>Goal: an AI that can finish any top-down Zelda, running on one Mac, using only local models. One rule above the rest: it must learn skills, not memorise a game.</p>
   <ul class="posts">
-  {% for post in site.posts %}
+  {% assign logs = site.posts | sort: "title" | reverse %}
+  {% for post in logs %}
     <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a><span class="what">{{ post.subtitle }}<span class="date">{{ post.date | date: "%-d %b %Y" }}</span></span></li>
   {% endfor %}
   </ul>

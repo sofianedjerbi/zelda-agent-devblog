@@ -1,43 +1,277 @@
-# Every design tried or considered. type: boss (whole architecture), monster (a component), egg (considered, never hatched)
+# Every design tried or considered.
+# type: boss (whole architecture), monster (a component), egg (considered, never hatched)
 # status: tamed (in use), asleep (parked), defeated (dropped), egg (not tried)
-- name: Pixel Muncher
-  real: PPO on screen pixels
+# party: position in the agent playing right now (see bestiary.html); role: its job there
+# specs: what it is, as [label, value]; stats: measured results only
+#   (v = value, max = scale, was = value before it / the baseline, low = lower is better)
+# show: the showcase on its card (video, map, owl, picks, slime)
+
+- name: Cartographer Crab
+  party: 1
+  role: SEE
+  current: "map + memory"
+  real: Self-correcting room map
+  type: monster
+  status: tamed
+  seen: Log 004
+  nodes: [RAM tiles, Learned walls that expire, Falls mark water, Two-way doors, Objects by kind + tile]
+  specs:
+    - [Kind, "Hand-written code, no neural net"]
+    - [Reads, "Game RAM: tile classes, collision, the engine's object lists"]
+    - [Gives, "A grid per room: floor, wall, water, pit, opening, shut passage, marked floor, plus the things in it"]
+    - [Learns while playing, "Walls it bumps into (forgotten after 400 steps), falls (water), doors (both ways)"]
+    - [Size, "About 400 lines"]
+  stats:
+    - {label: "Lever room reached, 12 fresh games", v: 12, max: 12, was: 0, note: "this morning: 0 of 3 games"}
+    - {label: "Barrel room reached, 12 fresh games", v: 9, max: 12, was: 0}
+    - {label: "Above the giant barrel, 12 fresh games", v: 9, max: 12, was: 0}
+  show:
+    kind: map
+    src: /assets/img/map-barrel-ledge.svg
+    cap: "Its real map of the ledge above the giant barrel. Black is wall or not reachable from here; blue is an exit, red a shut door."
+  did: "Keeps the room map honest when the game changes it: bridges, resetting statues, deep water that looks like floor."
+  weakness: "Still guesses. Inside the giant barrel the game's tile map is a plain rectangle: real walls and window exits are not in it."
+  result: "Continuous game from the Deepwood entrance: 8 to 12 dungeon flags, first time past the lever room."
+
+- name: Faceless One
+  party: 2
+  role: REMEMBER
+  current: "memory"
+  real: Name-free affordance view
+  type: monster
+  status: tamed
+  seen: Log 001
+  nodes: [Room shape, Something is here, What my tries did, Policy or brain]
+  specs:
+    - [Kind, "Memory table, no learning"]
+    - [Per thing, "Moves by itself? Hurt me? For each of 5 verbs: tried, changed something"]
+    - [Keyed by, "Kind + first tile seen (stable across visits; engine addresses are not)"]
+    - [View for RL, "21-channel grid around Link"]
+  show:
+    kind: record
+  did: Replaced object names with what the agent itself learned by acting.
+  weakness: Throws away the names an LLM needs, so names ride along beside it.
+  result: Still the memory layer under every brain.
+
+- name: The Experimenter
+  party: 3
+  role: LIST
+  current: "candidate list + starting prior"
+  real: Systematic brain (v0)
+  type: boss
+  status: tamed
+  seen: Log 002
+  nodes: [Candidates from memory, Hand-written scores, Boredom, Next experiment]
+  specs:
+    - [Kind, "Hand-written rules"]
+    - [Candidates, "Every verb on every thing, standing on things, bringing movable things onto marked tiles, untried exits, shut passages"]
+    - [Boredom, "Drops a goal after 4 tries that changed nothing; each room gets duller the longer it is used"]
+    - [Map, "Remembers which exit leads where; travels back to rooms with ideas left"]
+    - [Size, "About 480 lines"]
+  stats:
+    - {label: "Generated dungeons solved, perfect hands (%)", v: 85, max: 100, was: 37}
+    - {label: "Held-out real puzzles, alone", v: 8, max: 33, was: 6, vs: "random play"}
+  show:
+    kind: picks
+  did: "With perfect hands: 37% to 85% of generated dungeons, by reading its failures."
+  weakness: "Its hand-tuned habits partly fitted the dev rooms. 8 of 33 on the held-out test."
+  result: Now the candidate list and prior for the learned action model.
+
+- name: Lore Owl
+  party: 4
+  role: RANK
+  current: "leader: ranks experiments"
+  real: Learned action model (what things do when acted on)
+  type: boss
+  status: tamed
+  seen: Log 003
+  nodes: [Every try (name, verb, changed?), Model per verb, Chance this try changes something, Rank experiments]
+  loop: each new try is a new training example
+  specs:
+    - [Kind, "Logistic regression, one per verb (push, hit, interact, pull, item)"]
+    - [Input, "The object's name as 16 numbers from the local LLM, computed once per name"]
+    - [Trained on, "6,688 of its own labelled tries, 15 kinds of object"]
+    - [Size, "5 x 17 weights. Trains in seconds. No LLM at play time"]
+  stats:
+    - {label: "Held-out real puzzles (with the brain)", v: 13, max: 33, was: 8, vs: "brain alone", note: "random play 6"}
+  show:
+    kind: owl
+  did: "Learns from its own labelled tries: pots lift, levers pull, statues push. No credit assignment, no LLM at play time."
+  weakness: "Only 15 object kinds so far, so its guesses about new ones are rough (it thinks hitting a button works)."
+  result: "Ranks every experiment the agent makes."
+
+- name: Pathwalker
+  party: 5
+  role: ACT
+  current: "hands"
+  real: Planner hands + tested macros
+  type: monster
+  status: tamed
+  seen: Log 002
+  nodes: [Goal, Path on the map, Align, Tested button macro]
+  specs:
+    - [Kind, "Path search + the game's tested button sequences, no learning"]
+    - [Steps, "Shortest path on the map, line up pixel by pixel, run the macro"]
+    - [Doors, "Waits until Link has stopped after the game's walk-in"]
+    - [Gives up, "When a walk has not moved Link for 8 actions"]
+    - [Size, "About 120 lines + macros"]
+  stats:
+    - {label: "Dev puzzles with an LLM brain", v: 8, max: 15, was: 3, vs: "random play"}
+    - {label: "Lever pulled, from the real arrival", v: 6, max: 6, was: 0}
+  show:
+    kind: video
+    src: /assets/video/mushroom-room.mp4
+    cap: "Walks over, lines up, pulls the lever"
+  did: Walks anywhere the map says, lines up pixel-exactly, pulls levers, opens chests from the front.
+  weakness: No reflexes beyond a hit when an enemy is adjacent.
+  result: "The hands in use. Almost every gain came from fixing this layer."
+
+- name: Guardian Slime
+  party: 6
+  role: SURVIVE
+  current: "reflexes: takes over near danger"
+  real: Survival reflex trained by RL
+  type: monster
+  status: tamed
+  seen: Log 003
+  nodes: [Danger start (enemy within 4 tiles), RL policy, Current macros]
+  loop: reward = hearts kept, game overs avoided
+  specs:
+    - [Kind, "PPO reinforcement learning"]
+    - [Network, "3 conv layers on the 21-channel grid + 256-unit layer; 0.92M weights"]
+    - [Trained on, "300,000 real-game actions, 100-action episodes from danger starts"]
+    - [Reward, "-1 per heart lost, -3 per game over, +0.002 per action alive"]
+    - [Takes over, "Enemy within 2 tiles, or Link just lost health"]
+  stats:
+    - {label: "Game overs, 66 held-out runs", v: 4, max: 66, was: 14, vs: "no reflex", low: true}
+    - {label: "Puzzles solved, 66 held-out runs", v: 26, max: 66, was: 23, vs: "no reflex"}
+  show:
+    kind: slime
+  did: "RL where RL is strong: reflexes. Trained only to stay alive near enemies, with today's macros."
+  weakness: "v1 farmed a kill reward: Sluggulas vanish on their own (204 'kills' in 300 steps). Kill reward removed. Starts with 1 heart still end in game overs."
+  result: "Game overs down 70%. In the party."
+
+- name: Qwen Oracle
+  real: LLM brain with object names
+  type: boss
+  status: asleep
+  seen: Log 002
+  nodes: [Room as text with names, Qwen3-30B (local), Pick an experiment, Pathwalker]
+  specs:
+    - [Model, "Qwen3-30B-A3B Instruct, 4-bit, local (MLX)"]
+    - [Memory, "About 17 GB"]
+    - [Speed, "About 1 s per decision"]
+  stats:
+    - {label: "Held-out real puzzles", v: 14, max: 33, was: 6, vs: "random play"}
+    - {label: "Dev puzzles", v: 8, max: 15, was: 3, vs: "random play"}
+  show:
+    kind: video
+    src: /assets/video/barrel-statue.mp4
+    cap: "Barrel room: statue onto the button in 25 actions"
+  did: 14 of 33 held-out real puzzles. Random play, 6.
+  weakness: Slow (1 s per decision), learns nothing from playing.
+  result: "Best single generaliser. On the bench; its knowledge lives on in Lore Owl's name vectors."
+
+- name: Bandit Knight
+  real: Learned decider (RL value of experiments)
   type: boss
   status: defeated
-  seen: Log 001
-  nodes: [Screen pixels, PPO policy, Buttons]
-  loop: reward from RAM (new rooms, score)
-  did: Learned to walk around the overworld from raw pixels and game rewards.
-  weakness: Never found a puzzle on its own. Rewards too rare.
-  result: Explored, never progressed far without help.
-- name: The Archivist
-  real: Go-Explore with save states
-  type: boss
-  status: defeated
-  seen: Log 001
-  nodes: [Archive of saved spots, Pick a promising spot, Explore from it, New spots]
-  loop: save every new place, restart from the best
-  did: Reached Deepwood Shrine rooms 3 to 5. Furthest real progress.
-  weakness: Remembers routes through one game. Memorising, not learning.
-  result: "Dropped as the main path: overfitting by design."
-- name: Breadcrumb Sprite
-  real: Compass / route shaping
+  seen: Log 003
+  nodes: [Candidates, Features + LLM name vectors, Learned value, Pathwalker]
+  loop: reward = puzzle flags, new rooms, lasting changes
+  specs:
+    - [Kind, "Value learned by RL over the brain's candidates"]
+  stats:
+    - {label: "Dev puzzles (best of 3 versions)", v: 4, max: 15, was: 6, vs: "hand-written brain"}
+  did: Tried to learn from reward which experiments pay off.
+  weakness: "Rare, delayed rewards. v1 farmed room changes by shuttling through doors; v2 cancelled its own prior; v3 learned that fighting pays, and died more."
+  result: "Three versions, all worse than the hand-written brain. Replaced by Lore Owl."
+
+- name: Borrowed Reflex
+  real: Old real-game RL policy as a reflex
   type: monster
   status: defeated
+  seen: Log 003
+  nodes: [Enemy near or damage, Old RL policy takes over, 6 actions, Back to the brain]
+  specs:
+    - [Kind, "PPO policy from the first real-game training"]
+  stats:
+    - {label: "Game overs, 66 held-out runs", v: 13, max: 66, was: 14, vs: "no reflex", low: true}
+    - {label: "Puzzles solved, 66 held-out runs", v: 13, max: 66, was: 23, vs: "no reflex"}
+  did: Handed control to the RL policy that cut game overs from 28 to 6 in its own setting.
+  weakness: Trained on the old action macros, with a reward that was not about survival.
+  result: "Barely fewer game overs, half the puzzles. Dropped."
+
+- name: Door Farmer
+  real: Goal-conditioned RL hands
+  type: monster
+  status: defeated
+  seen: Log 002
+  nodes: [Goal from the brain, RL hands, Actions]
+  loop: reward for reaching the goal
+  specs:
+    - [Kind, "PPO, conditioned on the brain's goal"]
+  stats:
+    - {label: "Goals reached, simulator", v: 85, max: 100}
+    - {label: "Goals reached under the brain, real game", v: 0, max: 20}
+  did: 85% of goals in the simulator.
+  weakness: Learned to farm points by stepping back through the door it came in.
+  result: Too slow and too weak in the real game. Replaced by Pathwalker.
+
+- name: Dungeon Forge
+  real: Generated-dungeon simulator + PPO
+  type: boss
+  status: asleep
   seen: Log 001
-  nodes: [Known route, Reward for getting closer, Policy]
-  did: Pulled the agent along a path toward the next goal.
-  weakness: The path is a list of hardcoded positions.
-  result: Rejected as hardcoding.
-- name: Bored Wisp
-  real: Boredom / novelty drive
+  nodes: [Random dungeon generator, Fast simulator, PPO policy]
+  loop: a new dungeon every episode
+  specs:
+    - [Speed, "About 2,000 steps per second"]
+  stats:
+    - {label: "Never-seen generated dungeons solved (%)", v: 88, max: 100, was: 0, vs: "random play"}
+  did: 88% of never-seen generated dungeons solved.
+  weakness: In the real game it played like random. It fought a Puffstool to death.
+  result: Simulator scores were the wrong yardstick.
+
+- name: Head-Start Golem
+  real: Simulator pretraining, then real-game RL
   type: monster
   status: asleep
   seen: Log 001
-  nodes: [What happened before, Novelty score, Penalty for repeats]
-  did: Made repeating the same thing feel costly, like a bored player.
-  weakness: Novelty is not progress. Switching screens counted as new.
-  result: Lives on as the brain's boredom bookkeeping.
+  nodes: [Simulator weights, Real-game training, Policy]
+  specs:
+    - [Training, "300,000 real-game actions from simulator weights"]
+  stats:
+    - {label: "New room reached, 120 held-out starts", v: 78, max: 120, was: 54, vs: "from scratch", note: "random play 45"}
+    - {label: "Game overs, 120 starts", v: 24, max: 120, was: 32, vs: "from scratch", low: true}
+  did: Reached a new room from 78 of 120 starts, against 54 from scratch (p about 0.002).
+  weakness: Puzzles stayed at random level.
+  result: Real gain for movement and survival, none for puzzles.
+
+- name: Shrug Counter
+  real: Hit-counter input channel
+  type: monster
+  status: defeated
+  seen: Log 001
+  nodes: [Hits an enemy survived, Extra input channel, Policy]
+  stats:
+    - {label: "Fights won (%)", v: 13, max: 100, was: 97}
+  did: Let a memoryless policy tell killable enemies from unkillable ones.
+  weakness: A wounded enemy looked like an immortal one. The policy stopped fighting.
+  result: Redesigned, then replaced.
+
+- name: Scroll Mimic
+  real: Fine-tuned LLM planner (text to plan)
+  type: monster
+  status: defeated
+  seen: Log 001
+  nodes: [Dungeon as text, Fine-tuned Qwen, Numbered plan]
+  stats:
+    - {label: "Generated dungeons planned right", v: 22, max: 30, was: 0, vs: "untuned model"}
+  did: 22 of 30 generated dungeons planned correctly.
+  weakness: On a real room it invented chests and looped.
+  result: Never transferred.
+
 - name: Old Tool Sage
   real: LLM thinker with tools
   type: boss
@@ -48,25 +282,49 @@
   did: Reasoned about rooms and called tools on the real game.
   weakness: Only as good as the text it got. Water drawn as walls, shifting labels.
   result: Fixed many data bugs; never moved the frontier itself.
-- name: Dungeon Forge
-  real: Generated-dungeon simulator + PPO
+
+- name: The Archivist
+  real: Go-Explore with save states
   type: boss
-  status: asleep
+  status: defeated
   seen: Log 001
-  nodes: [Random dungeon generator, Fast simulator, PPO policy]
-  loop: a new dungeon every episode
-  did: 88% of never-seen generated dungeons solved, at 2,000 steps/s.
-  weakness: In the real game it played like random. It fought a Puffstool to death.
-  result: Simulator scores were the wrong yardstick.
-- name: Head-Start Golem
-  real: Simulator pretraining, then real-game RL
+  nodes: [Archive of saved spots, Pick a promising spot, Explore from it, New spots]
+  loop: save every new place, restart from the best
+  did: Reached Deepwood Shrine rooms 3 to 5. Furthest real progress at the time.
+  weakness: Remembers routes through one game. Memorising, not learning.
+  result: "Dropped as the main path: overfitting by design. Its saved states became the test benches."
+
+- name: Pixel Muncher
+  real: PPO on screen pixels
+  type: boss
+  status: defeated
+  seen: Log 001
+  nodes: [Screen pixels, PPO policy, Buttons]
+  loop: reward from RAM (new rooms, score)
+  did: Learned to walk around the overworld from raw pixels and game rewards.
+  weakness: Never found a puzzle on its own. Rewards too rare.
+  result: Explored, never progressed far without help.
+
+- name: Breadcrumb Sprite
+  real: Compass / route shaping
+  type: monster
+  status: defeated
+  seen: Log 001
+  nodes: [Known route, Reward for getting closer, Policy]
+  did: Pulled the agent along a path toward the next goal.
+  weakness: The path is a list of hardcoded positions.
+  result: Rejected as hardcoding.
+
+- name: Bored Wisp
+  real: Boredom / novelty drive
   type: monster
   status: asleep
   seen: Log 001
-  nodes: [Simulator weights, Real-game training, Policy]
-  did: Reached a new room from 78 of 120 starts, against 54 from scratch (p about 0.002).
-  weakness: Puzzles stayed at random level.
-  result: Real gain for movement and survival, none for puzzles.
+  nodes: [What happened before, Novelty score, Penalty for repeats]
+  did: Made repeating the same thing feel costly, like a bored player.
+  weakness: Novelty is not progress. Switching screens counted as new.
+  result: Lives on as the brain's boredom bookkeeping.
+
 - name: Memory Slug
   real: Recurrent (LSTM) policy
   type: monster
@@ -76,104 +334,17 @@
   did: Could remember that a hit did nothing.
   weakness: Ten times slower to train. Two days for one run.
   result: Dropped before it finished.
-- name: Shrug Counter
-  real: Hit-counter input channel
-  type: monster
-  status: defeated
-  seen: Log 001
-  nodes: [Hits an enemy survived, Extra input channel, Policy]
-  did: Let a memoryless policy tell killable enemies from unkillable ones.
-  weakness: A wounded enemy looked like an immortal one. The policy stopped fighting.
-  result: Fighting collapsed from 97% to 13%. Redesigned, then replaced.
-- name: Scroll Mimic
-  real: Fine-tuned LLM planner (text to plan)
-  type: monster
-  status: defeated
-  seen: Log 001
-  nodes: [Dungeon as text, Fine-tuned Qwen, Numbered plan]
-  did: 22 of 30 generated dungeons planned correctly (untuned model, 0).
-  weakness: On a real room it invented chests and looped.
-  result: Never transferred.
-- name: Faceless One
-  current: "memory"
-  real: Name-free affordance view
-  type: monster
-  status: tamed
-  seen: Log 001
-  nodes: [Room shape, Something is here, What my tries did, Policy or brain]
-  did: Replaced object names with what the agent itself learned by acting.
-  weakness: Throws away the names an LLM needs.
-  result: Still the memory layer under every brain.
-- name: Door Farmer
-  real: Goal-conditioned RL hands
-  type: monster
-  status: defeated
-  seen: Log 002
-  nodes: [Goal from the brain, RL hands, Actions]
-  loop: reward for reaching the goal
-  did: 85% of goals in the simulator.
-  weakness: Learned to farm points by stepping back through the door it came in.
-  result: Too slow and too weak in the real game. Replaced by the planner.
-- name: The Experimenter
-  current: "candidate list + starting prior"
-  real: Systematic brain (v0)
-  type: boss
-  status: tamed
-  seen: Log 002
-  nodes: [Candidates from memory, Hand-written scores, Boredom, Next experiment]
-  did: "With perfect hands: 37% to 86% of generated dungeons, by reading its failures."
-  weakness: Its hand-tuned habits partly fitted the dev rooms. 8 of 33 on the held-out test.
-  result: Now the candidate list and prior for the learned decider.
-- name: Pathwalker
-  current: "hands"
-  real: Planner hands + tested macros
-  type: monster
-  status: tamed
-  seen: Log 002
-  nodes: [Goal, Path on the map, Align, Tested button macro]
-  did: Walks anywhere the map says, lines up pixel-exactly, pulls levers, opens chests from the front.
-  weakness: No reflexes beyond a hit when an enemy is adjacent.
-  result: "The hands in use. Almost every gain came from fixing this layer. Log 004: waits after doors, stops a walk that stalls."
-- name: Cartographer Crab
-  current: "map + memory"
-  real: Self-correcting room map
-  type: monster
-  status: tamed
-  seen: Log 004
-  nodes: [RAM tiles, Learned walls that expire, Falls mark water, Two-way doors, Objects by kind + tile]
-  did: "Keeps the room map honest when the game changes it: bridges, resetting statues, deep water that looks like floor."
-  weakness: Still guesses. A wall can be relearned only by bumping into it twice.
-  result: "Continuous game from the Deepwood entrance: 8 to 12 dungeon flags, first time past the lever room."
-- name: Qwen Oracle
-  real: LLM brain with object names
-  type: boss
-  status: tamed
-  seen: Log 002
-  nodes: [Room as text with names, Qwen3-30B (local), Pick an experiment, Pathwalker]
-  did: 14 of 33 held-out real puzzles. Random play, 6.
-  weakness: Slow (1 s per decision), learns nothing from playing.
-  result: Best generaliser so far. Becomes the teacher.
-- name: Bandit Knight
-  real: Learned decider (RL value of experiments)
-  type: boss
-  status: defeated
-  seen: Log 002
-  nodes: [Candidates, Features + LLM name vectors, Learned value, Pathwalker]
-  loop: reward = puzzle flags, new rooms, lasting changes
-  did: Tried to learn from reward which experiments pay off.
-  weakness: "Rare, delayed rewards. v1 farmed room changes by shuttling through doors; v2 cancelled its own prior; v3 learned that fighting pays, and died more."
-  result: "Three versions, all worse than the hand-written brain on the dev bench (3-4/15 vs 6). Replaced by Lore Owl."
-- name: Lore Owl
-  current: "leader: ranks experiments"
-  real: Learned action model (what things do when acted on)
-  type: boss
-  status: tamed
-  seen: Log 002
-  nodes: [Every try (name, verb, changed?), Model per verb, Chance this try changes something, Rank experiments]
-  loop: each new try is a new training example
-  did: "Learns from its own labelled tries: pots lift, levers pull, statues push. No credit assignment, no LLM at play time."
-  weakness: "With 19 object names, the LLM name vectors don't yet carry this to unseen kinds of objects. A label bias (only successful pushes logged) made it push pots among enemies."
-  result: "Held-out test: 13/33 solved (LLM brain 14, brain alone 8, random 6), but 10 game overs. Push bias being fixed."
+
+- name: Codex Egg
+  real: Skill library (Voyager-style)
+  type: egg
+  status: egg
+  seen: considered
+  nodes: [Successful action sequence, Saved as a skill, Reused later]
+  did: Would keep what worked as reusable skills.
+  weakness: Skills tied to one game's objects risk memorising.
+  result: Not tried yet.
+
 - name: Labyrinth Egg
   real: Dungeon-graph generator
   type: egg
@@ -183,6 +354,7 @@
   did: Built, never trained on. For multi-room planning.
   weakness: Bigger simulated dungeons do not fix real-game gaps.
   result: Parked until single rooms work.
+
 - name: Dream Egg
   real: World model (Dreamer-style)
   type: egg
@@ -192,6 +364,7 @@
   did: Would learn the game's rules and plan inside them.
   weakness: Expensive on one Mac. Needs lots of real data.
   result: Not tried.
+
 - name: Eye Egg
   real: Vision-language agent on pixels
   type: egg
@@ -201,32 +374,3 @@
   did: Would need no RAM reader per game.
   weakness: Research shows pixel-only LLM agents finish about 0.5% of games like this.
   result: Not tried.
-- name: Codex Egg
-  real: Skill library (Voyager-style)
-  type: egg
-  status: egg
-  seen: considered
-  nodes: [Successful action sequence, Saved as a skill, Reused later]
-  did: Would keep what worked as reusable skills.
-  weakness: Skills tied to one game's objects risk memorising.
-  result: Next candidate after the learned decider.
-- name: Borrowed Reflex
-  real: Old real-game RL policy as a reflex
-  type: monster
-  status: defeated
-  seen: Log 002
-  nodes: [Enemy near or damage, Old RL policy takes over, 6 actions, Back to the brain]
-  did: Handed control to the RL policy that cut game overs from 28 to 6 in its own setting.
-  weakness: Trained on the old action macros, with a reward that was not about survival.
-  result: "Held-out, 2 seeds (66 runs): 13 solved and 13 game overs, against 23 and 14 without it. Dropped."
-- name: Guardian Slime
-  current: "reflexes: takes over near danger"
-  real: Survival reflex trained by RL
-  type: monster
-  status: tamed
-  seen: Log 003
-  nodes: [Danger start (enemy within 4 tiles), RL policy, Current macros]
-  loop: reward = hearts kept, game overs avoided
-  did: "RL where RL is strong: reflexes. Trained only to stay alive near enemies, with today's macros."
-  weakness: "v1 farmed a kill reward: Sluggulas vanish on their own (204 'kills' in 300 steps). Kill reward removed."
-  result: "Held-out test, 2 seeds (66 runs): game overs 14 down to 4, puzzles 23 up to 26. In the party."

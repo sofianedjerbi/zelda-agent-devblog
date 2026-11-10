@@ -1,0 +1,9 @@
+{% assign s = include.s %}{% assign pct = s.v | times: 100.0 | divided_by: s.max %}{% if pct > 100 %}{% assign pct = 100 %}{% endif %}
+<div class="stat{% if s.low %} low{% endif %}">
+  <div class="stat-top"><span class="stat-label">{{ s.label }}</span><span class="stat-val">{{ s.v }}<small>/{{ s.max }}</small></span></div>
+  <div class="bar" role="img" aria-label="{{ s.label }}: {{ s.v }} of {{ s.max }}{% if s.was != nil %}, {{ s.vs | default: "before" }} {{ s.was }}{% endif %}">
+    <span class="fill" style="width: {{ pct }}%"></span>
+    {% if s.was != nil %}{% assign wp = s.was | times: 100.0 | divided_by: s.max %}<span class="was" style="left: {{ wp }}%"></span>{% endif %}
+  </div>
+  {% if s.was != nil or s.note %}<div class="stat-note">{% if s.was != nil %}<i class="was-key"></i>{{ s.vs | default: "before" }}: {{ s.was }}{% endif %}{% if s.note %}{% if s.was != nil %} · {% endif %}{{ s.note }}{% endif %}{% if s.low %} · lower is better{% endif %}</div>{% endif %}
+</div>
