@@ -41,10 +41,19 @@
 - id: v6
   log: "005"
   name: The map is not the room
-  current: true
   party: [Cartographer Crab, Faceless One, The Experimenter, Lore Owl, Pathwalker, Guardian Slime]
   idea: Find where the map lies (barrel windows, wide exits, statues, fake floor) and fix the rule, not the room.
   best: "13 dungeon flags; above the giant barrel in 15 / 24 games"
   catch: "The ledge's puzzle and locked doors are not solved yet."
   clip: /assets/video/barrel-window-ledge.mp4
   clip_cap: "Into the barrel, out of its window, onto the ledge"
+- id: v7
+  log: "006"
+  name: Can it even get there?
+  current: true
+  party: [Cartographer Crab, Faceless One, The Experimenter, Lore Owl, Pathwalker, Guardian Slime, Qwen Oracle]
+  idea: "Leave the dungeon: navigation tests from real saves, listening to what characters say, a local LLM guide for direction."
+  best: "Short overworld trips; barrel room in 22 / 24 dungeon games"
+  catch: "No trip reaches the shrine from the woods or the village yet."
+  clip: /assets/video/barrel-window-ledge.mp4
+  clip_cap: "Latest dungeon clip: into the barrel, out of its window"
