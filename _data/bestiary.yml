@@ -13,7 +13,7 @@
   real: Self-correcting room map
   type: monster
   status: tamed
-  seen: Log 004
+  seen: Log 004, 005
   nodes: [RAM tiles, Learned walls that expire, Falls mark water, Two-way doors, Objects by kind + tile]
   specs:
     - [Kind, "Hand-written code, no neural net"]
@@ -22,16 +22,16 @@
     - [Learns while playing, "Walls it bumps into (forgotten after 400 steps), falls (water), doors (both ways)"]
     - [Size, "About 400 lines"]
   stats:
-    - {label: "Lever room reached, 12 fresh games", v: 12, max: 12, was: 0, note: "this morning: 0 of 3 games"}
-    - {label: "Barrel room reached, 12 fresh games", v: 9, max: 12, was: 0}
-    - {label: "Above the giant barrel, 12 fresh games", v: 9, max: 12, was: 0}
+    - {label: "Lever room reached, 24 fresh games", v: 24, max: 24, was: 0, note: "Log 004 morning: 0 of 3 games"}
+    - {label: "Barrel room reached, 24 fresh games", v: 18, max: 24, was: 0}
+    - {label: "Above the giant barrel, 24 fresh games", v: 15, max: 24, was: 0}
   show:
     kind: map
     src: /assets/img/map-barrel-ledge.svg
     cap: "Its real map of the ledge above the giant barrel. Black is wall or not reachable from here; blue is an exit, red a shut door."
   did: "Keeps the room map honest when the game changes it: bridges, resetting statues, deep water that looks like floor."
-  weakness: "Still guesses. Inside the giant barrel the game's tile map is a plain rectangle: real walls and window exits are not in it."
-  result: "Continuous game from the Deepwood entrance: 8 to 12 dungeon flags, first time past the lever room."
+  weakness: "Still guesses. Inside the giant barrel the game's tile map is a plain rectangle: real walls and window exits are not in it. A door it guessed once pulled Link out of an unsolved room."
+  result: "Log 004: first time past the lever room. Log 005: exits are bands, the way back is remembered; 15 of 24 games climb out of the giant barrel."
 
 - name: Faceless One
   party: 2
@@ -107,13 +107,14 @@
   real: Planner hands + tested macros
   type: monster
   status: tamed
-  seen: Log 002
+  seen: Log 002, 005
   nodes: [Goal, Path on the map, Align, Tested button macro]
   specs:
     - [Kind, "Path search + the game's tested button sequences, no learning"]
     - [Steps, "Shortest path on the map, line up pixel by pixel, run the macro"]
     - [Doors, "Waits until Link has stopped after the game's walk-in"]
-    - [Gives up, "When a walk has not moved Link for 8 actions"]
+    - [Gives up, "When it has not moved Link for 8 actions (24 while pushing)"]
+    - [Blocks, "Pushes a still object aside when that is the only way, and only if the tile behind it is free"]
     - [Size, "About 120 lines + macros"]
   stats:
     - {label: "Dev puzzles with an LLM brain", v: 8, max: 15, was: 3, vs: "random play"}
@@ -124,7 +125,7 @@
     cap: "Walks over, lines up, pulls the lever"
   did: Walks anywhere the map says, lines up pixel-exactly, pulls levers, opens chests from the front.
   weakness: No reflexes beyond a hit when an enemy is adjacent.
-  result: "The hands in use. Almost every gain came from fixing this layer."
+  result: "The hands in use. Almost every gain came from fixing this layer. Log 005: hall time down 40% by pushing the right statue."
 
 - name: Guardian Slime
   party: 6
