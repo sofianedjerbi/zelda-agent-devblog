@@ -39,6 +39,9 @@ One continuous game, about 3x speed: across the mushroom island, the slingshot, 
 |---|---|---|---|
 | This morning (3 seeds) | 8 flags | 0/3 | 0/3 |
 | Tonight (3 seeds) | 12 flags | 3/3 | 1/3 |
+| Later tonight (12 fresh seeds) | 12 flags | 12/12 | 8/12 |
+
+The last row adds one more fix: when a mushroom pull flings Link the wrong way, it is tried again from another side.
 
 Held-out puzzle test (33 puzzles × 2 seeds): **30 solved** (this morning 26), but **11 game overs** (was 4). Almost all are in one room where Link starts with nearly no health. Not fixed yet.
 
@@ -46,4 +49,4 @@ Held-out puzzle test (33 puzzles × 2 seeds): **30 solved** (this morning 26), b
 
 - **Benches hid this.** Every bug above only shows up when Link arrives from somewhere. The continuous game is now the main test.
 - **Each fix was general:** doors, statues, water, memory. No Deepwood-specific rule.
-- **Next:** the slingshot works on 1 seed of 3, often only on the 2nd pull. Then the barrel room in a continuous game, and the game overs.
+- **Next:** the barrel room. Its middle is a giant barrel that turns when Link walks inside it; the map reads it as wall. Then the game overs.
