@@ -1,0 +1,50 @@
+# One entry per version of the agent, oldest first. Only measured numbers.
+- id: v1
+  log: "001"
+  name: Brute force
+  party: [Pixel Muncher, The Archivist]
+  idea: Reinforcement learning on the real game, plus save states at every new place.
+  best: "Reached Deepwood rooms 3 to 5"
+  catch: "By memorising routes through this one game. Dropped."
+- id: v2
+  log: "001"
+  name: The simulator
+  party: [Dungeon Forge, Head-Start Golem]
+  idea: Train on endless generated dungeons, then move to the real game.
+  best: "88% of never-seen generated dungeons"
+  catch: "Random level in the real game. Movement transferred, puzzles didn't."
+- id: v3
+  log: "002"
+  name: Brain + hands
+  party: [Qwen Oracle, Pathwalker]
+  idea: A local language model picks experiments; a planner carries them out.
+  best: "14 / 33 held-out puzzles (random play 6)"
+  catch: "1 second per decision, learns nothing from playing."
+  clip: /assets/video/barrel-statue.mp4
+  clip_cap: "Barrel room puzzle in 25 actions (a dev puzzle)"
+- id: v4
+  log: "003"
+  name: Learning where it pays
+  party: [The Experimenter, Lore Owl, Guardian Slime, Pathwalker]
+  idea: Learn only from dense signals - what actions do, and how to stay alive.
+  best: "26 / 66 held-out puzzles, 4 game overs"
+  catch: "Never tested as one long game."
+- id: v5
+  log: "004"
+  name: One continuous game
+  party: [Cartographer Crab, The Experimenter, Lore Owl, Pathwalker, Guardian Slime]
+  idea: Play from the dungeon entrance with no reloads; fix what breaks on arrival.
+  best: "12 dungeon flags; barrel room in 8 / 12 games"
+  catch: "The giant barrel reads as a wall."
+  clip: /assets/video/slingshot-to-barrel-room.mp4
+  clip_cap: "Mushroom slingshot to the barrel room, no reloads"
+- id: v6
+  log: "005"
+  name: The map is not the room
+  current: true
+  party: [Cartographer Crab, Faceless One, The Experimenter, Lore Owl, Pathwalker, Guardian Slime]
+  idea: Find where the map lies (barrel windows, wide exits, statues, fake floor) and fix the rule, not the room.
+  best: "13 dungeon flags; above the giant barrel in 15 / 24 games"
+  catch: "The ledge's puzzle and locked doors are not solved yet."
+  clip: /assets/video/barrel-window-ledge.mp4
+  clip_cap: "Into the barrel, out of its window, onto the ledge"

@@ -5,7 +5,7 @@ subtitle: "Learning where it pays"
 permalink: /log/003/
 ---
 
-**Result:** on 33 real *Minish Cap* puzzles never debugged on, run twice each (66 runs), the agent now solves **26** with only **4** game overs.
+**What I learned:** reinforcement learning fails when the reward is rare and late (solving a puzzle), and works when the signal is dense and immediate (staying alive, "did this action change something?"). Using learning only there took my agent to **26 of 66** held-out puzzles with only **4** game overs.
 
 <div class="scroll" markdown="1">
 
@@ -20,29 +20,29 @@ permalink: /log/003/
 
 The last two rows were measured on one seed (33 runs), the others on two.
 
-## Combine RL and reasoning, but where each is good
+## Where reinforcement learning failed: choosing what to try
 
-The request was RL's learning and reflexes, plus reasoning. Three tries at getting the brain's *choices* learned by RL failed (the Bandit Knight in the [bestiary]({{ '/bestiary/' | relative_url }})):
+I tried three times to have the brain learn by reinforcement which experiments pay off (the Bandit Knight in the [bestiary]({{ '/bestiary/' | relative_url }})):
 
 - **v1 farmed rooms:** a new room paid every time, so it shuttled through doors.
 - **v2 cancelled its own starting knowledge.**
 - **v3 learned that fighting pays, and died more.**
 
-Puzzle rewards are rare and delayed, which is exactly where RL is weakest.
+A solved puzzle is rare and comes long after the action that mattered. That's exactly where reinforcement learning is weakest.
 
-## Two learners that work
+## Where learning works
 
-- **Lore Owl, the action model.** Every try the agent makes is already labelled: "I pulled the lever, something changed." From thousands of these it learns what things do (pots lift, levers pull) and ranks experiments by it. The signal is dense, with no credit-assignment problem.
-- **Guardian Slime, the survival reflex.** RL trained only to stay alive near enemies, with today's action macros. When an enemy is close or Link gets hurt, it takes over. Game overs dropped by 70%.
+- **The action model (Lore Owl).** Every try my agent makes is already labelled: "I pulled the lever, something changed." From thousands of these it learns what things do (pots lift, levers pull) and ranks experiments with that. Dense signal, no guessing which earlier action deserves the credit.
+- **The survival reflex (Guardian Slime).** Reinforcement learning trained only to stay alive near enemies, with the current button sequences. When an enemy is close or Link gets hurt, it takes over. Game overs dropped by 70%.
 
-## Bugs found on the way
+## Bugs I hit on the way
 
-- **Only successful pushes were logged,** so the model thought pushing always works and pushed pots among enemies.
-- **The first survival reward paid for enemies vanishing,** and Sluggulas vanish on their own: 204 "kills" in 300 steps.
-- **An old RL policy reused as a reflex** made things worse: it was trained on older button macros.
+- **I only logged successful pushes,** so the model thought pushing always works, and pushed pots among enemies.
+- **My first survival reward paid for enemies disappearing,** and Sluggulas disappear on their own: 204 "kills" in 300 steps.
+- **An old reinforcement-learning policy reused as a reflex** made things worse: it was trained on older button sequences.
 
-## Step back
+## What I take from it
 
-- **Noise:** small differences were noise-sized, so every claim now uses 2 seeds per held-out puzzle.
-- **What works:** learning from dense signals, and RL for reflexes. Learning sparse puzzle values with RL hasn't worked yet.
+- **Small differences are noise.** Every claim now uses 2 seeds per held-out puzzle.
+- **Learn from dense signals.** Reflexes and "what does this do" work; learning the value of puzzle steps from rare rewards hasn't.
 - **Next:** the barrel room's out-of-reach starts and room 3 are still at zero. They need getting around a dungeon, not just one room.

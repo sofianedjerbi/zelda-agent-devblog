@@ -5,28 +5,28 @@ subtitle: "The story so far"
 permalink: /log/001/
 ---
 
-**Goal:** an AI that finishes any top-down Zelda, on one Mac, with local models only.
+**What I learned:** reinforcement learning on its own learns to *move* around a Zelda game, but it doesn't *discover* puzzles. And scores in a simulator told me nothing about the real game. So I split the agent into a brain that decides what to try and hands that do it.
+
+**The goal:** an AI that finishes any top-down Zelda, on one Mac, with local models only.
 **Rule 1:** always step back: what's slow, what's dumb, what to drop.
 **Rule 2:** no memorising. Every test uses rooms and dungeons the agent never trained on.
 
-## 1. Brute force in the real game
+## Brute force reached far, for the wrong reason
 
-Reinforcement learning on *The Minish Cap* itself, plus Go-Explore (save a state at every new place, restart from the most promising ones).
+I started with reinforcement learning on *The Minish Cap* itself, plus Go-Explore: save the game at every new place, restart from the most promising ones.
 
-- It reached **Deepwood Shrine, rooms 3 to 5**.
-- But it works by remembering routes through *this* game. That's overfitting, so we dropped it as the main path.
+It reached **Deepwood Shrine, rooms 3 to 5**. But it got there by remembering routes through *this* game. That's memorising, so I dropped it as the main path.
 
-## 2. Generated dungeons
+## A simulator gave me great scores that meant nothing
 
-A fast simulator (~2,000 steps/s) that builds a new random dungeon every episode: keys, switches, blocks, pots, levers, enemies.
+I built a fast simulator (about 2,000 steps per second) that makes a new random dungeon every episode: keys, switches, blocks, pots, levers, enemies.
 
-- In generated dungeons it had never seen: **88% solved** (random play: 0%).
+- On generated dungeons it had never seen: **88% solved** (random play: 0%).
 - In the real game: **random level**. It fought an enemy the sword can't hurt until it died, and pushed into walls.
-- Lesson: simulator scores were the wrong yardstick.
 
-## 3. Does the simulator help at all?
+## What the simulator did help with
 
-The same real-game training, 300k actions, starting from the simulator weights or from scratch. Then 120 Deepwood starts neither had trained on:
+I trained on the real game for 300,000 actions, once starting from the simulator's weights and once from scratch. Then I tested on 120 Deepwood starts neither had trained on:
 
 <div class="scroll" markdown="1">
 
@@ -40,36 +40,31 @@ The same real-game training, 300k actions, starting from the simulator weights o
 
 - **Getting around: a real gain** (p ≈ 0.002). After 1M actions: 110 of 120 starts reach a new room, only 6 game overs.
 - **Puzzles: no gain.** 12 solved against random's 8.
-- Lesson: reinforcement learning learns *movement* that transfers. It doesn't *discover* multi-step puzzles.
 
-## 4. Breaking the model
+## I broke the model's view
 
-The network saw channels with names I picked: "block", "pot", "switch". Anything real outside that list got squeezed into the nearest name. So every new mechanic meant a new channel and more retraining.
+The network saw input channels with names I chose: "block", "pot", "switch". Anything outside that list got squeezed into the nearest name, and every new mechanic meant a new channel and retraining.
 
-New view: no names. Just the room's shape, "something is here", and what the agent itself learned by acting: *I hit it, nothing happened. I pushed it, it moved. It hurt me.*
+So I removed the names. The new view is the room's shape, "something is here", and what the agent itself learned by acting: *I hit it, nothing happened. I pushed it, it moved. It hurt me.*
 
-## 5. Brain and hands
+## Brain and hands
 
-How people actually play: pick a goal, try it, remember what happened, choose the next try.
+That's closer to how people play: pick something to try, try it, remember what happened, pick the next thing.
 
-- **Hands:** a small policy that does what it's told ("go there", "hit that", "push that"). Trained with plentiful rewards: did you do it?
-- **Brain:** decides what to try next from memory: untried things, shut doors, marked floor, unexplored exits. It gets bored of useless tries. A local LLM can take this role, but has to beat the simple version first.
+- **Hands:** do what they're told ("go there", "hit that", "push that").
+- **Brain:** decides what to try next from memory: untried things, shut doors, marked floor, unexplored exits. It gets bored of tries that do nothing.
 
-Testing the brain with *perfect* hands (seconds per 100 dungeons) took it from **37% to 85%** of unseen dungeons, through four general habits:
+With *perfect* hands, the brain went from **37% to 85%** of unseen generated dungeons through four general habits:
 
 1. try every action on a shut door, not just pushing;
-2. a lasting change (something opens, appears) isn't the same as merely moving a thing;
+2. a lasting change (something opens or appears) isn't the same as moving a thing;
 3. keep a map of the dungeon, and go back to a locked door once you have a key;
 4. try a room properly before leaving it.
 
-## Where it stands (9 Nov)
+With *learned* hands it scored **0%**: the hands had learned to farm points by stepping back through the door they came in.
 
-- Brain + perfect hands: **85%**.
-- Brain + learned hands: **0%**. The hands had learned to farm points by stepping back through the door they came in. Fixed, retraining.
-- Real game with the new design: **not tested yet.** That's the only result that counts.
+## What I take from it
 
-## Step back
-
-- **What worked:** splitting the agent into parts, a test fast enough to iterate, and reading *why* it fails instead of training longer.
-- **What wasted time:** trusting proxy scores, too many runs at once, and bugs in my own measuring.
-- **Next:** brain + learned hands in generated dungeons, then 120 held-out real Deepwood starts against random play.
+- **Splitting the agent into parts worked**, and so did a test fast enough to iterate on.
+- **Proxy scores wasted my time.** Only the real game counts.
+- **Next:** brain plus hands on the real game, against random play.

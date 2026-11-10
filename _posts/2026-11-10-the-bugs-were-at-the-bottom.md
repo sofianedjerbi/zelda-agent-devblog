@@ -5,30 +5,28 @@ subtitle: "The bugs were at the bottom"
 permalink: /log/002/
 ---
 
-**Result:** on 15 real *Minish Cap* puzzles the agent never trained on, it now solves **8**. Random play solves 3.
+**What I learned:** when my agent failed a puzzle, the brain was almost never the problem. The layers under it were: how it reads the game, how it presses buttons. Once I fixed those, it solved **8 of 15** real puzzles it never trained on. Random play solves 3.
 
-## The yardstick
+## A test that measures puzzles
 
-"Reached a new room" turned out to mostly reward accidents, like falling down a hole. So we built a **puzzle bench** from saved states the agent never trained on: Link starts in a room with an unsolved puzzle, and success means that room's own puzzle flag gets set within 1,000 actions.
+My old test, "did it reach a new room?", mostly rewarded accidents like falling down a hole. So I built a **puzzle bench** from saved games: Link starts in a room with an unsolved puzzle, and success means that room's puzzle gets solved within 1,000 actions.
 
 The rooms: the barrel room (statue onto a button), the mushroom lever room, and the Slug & Torches room.
 
-## The new agent
+## The agent
 
-What the research says: the AIs that finished long Nintendo games (Gemini in Pokémon) were a language model with good tools, not reinforcement learning. So:
+The AIs that finished long Nintendo games (Gemini in Pokémon) were a language model with good tools, not reinforcement learning. So I tried that:
 
-- **Brain:** a local LLM (Qwen3-30B) reads the room as text, with real object names ("Pushable Statue", "Button") and what each try did, and picks the next experiment.
-- **Hands:** a path planner plus the game's own action macros. No learning needed to walk somewhere.
+- **Brain:** a local language model (Qwen3-30B) reads the room as text, with real object names ("Pushable Statue", "Button") and what each try did, and picks the next experiment.
+- **Hands:** a path planner plus the game's own button sequences. Nothing to learn for walking somewhere.
 
-## Where the time went
+## Five bugs, all at the bottom
 
-The brain was fine. The layers under it were broken:
-
-1. **A lever looked like it did nothing.** Its flag is set only *while* it's held pulled, and cleared when it retracts, all inside one action. We only looked before and after. Now we watch every frame.
-2. **Pulls never grabbed.** Link has to be lined up with the object pixel by pixel. An old "align" step had been lost. With it back, the mushroom slingshot works.
-3. **Our actions were the wrong ones.** We'd rewritten tested macros into untested ones.
-4. **The map learned fake walls.** "This move failed" got recorded during a text box, or while pushing a heavy statue. Now Link only learns a wall with control, toward empty floor, after two failures.
-5. **The brain looped.** It once gave the same goal 700 times in a row. Now a loop breaker drops a goal after 4 repeats with no effect.
+1. **A lever looked like it did nothing.** Its flag is only on *while* the lever is held, and it switches off again inside one action. I only looked before and after. Now I watch every frame.
+2. **Pulls never grabbed.** Link has to line up with an object pixel by pixel. An old "align" step had been lost. With it back, the mushroom slingshot works.
+3. **My button presses were wrong.** I had rewritten tested button sequences into untested ones.
+4. **The map learned fake walls.** "This move failed" got recorded during a text box, or while pushing a heavy statue. Now Link only learns a wall when he has control, toward empty floor, after two failures.
+5. **The brain looped.** It once gave the same goal 700 times in a row. Now a goal is dropped after 4 repeats with no effect.
 
 ## Numbers
 
@@ -36,7 +34,7 @@ The brain was fine. The layers under it were broken:
 
 | | solved | game over |
 |---|---|---|
-| LLM brain + planner | **8 / 15** | 2 |
+| language-model brain + planner | **8 / 15** | 2 |
 | simple brain + planner | 7 / 15 | 3 |
 | random play | 3 / 15 | 3 |
 
@@ -44,7 +42,7 @@ The brain was fine. The layers under it were broken:
 
 ## Watch it
 
-Real game, unedited runs from the bench, about 4x speed. The caption shows the brain's current goal.
+Real game, unedited runs from the bench, about 4x speed. These are puzzles I debugged on, so they show what works, not how often.
 
 <div class="clips">
   <figure>
@@ -61,28 +59,25 @@ Real game, unedited runs from the bench, about 4x speed. The caption shows the b
   </figure>
 </div>
 
-These are puzzles from the bench I debugged on, so they show what works, not how often.
-
 ## The honest check
 
-Every fix above came from tracing those same 15 puzzles, so I built a **held-out test bench**: 33 other saved states in 5 rooms, two of them never looked at.
+Every fix above came from staring at those same 15 puzzles. So I built a **held-out test**: 33 other saved games in 5 rooms, two of them never looked at.
 
 <div class="scroll" markdown="1">
 
-| on the held-out test | solved | game over |
+| held-out test | solved | game over |
 |---|---|---|
-| LLM brain + planner (latest) | **14 / 33** | 8 |
+| language-model brain + planner | **14 / 33** | 8 |
 | simple brain + planner | 5 / 33 | 9 |
 | random play | 6 / 33 | 16 |
 
 </div>
 
-- **The LLM brain generalises:** about twice random play, on puzzles I never debugged. Object names plus the model's world knowledge carry over to new situations.
-- **The simple brain doesn't:** its hand-tuned habits were partly fitted to the dev set. Overfitting, one level up.
-- **Since then,** from dev-only diagnosis: chests open only from the front, so the side became part of the experiment; stepping onto things comes first; stuck walks end early. With those, the simple brain went to 8 / 33 on the test.
+- **The language model generalises:** about twice random play, on puzzles I never debugged. Object names plus what the model knows about games carry over.
+- **My simple brain doesn't:** its hand-tuned habits were fitted to the 15 dev puzzles. That's memorising again, one level up. (Later fixes brought it to 8 / 33.)
 
-## Step back
+## What I take from it
 
-- **The lesson:** test the bottom first. Every clever decision is wasted if the button presses are wrong.
-- **The LLM's edge:** small on the dev set (8 vs 7), large on the held-out test (13 vs 5). The test set is the one that counts.
-- **Next:** in the barrel room, 5 of 8 test starts put the statue out of reach: Link has to leave, go around through other rooms, and come back from the other side. The brain only shuttles between two rooms. It needs a real dungeon map: when a room is used up, head for the nearest unexplored exit.
+- **Test the bottom first.** A clever decision is wasted if the button presses are wrong.
+- **The held-out test is the one that counts.** On dev puzzles the language model barely beat my simple brain (8 vs 7); on held-out puzzles it was far ahead (14 vs 5).
+- **Next:** in the barrel room, 5 of 8 test starts need Link to leave, go around through other rooms and come back. My brain only shuttles between two rooms. It needs a real dungeon map.

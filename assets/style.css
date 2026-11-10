@@ -231,3 +231,52 @@ h2.band::before { background: var(--red); }
 .beast.current .ribbon { justify-self: start; }
 .flow-loops b { white-space: nowrap; }
 .rec-row code { font-size: 19px; }
+
+/* showcase */
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+.hero-name { margin: 6px 0 0; font-size: 14px; color: var(--white); }
+.hero-name::before { display: none; }
+@media (max-width: 860px) { .hero-grid { grid-template-columns: minmax(0, 1fr); } }
+.party-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { display: inline-block; font: 8px/1.8 var(--pixel); color: var(--black); background: var(--sand); padding: 2px 8px; margin: 2px 4px 2px 0; text-decoration: none; border: 2px solid var(--white); }
+.chip:hover { background: var(--gold); color: var(--black); }
+.track { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 0; }
+.track .room { max-width: none; margin: 0; display: grid; grid-template-columns: 28px minmax(0, 12em) minmax(0, 1fr) auto; gap: 4px 14px; align-items: center; padding: 8px 0; position: relative; }
+.track .room:not(:last-child)::after { content: ""; position: absolute; left: 11px; top: 30px; bottom: -10px; width: 6px; background: var(--leaf); z-index: 0; }
+.track .room.now::after, .track .room.todo::after { background: repeating-linear-gradient(180deg, #555 0 6px, transparent 6px 10px); }
+.room-dot { width: 28px; height: 28px; background: var(--leaf); border: 3px solid var(--white); position: relative; z-index: 1; }
+.room.now .room-dot { background: var(--gold); }
+.room.todo .room-dot { background: #333; border-color: #777; }
+.room-name { font: 10px/1.6 var(--pixel); color: var(--white); }
+.room.todo .room-name { color: var(--grey); }
+.room-what { font-size: 19px; color: var(--dim); }
+.room-first { font: 8px/1.8 var(--pixel); padding: 2px 8px; background: #1d3a0c; color: var(--leaf); white-space: nowrap; }
+.room.now .room-first { background: #3a2c08; color: var(--gold); }
+.room.todo .room-first { background: #222; color: var(--grey); }
+@media (max-width: 640px) { .track .room { grid-template-columns: 28px minmax(0, 1fr); } .room-what, .room-first { grid-column: 2; justify-self: start; } }
+.note { color: var(--grey); font-size: 19px; }
+.held { gap: 10px; }
+.hrow { display: grid; grid-template-columns: minmax(0, 13em) minmax(0, 1fr); gap: 14px; align-items: center; }
+.hwho { font-size: 20px; display: grid; }
+.hwho small { font: 8px/1.8 var(--pixel); color: var(--grey); }
+.hrow.best .hwho { color: var(--gold); }
+.hbars { display: grid; gap: 4px; }
+.hb { position: relative; height: 18px; background: #222; border: 2px solid #555; }
+.hb .fill { position: absolute; inset: 0 auto 0 0; }
+.hb .fill.ok { background: repeating-linear-gradient(90deg, var(--leaf) 0 6px, #5cae0c 6px 8px); }
+.hb .fill.bad { background: repeating-linear-gradient(90deg, var(--red) 0 6px, #a01e00 6px 8px); }
+.hb b { position: absolute; right: 6px; top: 0; font: 8px/14px var(--pixel); color: var(--white); text-shadow: 1px 1px 0 #000; }
+@media (max-width: 640px) { .hrow { grid-template-columns: minmax(0, 1fr); gap: 4px; } }
+.timeline { list-style: none; padding: 0; margin: 0; display: grid; gap: 28px; }
+.timeline > li { max-width: none; margin: 8px; }
+.ver.current { box-shadow: 0 0 0 8px var(--gold), 8px 8px 0 8px rgba(0,0,0,.25); }
+.ver-head { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px; align-items: center; margin-bottom: 14px; }
+.ver-id { font: 12px/1 var(--pixel); background: var(--red); color: var(--white); padding: 8px; border: 2px solid var(--white); }
+.ver-name { margin: 0; font-size: 12px; color: var(--white); }
+.ver-name::before { display: none; }
+.ver-log { font: 8px/1.8 var(--pixel); }
+.ver-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+.ver-grid:not(:has(figure)) { grid-template-columns: minmax(0, 1fr); }
+@media (max-width: 860px) { .ver-grid { grid-template-columns: minmax(0, 1fr); } }
+.room-first { grid-column: 4; justify-self: end; }
+@media (max-width: 640px) { .room-first { grid-column: 2; justify-self: start; } }
