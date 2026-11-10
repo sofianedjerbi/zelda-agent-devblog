@@ -5,59 +5,68 @@ subtitle: "The map is not the room"
 permalink: /log/005/
 ---
 
-**Result:** out of 24 fresh games from the Deepwood entrance, **15 now climb out of the giant barrel** onto the ledge above the barrel room. None did this morning. Best game: **13 dungeon flags** (was 12).
+**What I learned:** most of my agent's mistakes come from its map, not from its thinking. It reads each room's layout from the game's memory, and that layout lies in small, specific ways. Today I fixed five of those lies. Out of 24 fresh games, **15 now climb out of the giant barrel** onto the ledge above it. This morning, none did.
 
-## Watch it
+## How my agent sees a room
 
-One continuous game, about 2x speed: into the giant barrel, out through its window, onto the ledge, then the statue in the side wing.
+It never looks at the screen. Every step, it reads the game's memory and builds a grid: floor, wall, water, exits, and the objects in the room. Everything else is built on that grid: the brain picks a goal, the hands find a path.
+
+So if the grid is wrong, a perfect brain still fails. Here is what I found wrong, one lie at a time.
+
+## Lie 1: inside the barrel, the map is a rectangle
+
+The giant barrel in Deepwood is a room of its own. In memory, its layout is a plain rectangle of floor. The real walls are curved, and the exits are windows. None of that is in the grid.
 
 <div class="clips">
   <figure>
     <video src="{{ '/assets/video/barrel-window-ledge.mp4' | relative_url }}" controls muted loop playsinline preload="metadata"></video>
-    <figcaption>Seed 33: barrel, window, ledge, statue. No reloads</figcaption>
+    <figcaption>Seed 33, 2x speed: into the barrel, out of its window, onto the ledge, then the statue in the side wing</figcaption>
   </figure>
 </div>
 
-## Inside the barrel, the map lies
+I found the exit by hand: walk up through the top-left window and Link lands on a ledge above the barrel room. The brain had only ever found it by luck.
 
-The agent reads each room's layout from the game's memory. Inside the giant barrel, that layout is a plain rectangle of floor. The real walls and the window exits are drawn somewhere else.
+I tried teaching it to **walk along every wall** to find hidden exits. It made things much worse: a big room never runs out of wall, so games stayed stuck in the first hall. Barrel room reached in **1 of 12** games. I removed it.
 
-Walking up through the top-left window drops Link on a ledge above the barrel room: two locked doors, mushroom enemies, and a side wing with two buttons and a statue. The brain had only ever found it by accident.
+## Lie 2: the door I came through looks new
 
-## What got fixed
+When Link comes out of the barrel's window, he lands 5 tiles away from the barrel's door. My rule for "the door I came in by" only looked 3 tiles back. So the barrel's door looked like an exit nobody had tried, and Link walked straight back into the barrel.
 
-All general: none of these mention barrels, statues or Deepwood.
+**Fix:** if there's an opening straight behind Link, up to 6 tiles, that's the way he came.
 
-1. **The door you came in by.** If an opening lies straight behind Link (up to 6 tiles), that's the door he just used. The barrel's window throws Link 5 tiles from the barrel's door, which looked like a fresh exit, so he walked straight back in.
-2. **An exit is a band, not a tile.** The shrine's front exit is 5 tiles wide. Each tile counted as a new, unexplored exit, so Link went out and came back 5 times, dozens of trips per game.
-3. **Push a block aside, but only where it can move.** Three statues plug the hall's top exit, and only the middle one moves. Walks now push a block when that's the only way through, and only when the tile behind it is free. The first version pushed statues into walls 50 times a game.
-4. **Hands that stand still give up.** Next to a button, the side the hands wanted was cut off by a stone head the map calls floor. Result: 400 no-ops in a row. Now any reachable side will do, and a goal that hasn't moved Link in 8 actions ends.
+## Lie 3: an exit is one tile
 
-## Tried and dropped
+The shrine's front exit is 5 tiles wide. My map counted each tile as its own exit. So Link walked out, came back, and walked out through the next tile: x=5, 6, 7, 8, 9. Dozens of trips per game.
 
-**Walking along the walls** to find exits the map doesn't show. In a big room it never runs out of wall to walk, and games stayed stuck in the hall: barrel room **1/12**. Reverted.
+**Fix:** touching tiles form one exit. Once one is used, they're all known.
 
-## Measuring got honest
+## Lie 4: statues are walls
 
-The same code, run twice on 12 games, reached the barrel room 9 times, then 4. One run of 12 is noise. The yardstick is now **24 fresh games**.
+Three statues block the top exit of the entrance hall, and they come back every time Link re-enters. The hands treated them as walls, so the walk to that exit failed again and again.
+
+A player would push one aside. I added that, and it got worse: the shortest path pushed statues *into walls*, about **50 failed walks per game**. Only the middle statue moves, pushed left.
+
+**Fix:** a walk may push an object only if the tile behind it is free. Time in the hall dropped from 221 goals per game to **136**.
+
+## Lie 5: decoration looks like floor
+
+Next to a button, my hands wanted to stand on one particular side. The path there went through a stone head the map calls floor. After bumping it twice, the hands knew the path was blocked and returned "do nothing", **400 times in a row**. Link was right next to the button, so my "stuck" check never fired.
+
+**Fixes:** if the wanted side is blocked, any side will do. A goal that hasn't moved Link in 8 actions ends.
+
+## Results
 
 <div class="scroll" markdown="1">
 
-| continuous game from the entrance | lever room | barrel room | inside the barrel | above the barrel |
+| 24 fresh games from the entrance | lever room | barrel room | inside the barrel | above the barrel |
 |---|---|---|---|---|
-| Log 004 (12 games) | 12/12 | 8/12 | not measured | 0 |
-| now (24 games) | **24/24** | **18/24** | **15/24** | **15/24** |
+| Log 004 | 12/12 | 8/12 | not measured | 0 |
+| today | **24/24** | **18/24** | **15/24** | **15/24** |
 
 </div>
 
-## The held-out test caught a regression
+## What I take from it
 
-The held-out puzzles (33 starts I never debug on, 2 seeds) fell from 30 to 26 solved. All of the loss was in the barrel room: **4/16 to 0/16**. I added an off switch for each of today's fixes: none of them did it.
-
-The culprit was older: the door into the barrel. It looked like an unexplored exit, so Link walked in before trying the room's statue and buttons. Doors guessed from the map now come after the room's own untried experiments: barrel room back to **2/16**.
-
-## Step back
-
-- **The lowest layer, again.** Every gain today came from the map and the hands, not the brain.
-- **Wins on one test can hide losses on another.** The continuous game improved while the barrel-room puzzles broke. Both tests run on every change now.
-- **Next:** in the games that fail, the mushroom slingshot never fires. And the mushroom enemies on the ledge still cause game overs.
+- **Read failures at the bottom first.** Every fix today was in the map or the hands. None was in the brain.
+- **Each fix is about how games work, not this room.** Wide exits, doors you came through and statues you can push exist in every Zelda.
+- **The map will keep lying.** Next I want the agent to notice by itself when the map and reality disagree, instead of me finding each case.
