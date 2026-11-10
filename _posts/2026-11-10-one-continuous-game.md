@@ -5,48 +5,52 @@ subtitle: "One continuous game"
 permalink: /log/004/
 ---
 
-**Result:** from the Deepwood entrance, one game with no reloads now gets **12 dungeon flags** and reaches the barrel room. This morning it stopped at 8 and stood still for 15,000 actions.
+**What I learned:** my benches were hiding the real problems. A bench drops Link inside one room. A real game makes him walk in from somewhere else, and almost every bug I found today only shows up on arrival. Once I tested that way and fixed what broke, one game with no reloads went from **8 to 12 dungeon flags** and reached the barrel room for the first time.
 
-## The test
+## The test I should have had from the start
 
-Benches start Link inside one room. A real player walks in from the door and keeps going. So: one continuous game from the dungeon entrance, 20,000–30,000 actions, game overs allowed (continue screen), several seeds.
+One continuous game from the Deepwood entrance: 20,000 to 30,000 actions, no reloads, game overs allowed (the continue screen), several seeds.
+
+This morning, every game stopped at 8 flags and stood still for 15,000 actions in the lever room. Yet on the bench my agent pulls that same lever 7 times out of 8.
 
 ## Why it stood still
 
-Not the puzzles. The brain could solve the lever room on the bench 7 times out of 8. In the continuous game it never even tried. Every cause was in the lowest layers:
+Not the puzzle. Six small things, all in the lowest layers:
 
-1. **It decided on the door tile.** Coming through a door, the game walks Link in by itself. Seen from the door tile, the room is all walls: 1 goal of 82 reachable. So it walked straight back out. Now Link waits until he has stopped moving and is off the door. Lever from the real arrival: 0/6 → 6/6.
-2. **Statues reset.** Three statues block the hall's top door every time Link comes back. The map treated them as walls, so the room looked like a 4-tile box. 213 goals spent in that box.
-3. **Walls that stopped being walls.** Link learned "can't go there" at the water's edge. Then the lever ran a bridge out over that exact water, and the old walls blocked it. Now learned walls expire after 400 steps, and are dropped when the room changes.
-4. **Doors only one way.** Link left the dungeon by a door and never knew it led back. Now a door you came through is a known way back.
-5. **Memory reset every visit.** Objects were named by the engine's memory address, which changes each time a room loads. Now: kind + tile.
+1. **It decided on the door tile.** Coming through a door, the game walks Link in by itself. Seen from the door tile, the room is all walls: 1 goal out of 82 looked reachable. So it walked straight back out. Now I make Link wait until he has stopped and is off the door. Lever from a real arrival: **0/6 to 6/6**.
+2. **Statues reset.** Three statues block the hall's top door every time Link comes back. My map treated them as walls, so the room looked like a 4-tile box. One game spent 213 goals in that box.
+3. **Walls that stopped being walls.** Link learned "can't go there" at the water's edge. Then the lever ran a bridge over that exact water, and the old walls blocked it. Now learned walls expire after 400 steps, and are dropped when the room changes.
+4. **Doors only one way.** Link left the dungeon and never knew that door led back. Now a door you came through is a known way back.
+5. **Memory reset every visit.** I named objects by the engine's memory address, which changes every time a room loads. Now: kind + tile.
 6. **Deep water reads as floor.** It shares its tile type with shallow water you can walk in. Now falling in teaches "water here".
 
 ## Watch it
 
-One continuous game, about 3x speed: across the mushroom island, the slingshot, into the barrel room.
-
 <div class="clips">
   <figure>
     <video src="{{ '/assets/video/slingshot-to-barrel-room.mp4' | relative_url }}" controls muted loop playsinline preload="metadata"></video>
-    <figcaption>Seed 19: lever room to barrel room, no reloads</figcaption>
+    <figcaption>Seed 19, about 3x speed: the mushroom island, the slingshot, the barrel room. No reloads</figcaption>
   </figure>
 </div>
 
 ## Numbers
 
-| Continuous game from the entrance | Best | Lever pulled | Past the lever room |
+<div class="scroll" markdown="1">
+
+| continuous game from the entrance | best | lever pulled | past the lever room |
 |---|---|---|---|
-| This morning (3 seeds) | 8 flags | 0/3 | 0/3 |
-| Tonight (3 seeds) | 12 flags | 3/3 | 1/3 |
-| Later tonight (12 fresh seeds) | 12 flags | 12/12 | 8/12 |
+| this morning (3 seeds) | 8 flags | 0/3 | 0/3 |
+| tonight (3 seeds) | 12 flags | 3/3 | 1/3 |
+| later tonight (12 fresh seeds) | 12 flags | 12/12 | 8/12 |
 
-The last row adds one more fix: when a mushroom pull flings Link the wrong way, it is tried again from another side.
+</div>
 
-Held-out puzzle test (33 puzzles × 2 seeds): **30 solved** (this morning 26), but **11 game overs** (was 4). Almost all are in one room where Link starts with nearly no health. Not fixed yet.
+The last row adds one more fix: when a mushroom pull flings Link the wrong way, he tries again from another side.
 
-## Step back
+On the held-out puzzles (33 puzzles x 2 seeds): **30 solved** (26 this morning), but **11 game overs** (4 this morning). Almost all are in one room where Link starts with nearly no health. Not fixed yet.
 
-- **Benches hid this.** Every bug above only shows up when Link arrives from somewhere. The continuous game is now the main test.
-- **Each fix was general:** doors, statues, water, memory. No Deepwood-specific rule.
-- **Next:** the barrel room. Its middle is a giant barrel that turns when Link walks inside it; the map reads it as wall. Then the game overs.
+## What I take from it
+
+- **Test the way the game is played.** Every bug above only appears when Link arrives from somewhere. The continuous game is now my main test.
+- **Fix the rule, not the room.** Doors, statues, water, memory: none of the fixes mention Deepwood.
+- **Next:** the barrel room. Its middle is a giant barrel my map reads as a wall.
