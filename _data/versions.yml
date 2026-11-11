@@ -59,10 +59,19 @@
 - id: v8
   log: "008"
   name: Measured one at a time
-  current: true
   party: [Cartographer Crab, Faceless One, The Experimenter, Lore Owl, Pathwalker, Guardian Slime]
   idea: "A 6-minute test of saved game moments; every rule off by default, back only if it wins alone."
   best: "Barrel room in 23 / 24 dungeon games, above the barrel in 14 / 24; every one-step overworld trip"
   catch: "Every failure left needs Link to shrink: the shrine, the Minish village."
+  clip: /assets/video/barrel-window-ledge.mp4
+  clip_cap: "Latest dungeon clip: into the barrel, out of its window"
+- id: v9
+  log: "009"
+  name: A game it never saw
+  current: true
+  party: [Cartographer Crab, The Experimenter, Pathwalker, Guardian Slime]
+  idea: "Same agent on the first Zelda (NES), never tuned on it; equal game time vs random buttons; every hand hint removed."
+  best: "Zelda 1: 18.6 screens vs 13.6 for random, half the game overs with a sword; Minish Cap unchanged"
+  catch: "Finds the first sword in 5 / 8 games; random wandering finds it in 8 / 8."
   clip: /assets/video/barrel-window-ledge.mp4
   clip_cap: "Latest dungeon clip: into the barrel, out of its window"
