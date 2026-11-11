@@ -21,3 +21,5 @@
   why: "Health refills in memory there: 59% of 'stuck' windows were the game-over menu."
 - rule: "Don't hand-order drives; learn what each action leads to."
   why: "survive > heal > fight cut healing in Zelda 1, where hearts come from fighting: heals halved, low-health time x2.5."
+- rule: "Check what is really switched on in each game before explaining the model."
+  why: "The site said Link fights with a trained reflex; in Zelda 1 it had never been loaded."
