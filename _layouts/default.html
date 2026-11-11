@@ -15,6 +15,10 @@
   <div class="hud-in">
     <a class="hud-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
     {% assign here = page.url %}
+    <nav class="menu" aria-label="Menu">
+      <a class="{% unless here contains 'ideas' %}on{% endunless %}" href="{{ '/' | relative_url }}">HOME</a>
+      <a class="{% if here contains 'ideas' %}on{% endif %}" href="{{ '/ideas/' | relative_url }}">IDEAS</a>
+    </nav>
 
   </div>
 </header>
