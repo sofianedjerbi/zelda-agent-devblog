@@ -7,7 +7,6 @@
     - {name: "Entrance-aware routes", switch: SPLIT, status: off, result: "Two versions, 38 vs 49 places on the game it was built for. The loop moved into the dungeon instead", lesson: "Don't judge reachability at the screen edge. Two tries without a gain: capture again."}
     - {name: "Stall escape: random burst, then forget beliefs", switch: UNSTUCK, status: testing, result: "random play's longest stall is half the agent's (27.5k vs 55.7k steps): every captured trap was the agent's own beliefs"}
     - {name: "Likely door spots", switch: DOORSPOTS, status: off, result: "two games: 43 vs 49 and 42 vs 49 places; third fix in a row without a gain, so I changed method", lesson: "Each capture found a different trap: per-trap fixes don't converge."}
-    - {name: "Likely door spots (first note)", switch: DOORSPOTS, status: off, result: "capture: key in hand, locked door learned as wall, never tried; keys used in 0% of games. Exits walked through in a dungeon mark spots to try in its other rooms"}
     - {name: "Needs: survive > heal > fight > explore", switch: NEEDS, status: testing, result: "being measured"}
     - {name: "Learned pickups", switch: PICKUPS, status: testing, result: "being measured; also found touch learning had been dead code under learned doors"}
     - {name: "Retreat at low health", switch: RETREAT, status: testing, result: "being measured"}
