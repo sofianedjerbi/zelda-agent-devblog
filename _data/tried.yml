@@ -7,7 +7,7 @@
     - {name: "Entrance-aware routes", switch: SPLIT, status: off, result: "Two versions, 38 vs 49 places on the game it was built for. The loop moved into the dungeon instead", lesson: "Don't judge reachability at the screen edge. Two tries without a gain: capture again."}
     - {name: "Stall escape: random burst, then forget beliefs", switch: UNSTUCK, status: testing, result: "random play's longest stall is half the agent's (27.5k vs 55.7k steps): every captured trap was the agent's own beliefs"}
     - {name: "Likely door spots", switch: DOORSPOTS, status: off, result: "two games: 43 vs 49 and 42 vs 49 places; third fix in a row without a gain, so I changed method", lesson: "Each capture found a different trap: per-trap fixes don't converge."}
-    - {name: "Needs: survive > heal > fight > explore", switch: NEEDS, status: testing, result: "being measured"}
+    - {name: "Needs: survive > heal > fight > explore", switch: NEEDS, status: rejected, result: "places 39.4 vs 46.2, 2nd item 6% vs 44%, time at low health 23% vs 9%, heals halved (0.6 vs 1.2 per 10k)", lesson: "In Zelda 1 hearts drop from killed enemies: 'no fights when low' also meant 'no healing'. What heals must be learned, not ordered by hand."}
     - {name: "Learned pickups", switch: PICKUPS, status: testing, result: "being measured; also found touch learning had been dead code under learned doors"}
     - {name: "Retreat at low health", switch: RETREAT, status: testing, result: "being measured"}
     - {name: "Key retry", switch: KEYRETRY, status: kept, result: "dungeon rooms 22 vs 19 over 16 games, nothing else moved"}

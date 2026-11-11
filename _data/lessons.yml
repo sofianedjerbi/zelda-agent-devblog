@@ -19,3 +19,5 @@
   why: "Unpinned runs differed per seed; conclusions from 4-6 seeds were noise."
 - rule: "The game-over screen can look alive."
   why: "Health refills in memory there: 59% of 'stuck' windows were the game-over menu."
+- rule: "Don't hand-order drives; learn what each action leads to."
+  why: "survive > heal > fight cut healing in Zelda 1, where hearts come from fighting: heals halved, low-health time x2.5."
