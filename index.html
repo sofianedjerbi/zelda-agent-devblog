@@ -4,8 +4,16 @@ layout: default
 <section class="board">
   <h1>Devlog<span class="sub">an AI learning to finish any Zelda, on one Mac</span></h1>
   <p>Goal: an AI that finishes any top-down Zelda, on one Mac, with local models only. It must learn skills, not memorise a game: nothing in the code is specific to one Zelda.</p>
+
+  <h2>The current model</h2>
+  <ul>{% for m in site.data.kpis.model %}<li>{{ m }}</li>{% endfor %}</ul>
+
   <h2>Where it stands</h2>
   {% include kpi.html ids="base,random" %}
+
+  <h2>Ideas tried</h2>
+  {% include ideas.html %}
+
   <h2>Logs</h2>
   <ul class="posts">
   {% assign logs = site.posts | sort: "title" | reverse %}

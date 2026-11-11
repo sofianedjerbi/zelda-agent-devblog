@@ -1,0 +1,8 @@
+{% assign K = site.data.kpis %}
+<p class="note">Same {{ K.games }} games for every idea. Each idea is the current model plus one change.</p>
+<div class="scroll"><table class="kpi ideas">
+  <tr><th>Idea</th><th>Verdict</th>{% for c in K.idea_cols %}<th>{{ c }}</th>{% endfor %}</tr>
+  {% for r in K.ideas %}
+  <tr class="st-{{ r.status }}"><td class="lab"><b>{{ r.name }}</b><small> {{ r.what }}</small></td><td class="lab verdict"><span class="tag">{{ r.status }}</span><small> {{ r.verdict }}</small></td>{% for c in r.cells %}<td class="{{ c.mark }}">{{ c.v }}</td>{% endfor %}</tr>
+  {% endfor %}
+</table></div>

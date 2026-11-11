@@ -9,8 +9,8 @@
  "variants": [
   {
    "id": "base",
-   "name": "Default",
-   "what": "the agent as it runs today"
+   "name": "Current",
+   "what": "the current model"
   },
   {
    "id": "random",
@@ -21,6 +21,11 @@
    "id": "halfstep",
    "name": "Half-step",
    "what": "after a refused step, try half a tile to each side"
+  },
+  {
+   "id": "align2",
+   "name": "Align",
+   "what": "after a refused step, line up exactly on the tile first"
   }
  ],
  "ladder": [
@@ -29,17 +34,26 @@
    "cells": [
     {
      "n": 16,
+     "pct": 100,
      "med": "0.3k",
      "mark": ""
     },
     {
      "n": 16,
+     "pct": 100,
      "med": "16.4k",
      "mark": ""
     },
     {
      "n": 16,
+     "pct": 100,
      "med": "1.6k",
+     "mark": ""
+    },
+    {
+     "n": 16,
+     "pct": 100,
+     "med": "0.3k",
      "mark": ""
     }
    ]
@@ -49,18 +63,27 @@
    "cells": [
     {
      "n": 7,
+     "pct": 44,
      "med": "-",
      "mark": ""
     },
     {
      "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": "bad"
     },
     {
      "n": 7,
+     "pct": 44,
      "med": "-",
      "mark": ""
+    },
+    {
+     "n": 2,
+     "pct": 12,
+     "med": "-",
+     "mark": "bad"
     }
    ]
   },
@@ -69,18 +92,27 @@
    "cells": [
     {
      "n": 6,
+     "pct": 38,
      "med": "-",
      "mark": ""
     },
     {
      "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": "bad"
     },
     {
      "n": 5,
+     "pct": 31,
      "med": "-",
      "mark": "bad"
+    },
+    {
+     "n": 8,
+     "pct": 50,
+     "med": "-",
+     "mark": "good"
     }
    ]
   },
@@ -89,18 +121,27 @@
    "cells": [
     {
      "n": 4,
+     "pct": 25,
      "med": "-",
      "mark": ""
     },
     {
      "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": "bad"
     },
     {
      "n": 1,
+     "pct": 6,
      "med": "-",
      "mark": "bad"
+    },
+    {
+     "n": 4,
+     "pct": 25,
+     "med": "-",
+     "mark": ""
     }
    ]
   },
@@ -109,18 +150,27 @@
    "cells": [
     {
      "n": 1,
+     "pct": 6,
      "med": "-",
      "mark": ""
     },
     {
      "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": "bad"
     },
     {
      "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": "bad"
+    },
+    {
+     "n": 1,
+     "pct": 6,
+     "med": "-",
+     "mark": ""
     }
    ]
   },
@@ -129,18 +179,27 @@
    "cells": [
     {
      "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": ""
     },
     {
      "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": ""
     },
     {
      "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": ""
+    },
+    {
+     "n": 1,
+     "pct": 6,
+     "med": "-",
+     "mark": "good"
     }
    ]
   },
@@ -149,16 +208,25 @@
    "cells": [
     {
      "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": ""
     },
     {
      "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": ""
     },
     {
      "n": 0,
+     "pct": 0,
+     "med": "-",
+     "mark": ""
+    },
+    {
+     "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": ""
     }
@@ -169,16 +237,25 @@
    "cells": [
     {
      "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": ""
     },
     {
      "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": ""
     },
     {
      "n": 0,
+     "pct": 0,
+     "med": "-",
+     "mark": ""
+    },
+    {
+     "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": ""
     }
@@ -189,16 +266,25 @@
    "cells": [
     {
      "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": ""
     },
     {
      "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": ""
     },
     {
      "n": 0,
+     "pct": 0,
+     "med": "-",
+     "mark": ""
+    },
+    {
+     "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": ""
     }
@@ -209,16 +295,25 @@
    "cells": [
     {
      "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": ""
     },
     {
      "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": ""
     },
     {
      "n": 0,
+     "pct": 0,
+     "med": "-",
+     "mark": ""
+    },
+    {
+     "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": ""
     }
@@ -229,16 +324,25 @@
    "cells": [
     {
      "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": ""
     },
     {
      "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": ""
     },
     {
      "n": 0,
+     "pct": 0,
+     "med": "-",
+     "mark": ""
+    },
+    {
+     "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": ""
     }
@@ -249,16 +353,25 @@
    "cells": [
     {
      "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": ""
     },
     {
      "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": ""
     },
     {
      "n": 0,
+     "pct": 0,
+     "med": "-",
+     "mark": ""
+    },
+    {
+     "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": ""
     }
@@ -269,17 +382,26 @@
    "cells": [
     {
      "n": 16,
+     "pct": 100,
      "med": "1.7k",
      "mark": ""
     },
     {
      "n": 16,
+     "pct": 100,
      "med": "18.8k",
      "mark": ""
     },
     {
      "n": 16,
+     "pct": 100,
      "med": "3.1k",
+     "mark": ""
+    },
+    {
+     "n": 16,
+     "pct": 100,
+     "med": "1.7k",
      "mark": ""
     }
    ]
@@ -289,17 +411,26 @@
    "cells": [
     {
      "n": 15,
+     "pct": 94,
      "med": "7.1k",
      "mark": ""
     },
     {
      "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": "bad"
     },
     {
      "n": 16,
+     "pct": 100,
      "med": "9.6k",
+     "mark": "good"
+    },
+    {
+     "n": 16,
+     "pct": 100,
+     "med": "7.1k",
      "mark": "good"
     }
    ]
@@ -309,18 +440,27 @@
    "cells": [
     {
      "n": 5,
+     "pct": 31,
      "med": "-",
      "mark": ""
     },
     {
      "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": "bad"
     },
     {
      "n": 12,
+     "pct": 75,
      "med": "24.4k",
      "mark": "good"
+    },
+    {
+     "n": 4,
+     "pct": 25,
+     "med": "-",
+     "mark": "bad"
     }
    ]
   }
@@ -345,6 +485,10 @@
       {
        "v": "53.2",
        "mark": ""
+      },
+      {
+       "v": "46.2",
+       "mark": ""
       }
      ]
     },
@@ -363,6 +507,10 @@
       {
        "v": "1.1",
        "mark": ""
+      },
+      {
+       "v": "1.7",
+       "mark": ""
       }
      ]
     },
@@ -380,6 +528,10 @@
       },
       {
        "v": "0.3",
+       "mark": ""
+      },
+      {
+       "v": "0.5",
        "mark": ""
       }
      ]
@@ -405,6 +557,10 @@
       {
        "v": "40.0",
        "mark": ""
+      },
+      {
+       "v": "30.0",
+       "mark": ""
       }
      ]
     }
@@ -429,6 +585,10 @@
       {
        "v": "5.1",
        "mark": "bad"
+      },
+      {
+       "v": "3.3",
+       "mark": ""
       }
      ]
     },
@@ -446,6 +606,10 @@
       },
       {
        "v": "27.7",
+       "mark": ""
+      },
+      {
+       "v": "18.3",
        "mark": ""
       }
      ]
@@ -465,6 +629,10 @@
       {
        "v": "14.0",
        "mark": ""
+      },
+      {
+       "v": "9.3",
+       "mark": ""
       }
      ]
     },
@@ -482,6 +650,10 @@
       },
       {
        "v": "16%",
+       "mark": ""
+      },
+      {
+       "v": "7%",
        "mark": ""
       }
      ]
@@ -501,6 +673,10 @@
       {
        "v": "60%",
        "mark": ""
+      },
+      {
+       "v": "72%",
+       "mark": "good"
       }
      ]
     },
@@ -518,6 +694,10 @@
       },
       {
        "v": "41.1k",
+       "mark": ""
+      },
+      {
+       "v": "54.7k",
        "mark": ""
       }
      ]
@@ -543,6 +723,10 @@
       {
        "v": "1.4",
        "mark": ""
+      },
+      {
+       "v": "1.2",
+       "mark": ""
       }
      ]
     },
@@ -560,6 +744,10 @@
       },
       {
        "v": "50%",
+       "mark": ""
+      },
+      {
+       "v": "53%",
        "mark": ""
       }
      ]
@@ -585,6 +773,10 @@
       {
        "v": "49.6k",
        "mark": ""
+      },
+      {
+       "v": "56.0k",
+       "mark": ""
       }
      ]
     }
@@ -609,6 +801,10 @@
       {
        "v": "0.13",
        "mark": ""
+      },
+      {
+       "v": "0.09",
+       "mark": ""
       }
      ]
     },
@@ -627,6 +823,10 @@
       {
        "v": "0.16",
        "mark": ""
+      },
+      {
+       "v": "0.12",
+       "mark": ""
       }
      ]
     }
@@ -639,17 +839,26 @@
    "cells": [
     {
      "n": 16,
+     "pct": 100,
      "med": "0.3k",
      "mark": ""
     },
     {
      "n": 16,
+     "pct": 100,
      "med": "16.4k",
      "mark": ""
     },
     {
      "n": 16,
+     "pct": 100,
      "med": "1.6k",
+     "mark": ""
+    },
+    {
+     "n": 16,
+     "pct": 100,
+     "med": "0.3k",
      "mark": ""
     }
    ]
@@ -659,18 +868,27 @@
    "cells": [
     {
      "n": 7,
+     "pct": 44,
      "med": "-",
      "mark": ""
     },
     {
      "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": "bad"
     },
     {
      "n": 7,
+     "pct": 44,
      "med": "-",
      "mark": ""
+    },
+    {
+     "n": 2,
+     "pct": 12,
+     "med": "-",
+     "mark": "bad"
     }
    ]
   },
@@ -679,18 +897,27 @@
    "cells": [
     {
      "n": 6,
+     "pct": 38,
      "med": "-",
      "mark": ""
     },
     {
      "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": "bad"
     },
     {
      "n": 5,
+     "pct": 31,
      "med": "-",
      "mark": "bad"
+    },
+    {
+     "n": 8,
+     "pct": 50,
+     "med": "-",
+     "mark": "good"
     }
    ]
   },
@@ -699,18 +926,27 @@
    "cells": [
     {
      "n": 4,
+     "pct": 25,
      "med": "-",
      "mark": ""
     },
     {
      "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": "bad"
     },
     {
      "n": 1,
+     "pct": 6,
      "med": "-",
      "mark": "bad"
+    },
+    {
+     "n": 4,
+     "pct": 25,
+     "med": "-",
+     "mark": ""
     }
    ]
   },
@@ -719,18 +955,27 @@
    "cells": [
     {
      "n": 1,
+     "pct": 6,
      "med": "-",
      "mark": ""
     },
     {
      "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": "bad"
     },
     {
      "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": "bad"
+    },
+    {
+     "n": 1,
+     "pct": 6,
+     "med": "-",
+     "mark": ""
     }
    ]
   },
@@ -739,16 +984,54 @@
    "cells": [
     {
      "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": ""
     },
     {
      "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": ""
     },
     {
      "n": 0,
+     "pct": 0,
+     "med": "-",
+     "mark": ""
+    },
+    {
+     "n": 1,
+     "pct": 6,
+     "med": "-",
+     "mark": "good"
+    }
+   ]
+  },
+  {
+   "label": "Map or compass",
+   "cells": [
+    {
+     "n": 0,
+     "pct": 0,
+     "med": "-",
+     "mark": ""
+    },
+    {
+     "n": 0,
+     "pct": 0,
+     "med": "-",
+     "mark": ""
+    },
+    {
+     "n": 0,
+     "pct": 0,
+     "med": "-",
+     "mark": ""
+    },
+    {
+     "n": 0,
+     "pct": 0,
      "med": "-",
      "mark": ""
     }
@@ -771,6 +1054,10 @@
     {
      "v": "53.2",
      "mark": ""
+    },
+    {
+     "v": "46.2",
+     "mark": ""
     }
    ]
   },
@@ -789,6 +1076,10 @@
     {
      "v": "5.1",
      "mark": "bad"
+    },
+    {
+     "v": "3.3",
+     "mark": ""
     }
    ]
   },
@@ -806,6 +1097,10 @@
     },
     {
      "v": "49.6k",
+     "mark": ""
+    },
+    {
+     "v": "56.0k",
      "mark": ""
     }
    ]
@@ -825,9 +1120,162 @@
     {
      "v": "60%",
      "mark": ""
+    },
+    {
+     "v": "72%",
+     "mark": "good"
     }
    ]
   }
+ ],
+ "ideas": [
+  {
+   "id": "base",
+   "name": "Current",
+   "what": "the current model",
+   "status": "current",
+   "verdict": "the default today",
+   "cells": [
+    {
+     "v": "44%",
+     "mark": ""
+    },
+    {
+     "v": "38%",
+     "mark": ""
+    },
+    {
+     "v": "6%",
+     "mark": ""
+    },
+    {
+     "v": "46.2",
+     "mark": ""
+    },
+    {
+     "v": "3.3",
+     "mark": ""
+    },
+    {
+     "v": "55.7k",
+     "mark": ""
+    }
+   ]
+  },
+  {
+   "id": "random",
+   "name": "Random",
+   "what": "random buttons held for a moment: the floor to beat",
+   "status": "floor",
+   "verdict": "what any idea must beat",
+   "cells": [
+    {
+     "v": "0%",
+     "mark": "bad"
+    },
+    {
+     "v": "0%",
+     "mark": "bad"
+    },
+    {
+     "v": "0%",
+     "mark": "bad"
+    },
+    {
+     "v": "14.1",
+     "mark": "bad"
+    },
+    {
+     "v": "7.4",
+     "mark": "bad"
+    },
+    {
+     "v": "27.5k",
+     "mark": "good"
+    }
+   ]
+  },
+  {
+   "id": "halfstep",
+   "name": "Half-step",
+   "what": "after a refused step, try half a tile to each side",
+   "status": "rejected",
+   "verdict": "+7 places on these games, -1.2 on 16 held-out games and more game overs",
+   "cells": [
+    {
+     "v": "44%",
+     "mark": ""
+    },
+    {
+     "v": "31%",
+     "mark": "bad"
+    },
+    {
+     "v": "0%",
+     "mark": "bad"
+    },
+    {
+     "v": "53.2",
+     "mark": ""
+    },
+    {
+     "v": "5.1",
+     "mark": "bad"
+    },
+    {
+     "v": "49.6k",
+     "mark": ""
+    }
+   ]
+  },
+  {
+   "id": "align2",
+   "name": "Align",
+   "what": "after a refused step, line up exactly on the tile first",
+   "status": "off",
+   "verdict": "2nd item in 12% of games vs 44%",
+   "cells": [
+    {
+     "v": "12%",
+     "mark": "bad"
+    },
+    {
+     "v": "50%",
+     "mark": "good"
+    },
+    {
+     "v": "6%",
+     "mark": ""
+    },
+    {
+     "v": "46.2",
+     "mark": ""
+    },
+    {
+     "v": "3.3",
+     "mark": ""
+    },
+    {
+     "v": "56.0k",
+     "mark": ""
+    }
+   ]
+  }
+ ],
+ "model": [
+  "Reads the game's memory: where Link is, the room's tiles, objects, health, items. No pixels, no labels written for one game.",
+  "Builds its own map while playing: which kinds of ground are walls or doors (learned by walking into them), which exits lead where.",
+  "Picks the next goal by value: new things to try in this room first, then the nearest known exit never taken (it travels there over its own map).",
+  "Fights by reflex: a small policy trained by reinforcement learning takes over when an enemy is close.",
+  "One continuous game per run, from the start screen: no save states, no reloads."
+ ],
+ "idea_cols": [
+  "2nd item",
+  "Dungeon",
+  "5+ dungeon rooms",
+  "Places",
+  "Game overs /10k",
+  "Longest stall"
  ],
  "defs": [
   {
