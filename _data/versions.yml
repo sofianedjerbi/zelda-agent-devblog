@@ -77,10 +77,19 @@
 - id: v10
   log: "010"
   name: Standing in the trees
-  current: true
   party: [Cartographer Crab, The Experimenter, Pathwalker, Guardian Slime]
   idea: "Back to the nearest unexplored exit when a screen runs dry; the tile Link stands on is never a wall."
   best: "Zelda 1: 26.0 screens vs 14.1 for random on 16 new games; sword 16 / 16"
   catch: "Fights badly: 43 game overs per game; second item in 1 game of 16."
+  clip: /assets/video/barrel-window-ledge.mp4
+  clip_cap: "Latest dungeon clip: into the barrel, out of its window"
+- id: v11
+  log: "011"
+  name: One failure at a time
+  current: true
+  party: [Cartographer Crab, The Experimenter, Pathwalker, Guardian Slime]
+  idea: "Count how often trips arrive; stop the game at one failure, compare the screen with the agent's map, fix that bug."
+  best: "Zelda 1: 42.9 screens vs 14.1 for random on 16 games, sword 16 / 16; Minish Cap quick test 31 / 48"
+  catch: "Levels off at about 43 screens; second item in 1 game of 16."
   clip: /assets/video/barrel-window-ledge.mp4
   clip_cap: "Latest dungeon clip: into the barrel, out of its window"
