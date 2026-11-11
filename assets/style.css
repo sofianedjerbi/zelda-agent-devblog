@@ -302,3 +302,15 @@ details.more[open] { display: grid; gap: 10px; }
 .glance td:first-child a:hover { color: var(--gold); }
 .glance tr.defeated td:last-child { color: #f8b8b0; }
 .glance tr.tamed td:last-child { color: #d8f878; }
+
+/* KPI board */
+.kpi td, .kpi th { padding: 4px 8px; text-align: right; white-space: nowrap; border-bottom: 2px solid #222; }
+.kpi td.lab, .kpi th:first-child { text-align: left; white-space: normal; min-width: 180px; }
+.kpi td.lab small, .kpi td small { font-size: 16px; color: var(--grey); }
+.kpi td.good, .good { color: var(--leaf); }
+.kpi td.bad, .bad { color: var(--red); }
+.kpi .zero { color: #555; }
+.kpi-legend { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 10px; font-size: 19px; }
+.kpi-legend .kv b { color: var(--sky); }
+.kpi-legend .kv.def b { color: var(--gold); }
+.note { color: var(--grey); }

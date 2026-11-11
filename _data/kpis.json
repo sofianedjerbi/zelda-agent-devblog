@@ -1,0 +1,533 @@
+{
+ "game": "Zelda 1",
+ "games": 16,
+ "budget_k": 80,
+ "seeds": "8-23",
+ "updated": "2026-11-11",
+ "commit": "e1f326c",
+ "default": "base",
+ "variants": [
+  {
+   "id": "base",
+   "name": "Default",
+   "what": "the agent as it runs today"
+  },
+  {
+   "id": "random",
+   "name": "Random",
+   "what": "random buttons held for a moment: the floor to beat"
+  }
+ ],
+ "ladder": [
+  {
+   "label": "1st item (sword)",
+   "cells": [
+    {
+     "n": 16,
+     "med": "0.3k",
+     "mark": ""
+    },
+    {
+     "n": 16,
+     "med": "16.4k",
+     "mark": ""
+    }
+   ]
+  },
+  {
+   "label": "2nd item",
+   "cells": [
+    {
+     "n": 7,
+     "med": "-",
+     "mark": ""
+    },
+    {
+     "n": 0,
+     "med": "-",
+     "mark": "bad"
+    }
+   ]
+  },
+  {
+   "label": "Enter a dungeon",
+   "cells": [
+    {
+     "n": 6,
+     "med": "-",
+     "mark": ""
+    },
+    {
+     "n": 0,
+     "med": "-",
+     "mark": "bad"
+    }
+   ]
+  },
+  {
+   "label": "Pick up a key",
+   "cells": [
+    {
+     "n": 4,
+     "med": "-",
+     "mark": ""
+    },
+    {
+     "n": 0,
+     "med": "-",
+     "mark": "bad"
+    }
+   ]
+  },
+  {
+   "label": "5 dungeon rooms",
+   "cells": [
+    {
+     "n": 1,
+     "med": "-",
+     "mark": ""
+    },
+    {
+     "n": 0,
+     "med": "-",
+     "mark": "bad"
+    }
+   ]
+  },
+  {
+   "label": "Use a key",
+   "cells": [
+    {
+     "n": 0,
+     "med": "-",
+     "mark": ""
+    },
+    {
+     "n": 0,
+     "med": "-",
+     "mark": ""
+    }
+   ]
+  },
+  {
+   "label": "Map or compass",
+   "cells": [
+    {
+     "n": 0,
+     "med": "-",
+     "mark": ""
+    },
+    {
+     "n": 0,
+     "med": "-",
+     "mark": ""
+    }
+   ]
+  },
+  {
+   "label": "10 dungeon rooms",
+   "cells": [
+    {
+     "n": 0,
+     "med": "-",
+     "mark": ""
+    },
+    {
+     "n": 0,
+     "med": "-",
+     "mark": ""
+    }
+   ]
+  },
+  {
+   "label": "Heart container (boss)",
+   "cells": [
+    {
+     "n": 0,
+     "med": "-",
+     "mark": ""
+    },
+    {
+     "n": 0,
+     "med": "-",
+     "mark": ""
+    }
+   ]
+  },
+  {
+   "label": "2nd dungeon",
+   "cells": [
+    {
+     "n": 0,
+     "med": "-",
+     "mark": ""
+    },
+    {
+     "n": 0,
+     "med": "-",
+     "mark": ""
+    }
+   ]
+  },
+  {
+   "label": "4th item",
+   "cells": [
+    {
+     "n": 0,
+     "med": "-",
+     "mark": ""
+    },
+    {
+     "n": 0,
+     "med": "-",
+     "mark": ""
+    }
+   ]
+  },
+  {
+   "label": "Game finished",
+   "cells": [
+    {
+     "n": 0,
+     "med": "-",
+     "mark": ""
+    },
+    {
+     "n": 0,
+     "med": "-",
+     "mark": ""
+    }
+   ]
+  },
+  {
+   "label": "10 places",
+   "cells": [
+    {
+     "n": 16,
+     "med": "1.7k",
+     "mark": ""
+    },
+    {
+     "n": 16,
+     "med": "18.8k",
+     "mark": ""
+    }
+   ]
+  },
+  {
+   "label": "25 places",
+   "cells": [
+    {
+     "n": 15,
+     "med": "7.1k",
+     "mark": ""
+    },
+    {
+     "n": 0,
+     "med": "-",
+     "mark": "bad"
+    }
+   ]
+  },
+  {
+   "label": "50 places",
+   "cells": [
+    {
+     "n": 5,
+     "med": "-",
+     "mark": ""
+    },
+    {
+     "n": 0,
+     "med": "-",
+     "mark": "bad"
+    }
+   ]
+  }
+ ],
+ "families": [
+  {
+   "name": "Exploration",
+   "why": "how much of the world it finds",
+   "rows": [
+    {
+     "label": "Places seen",
+     "better": 1,
+     "cells": [
+      {
+       "v": "46.2",
+       "mark": ""
+      },
+      {
+       "v": "14.1",
+       "mark": "bad"
+      }
+     ]
+    },
+    {
+     "label": "Dungeon rooms",
+     "better": 1,
+     "cells": [
+      {
+       "v": "1.4",
+       "mark": ""
+      },
+      {
+       "v": "0.0",
+       "mark": "bad"
+      }
+     ]
+    },
+    {
+     "label": "Dungeons entered",
+     "better": 1,
+     "cells": [
+      {
+       "v": "0.4",
+       "mark": ""
+      },
+      {
+       "v": "0.0",
+       "mark": "bad"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Robustness",
+   "why": "the worst of the 16 games, not the average",
+   "rows": [
+    {
+     "label": "Worst game: places",
+     "better": 1,
+     "cells": [
+      {
+       "v": "13.0",
+       "mark": ""
+      },
+      {
+       "v": "12.0",
+       "mark": ""
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Survival",
+   "why": "staying alive: hits, damage, game overs",
+   "rows": [
+    {
+     "label": "Game overs / 10k steps",
+     "better": -1,
+     "cells": [
+      {
+       "v": "3.3",
+       "mark": ""
+      },
+      {
+       "v": "7.4",
+       "mark": "bad"
+      }
+     ]
+    },
+    {
+     "label": "Hits taken / 10k steps",
+     "better": -1,
+     "cells": [
+      {
+       "v": "18.5",
+       "mark": ""
+      },
+      {
+       "v": "37.2",
+       "mark": "bad"
+      }
+     ]
+    },
+    {
+     "label": "Hearts lost / 10k steps",
+     "better": -1,
+     "cells": [
+      {
+       "v": "9.4",
+       "mark": ""
+      },
+      {
+       "v": "18.6",
+       "mark": "bad"
+      }
+     ]
+    },
+    {
+     "label": "Time at <= 1/4 health (%)",
+     "better": -1,
+     "cells": [
+      {
+       "v": "9%",
+       "mark": ""
+      },
+      {
+       "v": "5%",
+       "mark": ""
+      }
+     ]
+    },
+    {
+     "label": "Mean health (%)",
+     "better": 1,
+     "cells": [
+      {
+       "v": "60%",
+       "mark": ""
+      },
+      {
+       "v": "84%",
+       "mark": "good"
+      }
+     ]
+    },
+    {
+     "label": "Longest life (steps)",
+     "better": 1,
+     "cells": [
+      {
+       "v": "52.7k",
+       "mark": ""
+      },
+      {
+       "v": "7.1k",
+       "mark": "bad"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Self-care",
+   "why": "healing, and healing when it matters",
+   "rows": [
+    {
+     "label": "Heals / 10k steps",
+     "better": 1,
+     "cells": [
+      {
+       "v": "1.2",
+       "mark": ""
+      },
+      {
+       "v": "0.2",
+       "mark": "bad"
+      }
+     ]
+    },
+    {
+     "label": "Heals taken when <= 1/2 health (%)",
+     "better": 1,
+     "cells": [
+      {
+       "v": "56%",
+       "mark": ""
+      },
+      {
+       "v": "48%",
+       "mark": ""
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Focus",
+   "why": "the longest stretch where nothing new happened",
+   "rows": [
+    {
+     "label": "Longest stall, nothing new (steps)",
+     "better": -1,
+     "cells": [
+      {
+       "v": "55.7k",
+       "mark": ""
+      },
+      {
+       "v": "27.5k",
+       "mark": "good"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Learning",
+   "why": "does it get better during one game? Below 1 = yes",
+   "rows": [
+    {
+     "label": "Hit rate, 2nd half / 1st half",
+     "better": -1,
+     "cells": [
+      {
+       "v": "0.18",
+       "mark": ""
+      },
+      {
+       "v": "0.84",
+       "mark": "bad"
+      }
+     ]
+    },
+    {
+     "label": "Game-over rate, 2nd half / 1st half",
+     "better": -1,
+     "cells": [
+      {
+       "v": "0.24",
+       "mark": ""
+      },
+      {
+       "v": "0.84",
+       "mark": "bad"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "defs": [
+  {
+   "k": "Progress ladder",
+   "v": "the first step a game reaches each goal: first item, second item, a dungeon, a key, using a key (key count drops inside a dungeon), dungeon rooms, map or compass, a heart container (every Zelda boss leaves one), a second dungeon, a fourth item, the ending."
+  },
+  {
+   "k": "Speed",
+   "v": "median steps to a goal over the 16 games. One step = 8 frames, the same for every idea."
+  },
+  {
+   "k": "Places",
+   "v": "distinct screens, caves and dungeon rooms entered."
+  },
+  {
+   "k": "Hits and hearts lost",
+   "v": "health going down while max health stays the same."
+  },
+  {
+   "k": "Heals",
+   "v": "health going up without a heart container; 'when low' = it was at half health or less."
+  },
+  {
+   "k": "Longest stall",
+   "v": "the most steps in a row with no new place, item, key or heart container."
+  },
+  {
+   "k": "Learning",
+   "v": "rate in the second half of the game divided by the first half."
+  }
+ ],
+ "limits": [
+  "16 games per idea is small: single games range from about 10 to 70 places. That is why the marks use paired intervals.",
+  "These are the games I tune on (seeds 8-23). A winner must also win on 16 held-out games before it becomes the default.",
+  "Zelda 1 keeps no kill counter, so combat KPIs are blank for it.",
+  "'Heart container' stands for beating a boss. Zelda 1 also has a few on the overworld.",
+  "The learning ratio drops when the agent gets stuck late in the game (stuck = no fights). Read it next to the longest stall."
+ ]
+}
