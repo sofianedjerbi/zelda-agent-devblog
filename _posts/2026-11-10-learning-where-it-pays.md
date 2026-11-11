@@ -22,7 +22,7 @@ The last two rows were measured on one seed (33 runs), the others on two.
 
 ## Where reinforcement learning failed: choosing what to try
 
-I tried three times to have the brain learn by reinforcement which experiments pay off (the Bandit Knight in the [bestiary]({{ '/bestiary/' | relative_url }})):
+I tried three times to have the brain learn by reinforcement which experiments pay off:
 
 - **v1 farmed rooms:** a new room paid every time, so it shuttled through doors.
 - **v2 cancelled its own starting knowledge.**

@@ -1,4 +1,0 @@
-# Held-out test, 66 runs (Log 003)
-- {name: "no reflex", go: 14}
-- {name: "Borrowed Reflex", go: 13}
-- {name: "Guardian Slime", go: 4, best: true}

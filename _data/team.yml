@@ -1,3 +1,0 @@
-held: {label: "Held-out real puzzles solved (66 runs)", v: 30, max: 66, was: 30, vs: "Log 004"}
-gameover: {label: "Game overs in those runs", v: 8, max: 66, was: 11, vs: "Log 004", low: true, note: "mostly starts with 1 heart"}
-ledge: {label: "Continuous games that get above the giant barrel", v: 15, max: 24, was: 0}

@@ -1,0 +1,12 @@
+{% assign K = site.data.kpis %}{% assign want = include.ids | split: "," %}
+<div class="kpi-box">
+  <p class="note">{{ K.game }} · {{ K.games }} games of {{ K.budget_k }}k steps each · games reached out of {{ K.games }}, and median steps to get there ("-": the median game never did). <span class="good">Green</span> / <span class="bad">red</span>: clearly better / worse than {{ K.variants[0].name | downcase }}.</p>
+  <div class="scroll"><table class="kpi">
+    <tr><th></th>{% for v in K.variants %}{% if want contains v.id %}<th>{{ v.name }}</th>{% endif %}{% endfor %}</tr>
+    {% for r in K.short %}<tr><td class="lab">{{ r.label }}</td>{% for v in K.variants %}{% if want contains v.id %}{% assign c = r.cells[forloop.index0] %}<td class="{{ c.mark }}">{% if c.n == 0 %}<span class="zero">0</span>{% else %}{{ c.n }}<small> · {{ c.med }}</small>{% endif %}</td>{% endif %}{% endfor %}</tr>
+    {% endfor %}
+    {% for r in K.core %}<tr><td class="lab">{{ r.label }}</td>{% for v in K.variants %}{% if want contains v.id %}{% assign c = r.cells[forloop.index0] %}<td class="{{ c.mark }}">{{ c.v }}</td>{% endif %}{% endfor %}</tr>
+    {% endfor %}
+  </table></div>
+  {% if include.what %}<ul class="kv-list">{% for v in K.variants %}{% if want contains v.id %}<li><b>{{ v.name }}</b>: {{ v.what }}</li>{% endif %}{% endfor %}</ul>{% endif %}
+</div>

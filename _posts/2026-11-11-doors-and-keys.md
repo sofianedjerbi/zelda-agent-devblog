@@ -3,6 +3,7 @@ layout: post
 title: "Log 012"
 subtitle: "Doors and keys"
 permalink: /log/012/
+kpi: "base,random"
 ---
 
 **What I learned:** my agent now walks into caves and into the first dungeon of Zelda 1. Nobody told it what a door looks like. It learned that from walking through one. Inside the dungeon it stalls after a few rooms.

@@ -1,8 +1,0 @@
-# Lore Owl's live predictions, P(changes something | thing, verb), read from memory/affordance_model.json on 2026-11-10
-- {name: Pot, p: [0.38, 0.39, 0.96, 0.88, 0.14]}
-- {name: Pushable Statue, p: [0.20, 0.17, 0.35, 0.63, 0.10]}
-- {name: Pullable Lever, p: [0.16, 0.24, 0.27, 0.61, 0.10]}
-- {name: Pullable Mushroom, p: [0.16, 0.22, 0.21, 0.59, 0.08]}
-- {name: Big Barrel, p: [0.17, 0.12, 0.33, 0.66, 0.09]}
-- {name: Small Chest, p: [0.13, 0.21, 0.25, 0.50, 0.10]}
-- {name: Locked Door, p: [0.11, 0.33, 0.22, 0.36, 0.12]}

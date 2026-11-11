@@ -4,6 +4,7 @@ layout: default
 <article class="board">
   <h1>{{ page.title }}{% if page.subtitle %}<span class="sub">{{ page.subtitle }}</span>{% endif %}</h1>
   <div class="meta">{{ page.date | date: "%-d %b %Y" }}</div>
+  {% if page.kpi %}<h2>Result</h2>{% include kpi.html ids=page.kpi what=true %}{% endif %}
   {{ content }}
   {% assign logs = site.posts | sort: "title" %}{% for p in logs %}{% if p.url == page.url %}{% assign i = forloop.index0 %}{% endif %}{% endfor %}
   {% assign prev_i = i | minus: 1 %}{% assign next_i = i | plus: 1 %}

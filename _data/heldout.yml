@@ -1,7 +1,0 @@
-# Held-out puzzles: saved games never debugged on. pct = solved / runs; go = game overs / runs (percent)
-- {who: "random play", log: "002", solved: 6, runs: 33, go: 16}
-- {who: "simple brain", log: "002", solved: 5, runs: 33, go: 9}
-- {who: "language-model brain", log: "002", solved: 14, runs: 33, go: 8}
-- {who: "+ action model + reflex", log: "003", solved: 26, runs: 66, go: 4}
-- {who: "+ continuous-game fixes", log: "004", solved: 30, runs: 66, go: 11}
-- {who: "latest", log: "now", solved: 30, runs: 66, go: 8}
