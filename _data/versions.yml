@@ -86,10 +86,19 @@
 - id: v11
   log: "011"
   name: One failure at a time
-  current: true
   party: [Cartographer Crab, The Experimenter, Pathwalker, Guardian Slime]
   idea: "Count how often trips arrive; stop the game at one failure, compare the screen with the agent's map, fix that bug."
   best: "Zelda 1: 42.9 screens vs 14.1 for random on 16 games, sword 16 / 16; Minish Cap quick test 31 / 48"
   catch: "Levels off at about 43 screens; second item in 1 game of 16."
+  clip: /assets/video/barrel-window-ledge.mp4
+  clip_cap: "Latest dungeon clip: into the barrel, out of its window"
+- id: v12
+  log: "012"
+  name: Doors and keys
+  current: true
+  party: [Cartographer Crab, The Experimenter, Pathwalker, Guardian Slime]
+  idea: "Learn which kinds of ground are doors by walking through them; with a new key, retry walls that refused only once or twice."
+  best: "Zelda 1: 45.9 screens vs 14.1 for random; first dungeon entered in 6 / 16 games, second item in 6 / 16"
+  catch: "Stalls after 3 to 5 dungeon rooms."
   clip: /assets/video/barrel-window-ledge.mp4
   clip_cap: "Latest dungeon clip: into the barrel, out of its window"
