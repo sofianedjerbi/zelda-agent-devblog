@@ -29,3 +29,5 @@
   why: "Log 003: 'new room' paid on every entry and the agent shuttled through doors; another version cancelled its own starting knowledge; paying for fights made it die more."
 - rule: "Look at the lowest layer before the top: is the skill even switched on?"
   why: "Hours of navigation fixes were tested on a Zelda 1 agent that never fought, where healing comes from fighting."
+- rule: "Reward outcomes, never the means."
+  why: "Rewarding damage dealt: the reflex hit tough enemies again and again and died more (16 vs 12 game overs). Now: hearts lost/healed, game overs, and confirmed kills (once per enemy)."
