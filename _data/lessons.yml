@@ -1,4 +1,6 @@
 # Rules I learned the hard way. Read at every step back.
+- rule: "Never train blind: check the real KPI during training, stop early if it doesn't move."
+  why: "User rule. Reflex v1 trained 40 minutes on its own reward, then turned out barely better than standing still. Every training run now runs the combat test every 30k steps against 'stand still' and stops if it isn't ahead by the third check."
 - rule: "Capture one failure before writing a fix."
   why: "Screenshot + my map + the actions at one stuck moment found every real bug: knockback read as water, goals running into the next screen, walls learned while the game held Link, doors between tiles. Rules written without a capture mostly failed."
 - rule: "A gain on the games I tune on is not a gain until it holds on held-out games."
