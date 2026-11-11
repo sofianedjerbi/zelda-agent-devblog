@@ -50,10 +50,19 @@
 - id: v7
   log: "006"
   name: Can it even get there?
-  current: true
   party: [Cartographer Crab, Faceless One, The Experimenter, Lore Owl, Pathwalker, Guardian Slime, Qwen Oracle]
   idea: "Leave the dungeon: navigation tests from real saves, listening to what characters say, a local LLM guide for direction."
   best: "Short overworld trips; barrel room in 22 / 24 dungeon games"
   catch: "No trip reaches the shrine from the woods or the village yet."
+  clip: /assets/video/barrel-window-ledge.mp4
+  clip_cap: "Latest dungeon clip: into the barrel, out of its window"
+- id: v8
+  log: "008"
+  name: Measured one at a time
+  current: true
+  party: [Cartographer Crab, Faceless One, The Experimenter, Lore Owl, Pathwalker, Guardian Slime]
+  idea: "A 6-minute test of saved game moments; every rule off by default, back only if it wins alone."
+  best: "Barrel room in 23 / 24 dungeon games, above the barrel in 14 / 24; every one-step overworld trip"
+  catch: "Every failure left needs Link to shrink: the shrine, the Minish village."
   clip: /assets/video/barrel-window-ledge.mp4
   clip_cap: "Latest dungeon clip: into the barrel, out of its window"
