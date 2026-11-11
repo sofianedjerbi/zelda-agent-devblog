@@ -4,7 +4,7 @@
  "budget_k": 80,
  "seeds": "8-23",
  "updated": "2026-11-11",
- "commit": "b75ec0a",
+ "commit": "ef16e0d",
  "default": "base",
  "variants": [
   {
@@ -2742,7 +2742,7 @@
   "Reads the game's memory: where Link is, the room's tiles, objects, health, items. No pixels, no labels written for one game.",
   "Builds its own map while playing: which kinds of ground are walls or doors (learned by walking into them), which exits lead where.",
   "Picks the next goal by value: new things to try in this room first, then the nearest known exit never taken (it travels there over its own map).",
-  "Fights by reflex: a small policy trained by reinforcement learning takes over when an enemy is close.",
+  "Fights only when it picks 'hit that enemy' as a goal (low priority). The trained combat reflex exists but is not switched on in Zelda 1 yet: being tested.",
   "One continuous game per run, from the start screen: no save states, no reloads."
  ],
  "idea_cols": [
