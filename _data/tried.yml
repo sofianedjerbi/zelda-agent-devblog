@@ -5,12 +5,14 @@
     - {name: "Learned KPIs for every idea", status: kept, result: "18 KPIs from fields every Zelda shares; showed the agent is stuck 56k of 80k steps", lesson: "Places alone hid the stalls."}
     - {name: "Half-step at refused moves", switch: HALFSTEP, status: rejected, result: "+7 places on tuning games, -1.2 held-out, more game overs", lesson: "Always run the held-out games."}
     - {name: "Entrance-aware routes", switch: SPLIT, status: off, result: "Two versions, 38 vs 49 places on the game it was built for. The loop moved into the dungeon instead", lesson: "Don't judge reachability at the screen edge. Two tries without a gain: capture again."}
-    - {name: "Likely door spots", switch: DOORSPOTS, status: testing, result: "capture: key in hand, locked door learned as wall, never tried; keys used in 0% of games. Exits walked through in a dungeon mark spots to try in its other rooms"}
+    - {name: "Stall escape: random burst, then forget beliefs", switch: UNSTUCK, status: testing, result: "random play's longest stall is half the agent's (27.5k vs 55.7k steps): every captured trap was the agent's own beliefs"}
+    - {name: "Likely door spots", switch: DOORSPOTS, status: off, result: "two games: 43 vs 49 and 42 vs 49 places; third fix in a row without a gain, so I changed method", lesson: "Each capture found a different trap: per-trap fixes don't converge."}
+    - {name: "Likely door spots (first note)", switch: DOORSPOTS, status: off, result: "capture: key in hand, locked door learned as wall, never tried; keys used in 0% of games. Exits walked through in a dungeon mark spots to try in its other rooms"}
     - {name: "Needs: survive > heal > fight > explore", switch: NEEDS, status: testing, result: "being measured"}
     - {name: "Learned pickups", switch: PICKUPS, status: testing, result: "being measured; also found touch learning had been dead code under learned doors"}
     - {name: "Retreat at low health", switch: RETREAT, status: testing, result: "being measured"}
     - {name: "Key retry", switch: KEYRETRY, status: kept, result: "dungeon rooms 22 vs 19 over 16 games, nothing else moved"}
-    - {name: "Clear the room when exits fail", switch: CLEAR, status: off, result: "same dungeon rooms, fewer game overs"}
+    - {name: "Clear the room when exits fail", switch: CLEAR, status: off, result: "KPI rerun: nothing clearly different, fewer places"}
     - {name: "Align on the tile after a refusal", switch: ALIGN2, status: off, result: "fixed one stuck game; 2nd item 2/16 vs 6/16"}
     - {name: "Align before every step", switch: ALIGN, status: rejected, result: "game overs 49 vs 25"}
     - {name: "Map flood from Link's whole body", status: kept, result: "one game 17 -> 46 places, others unchanged"}
@@ -21,7 +23,7 @@
     - {name: "Swing in place", switch: SWINGSTILL, status: kept, result: "game overs 43 -> 21, places unchanged", lesson: "Halving deaths did not add places: deaths were not the cap."}
     - {name: "Touch learning (old)", switch: TOUCH, status: off, result: "no effect"}
     - {name: "Avoid deadly screens", switch: AVOIDDEATH, status: rejected, result: "21.8 vs 25.5 places: those screens are hubs"}
-    - {name: "Strike 2 tiles away", switch: REACH2, status: rejected, result: "20.8 places, no gain"}
+    - {name: "Strike 2 tiles away", switch: REACH2, status: off, result: "KPI rerun: keys 44% vs 25%, dungeon 50% vs 38%, but 39.9 vs 46.2 places; all within noise"}
     - {name: "Frontier failure memory, untried exits first, keep taken exits", switch: "FRONTFAIL / FRONTUNTRIED", status: rejected, result: "4 frontier fixes in a row, no gain", lesson: "Then I measured travel itself and found the real bugs."}
     - {name: "Return to the frontier (Go-Explore from memory)", switch: FRONTIER2, status: kept, result: "Zelda 1 19.5 vs 13.9 places"}
     - {name: "Link's own tile never solid", status: kept, result: "20.0 -> 25.5 places"}
