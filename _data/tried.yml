@@ -1,0 +1,43 @@
+# Everything tried, newest phase first. status: kept / rejected / off (opt-in, no gain) / testing / dropped (whole approach).
+# switch = how to turn it on/off in ~/minish-rl (ZL_<NAME>); result = measured; lesson = what not to do again.
+- phase: "Zelda 1, one continuous game (Nov 11)"
+  items:
+    - {name: "Learned KPIs for every idea", status: kept, result: "18 KPIs from fields every Zelda shares; showed the agent is stuck 56k of 80k steps", lesson: "Places alone hid the stalls."}
+    - {name: "Half-step at refused moves", switch: HALFSTEP, status: rejected, result: "+7 places on tuning games, -1.2 held-out, more game overs", lesson: "Always run the held-out games."}
+    - {name: "Entrance-aware routes", switch: SPLIT, status: testing, result: "First version cut good routes (38 vs 49 places on one game): every exit reads unreachable right after a scroll", lesson: "Don't judge reachability at the screen edge."}
+    - {name: "Needs: survive > heal > fight > explore", switch: NEEDS, status: testing, result: "being measured"}
+    - {name: "Learned pickups", switch: PICKUPS, status: testing, result: "being measured; also found touch learning had been dead code under learned doors"}
+    - {name: "Retreat at low health", switch: RETREAT, status: testing, result: "being measured"}
+    - {name: "Key retry", switch: KEYRETRY, status: kept, result: "dungeon rooms 22 vs 19 over 16 games, nothing else moved"}
+    - {name: "Clear the room when exits fail", switch: CLEAR, status: off, result: "same dungeon rooms, fewer game overs"}
+    - {name: "Align on the tile after a refusal", switch: ALIGN2, status: off, result: "fixed one stuck game; 2nd item 2/16 vs 6/16"}
+    - {name: "Align before every step", switch: ALIGN, status: rejected, result: "game overs 49 vs 25"}
+    - {name: "Map flood from Link's whole body", status: kept, result: "one game 17 -> 46 places, others unchanged"}
+    - {name: "Learned door kinds", switch: DOORKINDS, status: kept, result: "caves per game 1 -> 4-5, 2nd item 1/16 -> 6/16, first dungeon entered"}
+    - {name: "Goals end on a screen change + cave fixes", status: kept, result: "25.3 -> 42.9 places (paired +17.6)", lesson: "Found by one capture each."}
+    - {name: "Knockback no longer marks water", status: kept, result: "2-hop trips arriving 5% -> 32%"}
+    - {name: "Edges = first new room of a goal", status: kept, result: "43 of 55 recorded edges were wrong before"}
+    - {name: "Swing in place", switch: SWINGSTILL, status: kept, result: "game overs 43 -> 21, places unchanged", lesson: "Halving deaths did not add places: deaths were not the cap."}
+    - {name: "Touch learning (old)", switch: TOUCH, status: off, result: "no effect"}
+    - {name: "Avoid deadly screens", switch: AVOIDDEATH, status: rejected, result: "21.8 vs 25.5 places: those screens are hubs"}
+    - {name: "Strike 2 tiles away", switch: REACH2, status: rejected, result: "20.8 places, no gain"}
+    - {name: "Frontier failure memory, untried exits first, keep taken exits", switch: "FRONTFAIL / FRONTUNTRIED", status: rejected, result: "4 frontier fixes in a row, no gain", lesson: "Then I measured travel itself and found the real bugs."}
+    - {name: "Return to the frontier (Go-Explore from memory)", switch: FRONTIER2, status: kept, result: "Zelda 1 19.5 vs 13.9 places"}
+    - {name: "Link's own tile never solid", status: kept, result: "20.0 -> 25.5 places"}
+    - {name: "Novel-ground probe instead of a door label", status: kept, result: "removed the last Zelda 1 hand label"}
+- phase: "Minish Cap, brain + hands (Nov 10)"
+  items:
+    - {name: "13 navigation hand rules", status: off, result: "all on: 5/12 and 2/12; all off: 10/12 and 11/12", lesson: "Each rule earns its place alone."}
+    - {name: "Reflex calm", status: kept, result: "woods places 22 -> 206 (only rule that won forward selection)"}
+    - {name: "Story guide from the local LLM", switch: GUIDE, status: off, result: "25/48 vs 27/48; its story knowledge contradicted itself"}
+    - {name: "Last-resort form change", switch: LASTFORM, status: off, result: "neutral"}
+    - {name: "Form-change reset", switch: FORMRESET, status: rejected, result: "barrel room 22/24 -> 6/24 (found by bisect)"}
+    - {name: "Hand-tracing Minish Woods mechanics", status: dropped, result: "10 mechanics in a row, no measured gain", lesson: "I was the learner, one rule per mechanic."}
+- phase: "Earlier approaches (Nov 7-10)"
+  items:
+    - {name: "PPO + Go-Explore with story rewards", status: dropped, result: "reached Deepwood, lever and slingshot by hand-made macros and RAM reading", lesson: "The real thinker was me reading the decomp."}
+    - {name: "Simulator pretraining", status: dropped, result: "movement and survival transfer (rooms 45 -> 110 of 120, game overs 28 -> 6), puzzles at random (12 vs 8)"}
+    - {name: "LLM experimenter on stalls (14B)", status: dropped, result: "62 experiments, 0 successes"}
+    - {name: "Pixel cells", status: dropped, result: "cell explosion, fewer rooms"}
+    - {name: "Vision model for objects", status: dropped, result: "invented coordinates; RAM things used instead"}
+    - {name: "Learning which experiments pay (bandit)", status: dropped, result: "three tries, no gain"}

@@ -4,6 +4,26 @@ title: Ideas
 permalink: /ideas/
 ---
 <section class="board">
-  <h1>Ideas tried<span class="sub">each one is the current model plus one change, scored on the same games</span></h1>
+  <h1>What I tried<span class="sub">my own record, read before every step back, so I don't make the same mistake twice</span></h1>
+  <h2>Rules I learned</h2>
+  <ol class="lessons">
+    {% for l in site.data.lessons %}<li><b>{{ l.rule }}</b> <span class="note">{{ l.why }}</span></li>{% endfor %}
+  </ol>
+</section>
+
+<section class="board">
+  <h1>Scored side by side<span class="sub">the current model plus one change each, same games, same KPIs</span></h1>
   {% include ideas.html %}
 </section>
+
+{% for ph in site.data.tried %}
+<section class="board">
+  <h1>{{ ph.phase }}</h1>
+  <div class="scroll"><table class="kpi tried">
+    <tr><th>Idea</th><th>Status</th><th>Result</th></tr>
+    {% for it in ph.items %}
+    <tr class="st-{{ it.status }}"><td class="lab"><b>{{ it.name }}</b>{% if it.switch %}<small> ZL_{{ it.switch }}</small>{% endif %}</td><td class="lab"><span class="tag">{{ it.status }}</span></td><td class="lab">{{ it.result }}{% if it.lesson %}<small> Lesson: {{ it.lesson }}</small>{% endif %}</td></tr>
+    {% endfor %}
+  </table></div>
+</section>
+{% endfor %}
