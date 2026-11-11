@@ -48,7 +48,7 @@ So I stopped the game at a failed trip and saved two pictures: the screen, and t
 
 </div>
 
-Fixing the third one took trips of 3+ screens from 5% to 34% and screens from 25 to 40. Then **no game found the sword any more**.
+Fixing the third one took trips of 3+ screens from 5% to 19% and screens from 25 to 40. Then **no game found the sword any more**.
 
 ## The bug that found the sword
 
