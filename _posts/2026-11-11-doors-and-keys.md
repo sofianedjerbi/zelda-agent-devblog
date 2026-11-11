@@ -39,7 +39,7 @@ One detail mattered: the game shows the new room one action late, so each entry 
 |---|---|---|
 | caves per game | 1 | 4 to 5 |
 | second item found | 1 / 16 | **6 / 16** |
-| first dungeon entered | 0 / 16 | **6 / 16** |
+| first dungeon entered | 0 of 2 checked | **6 / 16** |
 | screens | 42.9 | 45.9 |
 
 </div>
