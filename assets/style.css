@@ -328,3 +328,6 @@ details.more[open] { display: grid; gap: 10px; }
 .tried td.lab { white-space: normal; text-align: left; }
 .lessons li { margin-bottom: 8px; }
 .lessons .note { display: block; }
+figure.show { margin: 0; display: flex; flex-direction: column; gap: 8px; }
+figure.show video { width: 100%; max-width: 720px; image-rendering: pixelated; border: 4px solid var(--white); background: #000; }
+figure.show figcaption { color: var(--grey); font-size: 19px; max-width: 70ch; }

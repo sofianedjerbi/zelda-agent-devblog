@@ -5,6 +5,12 @@ layout: default
   <h1>Devlog<span class="sub">an AI learning to finish any Zelda, on one Mac</span></h1>
   <p>Goal: an AI that finishes any top-down Zelda, on one Mac, with local models only. It must learn skills, not memorise a game: nothing in the code is specific to one Zelda.</p>
 
+  <h2>Watch it play</h2>
+  <figure class="show">
+    <video src="{{ '/assets/video/zelda1-heldout-102.mp4' | relative_url }}" controls muted playsinline preload="metadata"></video>
+    <figcaption>Zelda 1, game 102: a game I never tuned on. One continuous game from the start screen, no reloads, about 16x speed (the first 21,000 steps, about 47 minutes of play). It gets the sword in its first steps, explores 51 places, enters the first dungeon at step 15,300, picks up a key, and dies at one heart. The bottom line shows what it is trying, and when it is stuck, the random burst.</figcaption>
+  </figure>
+
   <h2>The current model</h2>
   <ul>{% for m in site.data.kpis.model %}<li>{{ m }}</li>{% endfor %}</ul>
 
