@@ -12,7 +12,7 @@
     - {name: "Likely door spots", switch: DOORSPOTS, status: off, result: "two games: 43 vs 49 and 42 vs 49 places; third fix in a row without a gain, so I changed method", lesson: "Each capture found a different trap: per-trap fixes don't converge."}
     - {name: "Needs: survive > heal > fight > explore", switch: NEEDS, status: rejected, result: "places 39.4 vs 46.2, 2nd item 6% vs 44%, time at low health 23% vs 9%, heals halved (0.6 vs 1.2 per 10k)", lesson: "In Zelda 1 hearts drop from killed enemies: 'no fights when low' also meant 'no healing'. What heals must be learned, not ordered by hand."}
     - {name: "Learned pickups", switch: PICKUPS, status: off, result: "nothing better; 2nd item 6% vs 44%. Found on the way: touch learning had been dead code under learned doors"}
-    - {name: "Retreat at low health", switch: RETREAT, status: testing, result: "dungeon entered in 69% of games vs 38%, keys 56% vs 25%; 2nd item 19% vs 44%. Held-out check running"}
+    - {name: "Retreat at low health", switch: RETREAT, status: off, result: "dungeon 69% vs 38% on tuning games, 50% vs 50% on held-out games: did not hold", lesson: "Second gain in a row that the held-out games erased."}
     - {name: "Key retry", switch: KEYRETRY, status: kept, result: "dungeon rooms 22 vs 19 over 16 games, nothing else moved"}
     - {name: "Clear the room when exits fail", switch: CLEAR, status: off, result: "KPI rerun: nothing clearly different, fewer places"}
     - {name: "Align on the tile after a refusal", switch: ALIGN2, status: off, result: "fixed one stuck game; 2nd item 2/16 vs 6/16"}

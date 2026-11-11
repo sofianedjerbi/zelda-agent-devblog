@@ -2708,8 +2708,8 @@
    "id": "retreat",
    "name": "Retreat",
    "what": "at low health, leave the room through a known exit",
-   "status": "testing",
-   "verdict": "dungeon 69% vs 38%, keys 56% vs 25%, but 2nd item 19% vs 44%: held-out check next",
+   "status": "off",
+   "verdict": "dungeon 69% vs 38% here, but 50% vs 50% on held-out games: did not hold",
    "cells": [
     {
      "v": "19%",
