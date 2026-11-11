@@ -4,7 +4,8 @@
   items:
     - {name: "Learned KPIs for every idea", status: kept, result: "18 KPIs from fields every Zelda shares; showed the agent is stuck 56k of 80k steps", lesson: "Places alone hid the stalls."}
     - {name: "Half-step at refused moves", switch: HALFSTEP, status: rejected, result: "+7 places on tuning games, -1.2 held-out, more game overs", lesson: "Always run the held-out games."}
-    - {name: "Entrance-aware routes", switch: SPLIT, status: testing, result: "First version cut good routes (38 vs 49 places on one game): every exit reads unreachable right after a scroll", lesson: "Don't judge reachability at the screen edge."}
+    - {name: "Entrance-aware routes", switch: SPLIT, status: off, result: "Two versions, 38 vs 49 places on the game it was built for. The loop moved into the dungeon instead", lesson: "Don't judge reachability at the screen edge. Two tries without a gain: capture again."}
+    - {name: "Likely door spots", switch: DOORSPOTS, status: testing, result: "capture: key in hand, locked door learned as wall, never tried; keys used in 0% of games. Exits walked through in a dungeon mark spots to try in its other rooms"}
     - {name: "Needs: survive > heal > fight > explore", switch: NEEDS, status: testing, result: "being measured"}
     - {name: "Learned pickups", switch: PICKUPS, status: testing, result: "being measured; also found touch learning had been dead code under learned doors"}
     - {name: "Retreat at low health", switch: RETREAT, status: testing, result: "being measured"}
