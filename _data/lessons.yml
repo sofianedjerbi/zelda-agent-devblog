@@ -23,3 +23,7 @@
   why: "survive > heal > fight cut healing in Zelda 1, where hearts come from fighting: heals halved, low-health time x2.5."
 - rule: "Check what is really switched on in each game before explaining the model."
   why: "The site said Link fights with a trained reflex; in Zelda 1 it had never been loaded."
+- rule: "A learning signal must be first-time-only, and must not wipe the prior."
+  why: "Log 003: 'new room' paid on every entry and the agent shuttled through doors; another version cancelled its own starting knowledge; paying for fights made it die more."
+- rule: "Look at the lowest layer before the top: is the skill even switched on?"
+  why: "Hours of navigation fixes were tested on a Zelda 1 agent that never fought, where healing comes from fighting."
