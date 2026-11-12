@@ -37,3 +37,5 @@
   why: "Seeds 100-115 are the same Zelda 1 map with a different start delay."
 - rule: "Work the next ladder row directly."
   why: "Key use sat at 0% for a day while I ran tournaments of switches."
+- rule: "A test can be wrong too: trace one case before believing its number."
+  why: "Two scenario 'findings' were artifacts of scenarios starting without the agent's memory. And the suite is small (9/8/5 moments): under 20 points is noise."

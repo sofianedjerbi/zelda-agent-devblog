@@ -3,8 +3,10 @@
 - phase: "After the review: skills judged on saved scenarios (Nov 12)"
   items:
     - {name: "Scenario suite: 70 saved moments along the ladder, 3 minutes", status: kept, result: "current model: 3 rooms after entering 85% (empty memory) but 45% with what it had learned; key used 0-3%; heals at 1 heart 1-3%", lesson: "The agent did better with an empty memory than with its own: its beliefs were the trap."}
-    - {name: "Learned ground kinds scoped per tileset", status: testing, result: "ablation: dropping learned wall kinds brought 'enter' from 45% back to 85%. A tile number means something else in each tileset; walls learned outside closed dungeon floors and doors"}
-    - {name: "Half-step, re-judged on scenarios", switch: HALFSTEP, status: testing, result: "deeper in the dungeon 67% vs 17%, key used 10% vs 3%. Rejected earlier on full-game averages: wrong test"}
+    - {name: "No try-new-ground on a known exit", status: kept, result: "entering a dungeon every ground kind is new, and the nearest 'new' tile was the doorway behind Link: his third goal walked him back out. 3 rooms after entering: 41% -> 78%", lesson: "Found by tracing one scenario, after two wrong guesses."}
+    - {name: "Gap-aware stepping (doors between two tiles)", status: kept, result: "read from the game's finer tiles: way shut at the tile centre, open half a tile aside. Deeper in the dungeon 7% -> 53%, key used 4% -> 12%. Replaces half-step, which fiddled at every wall (enter 33%)"}
+    - {name: "Learned ground kinds scoped per tileset", status: kept, result: "correct, but NOT the cause I first claimed: that 85% vs 45% came from a flaw in the test (scenarios started without the agent's memory of where it came from)", lesson: "Trace one scenario before believing a number."}
+    - {name: "Half-step at every refused move", switch: HALFSTEP, status: rejected, result: "helps deeper rooms but costs time at every wall; replaced by gap-aware stepping"}
 - phase: "Zelda 1, one continuous game (Nov 11)"
   items:
     - {name: "Learned KPIs for every idea", status: kept, result: "18 KPIs from fields every Zelda shares; showed the agent is stuck 56k of 80k steps", lesson: "Places alone hid the stalls."}
