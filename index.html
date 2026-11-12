@@ -7,15 +7,15 @@ layout: default
 
   <h2>Watch it play</h2>
   <figure class="show">
-    <video src="{{ '/assets/video/zelda1-game22.mp4' | relative_url }}" controls muted playsinline preload="metadata"></video>
-    <figcaption>Zelda 1, game 22, current model. One continuous game from the start screen, no reloads, about 16x speed (the first 20,000 steps). Sword, 49 places explored, into the first dungeon at step 15,600, a key picked up at 17,000 and used on a locked door at 17,400, then on through the dungeon (8 rooms by the end of the full game). The bottom line shows what it is trying.</figcaption>
+    <video src="{{ '/assets/video/zelda1-game11.mp4' | relative_url }}" controls muted playsinline preload="metadata"></video>
+    <figcaption>Zelda 1, game 11, current model. One continuous game from the start screen, no reloads, about 20x speed (the first 28,000 steps). Sword, 53 places, into the first dungeon at step 18,800, a key picked up and used at 21,400, and its 10th dungeon room at step 27,100: the first time the agent has gone this deep. The bottom line shows what it is trying.</figcaption>
   </figure>
 
   <h2>The current model</h2>
   <ul>{% for m in site.data.kpis.model %}<li>{{ m }}</li>{% endfor %}</ul>
 
   <h2>Where it stands</h2>
-  {% include kpi.html ids="fine,area,random" %}
+  {% include kpi.html ids="strike,fine,random" %}
 
   <h2>Other games: the real test</h2>
   <p class="note">The same agent on each game from its own start. This is the honest check against tuning to one game.</p>
