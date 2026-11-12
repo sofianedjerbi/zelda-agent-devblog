@@ -3,7 +3,7 @@ layout: default
 ---
 <section class="board">
   <h1>Devlog<span class="sub">an AI learning to finish any Zelda, on one Mac</span></h1>
-  <p>Goal: an AI that finishes any top-down Zelda, on one Mac, with local models only. It must learn skills, not memorise a game: nothing in the code is specific to one Zelda.</p>
+  <p>Goal: an AI that finishes any top-down Zelda, on one Mac, with local models only. It must learn skills, not memorise a game. The brain is the same for every Zelda; each game needs a small adapter that reads its memory (position, room map, health, items).</p>
 
   <h2>Watch it play</h2>
   <figure class="show">
@@ -16,6 +16,14 @@ layout: default
 
   <h2>Where it stands</h2>
   {% include kpi.html ids="gap,unstuck,random" %}
+
+  <h2>Other games: the real test</h2>
+  <p class="note">The same agent on each game from its own start. This is the honest check against tuning to one game.</p>
+  <div class="scroll"><table class="kpi tried">
+    <tr><th>Game</th><th>Agent</th><th>Random buttons</th><th>Where it stands</th></tr>
+    {% for g in site.data.games %}<tr><td class="lab"><b>{{ g.game }}</b><small>{{ g.budget }}</small></td><td class="lab">{{ g.agent }}</td><td class="lab">{{ g.random }}</td><td class="lab">{{ g.verdict }}</td></tr>
+    {% endfor %}
+  </table></div>
 
   <p>Everything I tried, with results and lessons: <a href="{{ '/ideas/' | relative_url }}">IDEAS</a>.</p>
 
