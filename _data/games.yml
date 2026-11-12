@@ -1,4 +1,4 @@
 # Same agent, same KPIs, each game from its own start. Updated 2026-11-12.
-- {game: "Zelda 1 (NES)", budget: "16 games x 80k steps", agent: "48 places, sword 100%, dungeon 75%, key used 50%, 5+ dungeon rooms 50%, 10 rooms 6%, map or compass 13%", random: "14 places, sword 100%, dungeon 0%", verdict: "the game I develop on"}
+- {game: "Zelda 1 (NES)", budget: "16 games x 80k steps", agent: "51 places, sword 100%, dungeon 75%, key used 56%, 5+ dungeon rooms 56%, 10 rooms 6%, map or compass 13%", random: "14 places, sword 100%, dungeon 0%", verdict: "the game I develop on"}
 - {game: "Minish Cap (GBA)", budget: "8 games x 40k steps", agent: "5.0 places, 2 items 100%, 4 items 25%", random: "4.6 places, 2 items 50%", verdict: "barely ahead of random: every game stops at the same early story point"}
 - {game: "A Link to the Past (GBA)", budget: "8 games x 40k steps", agent: "1 place: never leaves the first house", random: "6.8 places, sword 50%", verdict: "the agent cannot play it yet: this game's adapter gives it no room map, so it makes no decisions"}

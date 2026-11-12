@@ -4,18 +4,23 @@
  "budget_k": 80,
  "seeds": "8-23",
  "updated": "2026-11-12",
- "commit": "c024528",
- "default": "strike",
+ "commit": "83eb82e",
+ "default": "triedout",
  "variants": [
   {
-   "id": "strike",
+   "id": "triedout",
    "name": "Current",
-   "what": "the current model: strikes enemies in the sword's line, lines up at doors, stays with the dungeon"
+   "what": "the current model: strikes enemies in the sword's line, lines up at doors, stays with the dungeon, drops exits that never open"
+  },
+  {
+   "id": "strike",
+   "name": "Previous",
+   "what": "the same, before it dropped exits tried six times"
   },
   {
    "id": "fine",
-   "name": "Previous",
-   "what": "the same without the sword strikes"
+   "name": "No strikes",
+   "what": "before the sword strikes"
   },
   {
    "id": "area",
@@ -131,6 +136,12 @@
     {
      "n": 16,
      "pct": 100,
+     "med": "0.3k",
+     "mark": ""
+    },
+    {
+     "n": 16,
+     "pct": 100,
      "med": "16.4k",
      "mark": ""
     },
@@ -194,10 +205,16 @@
    "label": "2nd item",
    "cells": [
     {
+     "n": 7,
+     "pct": 44,
+     "med": "-",
+     "mark": ""
+    },
+    {
      "n": 6,
      "pct": 38,
      "med": "-",
-     "mark": ""
+     "mark": "bad"
     },
     {
      "n": 11,
@@ -227,7 +244,7 @@
      "n": 7,
      "pct": 44,
      "med": "-",
-     "mark": "good"
+     "mark": ""
     },
     {
      "n": 0,
@@ -239,7 +256,7 @@
      "n": 7,
      "pct": 44,
      "med": "-",
-     "mark": "good"
+     "mark": ""
     },
     {
      "n": 2,
@@ -294,6 +311,12 @@
   {
    "label": "Enter a dungeon",
    "cells": [
+    {
+     "n": 12,
+     "pct": 75,
+     "med": "25.6k",
+     "mark": ""
+    },
     {
      "n": 12,
      "pct": 75,
@@ -396,16 +419,22 @@
    "label": "Pick up a key",
    "cells": [
     {
+     "n": 10,
+     "pct": 62,
+     "med": "30.1k",
+     "mark": ""
+    },
+    {
      "n": 9,
      "pct": 56,
      "med": "49.2k",
-     "mark": ""
+     "mark": "bad"
     },
     {
      "n": 10,
      "pct": 62,
      "med": "35.4k",
-     "mark": "good"
+     "mark": ""
     },
     {
      "n": 8,
@@ -423,7 +452,7 @@
      "n": 9,
      "pct": 56,
      "med": "37.4k",
-     "mark": ""
+     "mark": "bad"
     },
     {
      "n": 4,
@@ -489,7 +518,7 @@
      "n": 9,
      "pct": 56,
      "med": "47.9k",
-     "mark": ""
+     "mark": "bad"
     }
    ]
   },
@@ -497,16 +526,22 @@
    "label": "5 dungeon rooms",
    "cells": [
     {
+     "n": 9,
+     "pct": 56,
+     "med": "60.4k",
+     "mark": ""
+    },
+    {
      "n": 8,
      "pct": 50,
      "med": "-",
-     "mark": ""
+     "mark": "bad"
     },
     {
      "n": 9,
      "pct": 56,
      "med": "37.8k",
-     "mark": "good"
+     "mark": ""
     },
     {
      "n": 6,
@@ -598,16 +633,22 @@
    "label": "Use a key",
    "cells": [
     {
-     "n": 8,
-     "pct": 50,
-     "med": "-",
+     "n": 9,
+     "pct": 56,
+     "med": "60.4k",
      "mark": ""
     },
     {
      "n": 8,
      "pct": 50,
      "med": "-",
-     "mark": ""
+     "mark": "bad"
+    },
+    {
+     "n": 8,
+     "pct": 50,
+     "med": "-",
+     "mark": "bad"
     },
     {
      "n": 4,
@@ -698,6 +739,12 @@
   {
    "label": "Map or compass",
    "cells": [
+    {
+     "n": 2,
+     "pct": 12,
+     "med": "-",
+     "mark": ""
+    },
     {
      "n": 2,
      "pct": 12,
@@ -799,6 +846,12 @@
   {
    "label": "10 dungeon rooms",
    "cells": [
+    {
+     "n": 1,
+     "pct": 6,
+     "med": "-",
+     "mark": ""
+    },
     {
      "n": 1,
      "pct": 6,
@@ -995,12 +1048,24 @@
      "pct": 0,
      "med": "-",
      "mark": ""
+    },
+    {
+     "n": 0,
+     "pct": 0,
+     "med": "-",
+     "mark": ""
     }
    ]
   },
   {
    "label": "2nd dungeon",
    "cells": [
+    {
+     "n": 0,
+     "pct": 0,
+     "med": "-",
+     "mark": ""
+    },
     {
      "n": 0,
      "pct": 0,
@@ -1102,6 +1167,12 @@
   {
    "label": "4th item",
    "cells": [
+    {
+     "n": 0,
+     "pct": 0,
+     "med": "-",
+     "mark": ""
+    },
     {
      "n": 0,
      "pct": 0,
@@ -1298,12 +1369,24 @@
      "pct": 0,
      "med": "-",
      "mark": ""
+    },
+    {
+     "n": 0,
+     "pct": 0,
+     "med": "-",
+     "mark": ""
     }
    ]
   },
   {
    "label": "10 places",
    "cells": [
+    {
+     "n": 16,
+     "pct": 100,
+     "med": "1.9k",
+     "mark": ""
+    },
     {
      "n": 16,
      "pct": 100,
@@ -1414,6 +1497,12 @@
     {
      "n": 16,
      "pct": 100,
+     "med": "7.4k",
+     "mark": ""
+    },
+    {
+     "n": 16,
+     "pct": 100,
      "med": "7.5k",
      "mark": ""
     },
@@ -1507,10 +1596,16 @@
    "label": "50 places",
    "cells": [
     {
+     "n": 10,
+     "pct": 62,
+     "med": "70.4k",
+     "mark": ""
+    },
+    {
      "n": 7,
      "pct": 44,
      "med": "-",
-     "mark": ""
+     "mark": "bad"
     },
     {
      "n": 11,
@@ -1522,19 +1617,19 @@
      "n": 10,
      "pct": 62,
      "med": "54.1k",
-     "mark": "good"
+     "mark": ""
     },
     {
      "n": 10,
      "pct": 62,
      "med": "39.8k",
-     "mark": "good"
+     "mark": ""
     },
     {
      "n": 9,
      "pct": 56,
      "med": "58.9k",
-     "mark": "good"
+     "mark": "bad"
     },
     {
      "n": 5,
@@ -1570,7 +1665,7 @@
      "n": 7,
      "pct": 44,
      "med": "-",
-     "mark": ""
+     "mark": "bad"
     },
     {
      "n": 2,
@@ -1582,7 +1677,7 @@
      "n": 8,
      "pct": 50,
      "med": "-",
-     "mark": "good"
+     "mark": "bad"
     },
     {
      "n": 2,
@@ -1615,8 +1710,12 @@
      "better": 1,
      "cells": [
       {
-       "v": "48.1",
+       "v": "51.2",
        "mark": ""
+      },
+      {
+       "v": "48.1",
+       "mark": "bad"
       },
       {
        "v": "55.8",
@@ -1624,11 +1723,11 @@
       },
       {
        "v": "55.5",
-       "mark": "good"
+       "mark": ""
       },
       {
        "v": "53.5",
-       "mark": "good"
+       "mark": ""
       },
       {
        "v": "51.2",
@@ -1648,11 +1747,11 @@
       },
       {
        "v": "46.2",
-       "mark": ""
+       "mark": "bad"
       },
       {
        "v": "43.1",
-       "mark": ""
+       "mark": "bad"
       },
       {
        "v": "46.6",
@@ -1684,6 +1783,10 @@
      "label": "Dungeon rooms",
      "better": 1,
      "cells": [
+      {
+       "v": "5.1",
+       "mark": ""
+      },
       {
        "v": "4.6",
        "mark": ""
@@ -1734,7 +1837,7 @@
       },
       {
        "v": "2.5",
-       "mark": ""
+       "mark": "bad"
       },
       {
        "v": "1.8",
@@ -1771,12 +1874,16 @@
        "mark": ""
       },
       {
+       "v": "0.8",
+       "mark": ""
+      },
+      {
        "v": "0.6",
        "mark": ""
       },
       {
        "v": "0.4",
-       "mark": ""
+       "mark": "bad"
       },
       {
        "v": "0.0",
@@ -1830,6 +1937,10 @@
      "label": "Worst game: places",
      "better": 1,
      "cells": [
+      {
+       "v": "37.0",
+       "mark": ""
+      },
       {
        "v": "36.0",
        "mark": ""
@@ -1907,12 +2018,16 @@
      "better": -1,
      "cells": [
       {
+       "v": "5.1",
+       "mark": ""
+      },
+      {
        "v": "4.4",
        "mark": ""
       },
       {
        "v": "6.2",
-       "mark": "bad"
+       "mark": ""
       },
       {
        "v": "5.5",
@@ -1940,7 +2055,7 @@
       },
       {
        "v": "3.3",
-       "mark": ""
+       "mark": "good"
       },
       {
        "v": "2.4",
@@ -1964,11 +2079,11 @@
       },
       {
        "v": "3.0",
-       "mark": ""
+       "mark": "good"
       },
       {
        "v": "3.3",
-       "mark": ""
+       "mark": "good"
       }
      ]
     },
@@ -1977,12 +2092,16 @@
      "better": -1,
      "cells": [
       {
+       "v": "27.8",
+       "mark": ""
+      },
+      {
        "v": "24.1",
        "mark": ""
       },
       {
        "v": "33.8",
-       "mark": "bad"
+       "mark": ""
       },
       {
        "v": "30.6",
@@ -2002,7 +2121,7 @@
       },
       {
        "v": "37.2",
-       "mark": "bad"
+       "mark": ""
       },
       {
        "v": "27.7",
@@ -2010,7 +2129,7 @@
       },
       {
        "v": "18.3",
-       "mark": ""
+       "mark": "good"
       },
       {
        "v": "13.9",
@@ -2034,11 +2153,11 @@
       },
       {
        "v": "16.6",
-       "mark": ""
+       "mark": "good"
       },
       {
        "v": "18.3",
-       "mark": ""
+       "mark": "good"
       }
      ]
     },
@@ -2047,12 +2166,16 @@
      "better": -1,
      "cells": [
       {
+       "v": "14.0",
+       "mark": ""
+      },
+      {
        "v": "12.1",
        "mark": ""
       },
       {
        "v": "17.1",
-       "mark": "bad"
+       "mark": ""
       },
       {
        "v": "15.4",
@@ -2072,7 +2195,7 @@
       },
       {
        "v": "18.6",
-       "mark": "bad"
+       "mark": ""
       },
       {
        "v": "14.0",
@@ -2080,7 +2203,7 @@
       },
       {
        "v": "9.3",
-       "mark": ""
+       "mark": "good"
       },
       {
        "v": "7.0",
@@ -2104,11 +2227,11 @@
       },
       {
        "v": "8.4",
-       "mark": ""
+       "mark": "good"
       },
       {
        "v": "9.2",
-       "mark": ""
+       "mark": "good"
       }
      ]
     },
@@ -2116,6 +2239,10 @@
      "label": "Time at <= 1/4 health (%)",
      "better": -1,
      "cells": [
+      {
+       "v": "11%",
+       "mark": ""
+      },
       {
        "v": "7%",
        "mark": ""
@@ -2134,7 +2261,7 @@
       },
       {
        "v": "22%",
-       "mark": "bad"
+       "mark": ""
       },
       {
        "v": "9%",
@@ -2142,11 +2269,11 @@
       },
       {
        "v": "5%",
-       "mark": ""
+       "mark": "good"
       },
       {
        "v": "16%",
-       "mark": "bad"
+       "mark": ""
       },
       {
        "v": "7%",
@@ -2170,7 +2297,7 @@
       },
       {
        "v": "23%",
-       "mark": "bad"
+       "mark": ""
       },
       {
        "v": "9%",
@@ -2186,6 +2313,10 @@
      "label": "Mean health (%)",
      "better": 1,
      "cells": [
+      {
+       "v": "68%",
+       "mark": ""
+      },
       {
        "v": "67%",
        "mark": ""
@@ -2216,7 +2347,7 @@
       },
       {
        "v": "60%",
-       "mark": "bad"
+       "mark": ""
       },
       {
        "v": "72%",
@@ -2256,6 +2387,10 @@
      "label": "Longest life (steps)",
      "better": 1,
      "cells": [
+      {
+       "v": "26.7k",
+       "mark": ""
+      },
       {
        "v": "27.9k",
        "mark": ""
@@ -2333,6 +2468,10 @@
      "better": 1,
      "cells": [
       {
+       "v": "1.6",
+       "mark": ""
+      },
+      {
        "v": "1.5",
        "mark": ""
       },
@@ -2402,6 +2541,10 @@
      "label": "Heals taken when <= 1/2 health (%)",
      "better": 1,
      "cells": [
+      {
+       "v": "53%",
+       "mark": ""
+      },
       {
        "v": "54%",
        "mark": ""
@@ -2479,12 +2622,16 @@
      "better": -1,
      "cells": [
       {
+       "v": "41.1k",
+       "mark": ""
+      },
+      {
        "v": "45.8k",
        "mark": ""
       },
       {
        "v": "34.8k",
-       "mark": "good"
+       "mark": ""
       },
       {
        "v": "39.0k",
@@ -2508,7 +2655,7 @@
       },
       {
        "v": "49.6k",
-       "mark": ""
+       "mark": "bad"
       },
       {
        "v": "56.0k",
@@ -2520,7 +2667,7 @@
       },
       {
        "v": "53.5k",
-       "mark": ""
+       "mark": "bad"
       },
       {
        "v": "51.6k",
@@ -2540,7 +2687,7 @@
       },
       {
        "v": "52.8k",
-       "mark": ""
+       "mark": "bad"
       }
      ]
     }
@@ -2554,6 +2701,10 @@
      "label": "Hit rate, 2nd half / 1st half",
      "better": -1,
      "cells": [
+      {
+       "v": "0.49",
+       "mark": ""
+      },
       {
        "v": "0.33",
        "mark": ""
@@ -2572,11 +2723,11 @@
       },
       {
        "v": "0.15",
-       "mark": ""
+       "mark": "good"
       },
       {
        "v": "0.18",
-       "mark": ""
+       "mark": "good"
       },
       {
        "v": "0.84",
@@ -2584,7 +2735,7 @@
       },
       {
        "v": "0.13",
-       "mark": ""
+       "mark": "good"
       },
       {
        "v": "0.09",
@@ -2596,11 +2747,11 @@
       },
       {
        "v": "0.19",
-       "mark": ""
+       "mark": "good"
       },
       {
        "v": "0.14",
-       "mark": ""
+       "mark": "good"
       },
       {
        "v": "0.07",
@@ -2625,6 +2776,10 @@
      "better": -1,
      "cells": [
       {
+       "v": "0.54",
+       "mark": ""
+      },
+      {
        "v": "0.37",
        "mark": ""
       },
@@ -2642,11 +2797,11 @@
       },
       {
        "v": "0.18",
-       "mark": ""
+       "mark": "good"
       },
       {
        "v": "0.24",
-       "mark": ""
+       "mark": "good"
       },
       {
        "v": "0.84",
@@ -2654,7 +2809,7 @@
       },
       {
        "v": "0.16",
-       "mark": ""
+       "mark": "good"
       },
       {
        "v": "0.12",
@@ -2666,11 +2821,11 @@
       },
       {
        "v": "0.25",
-       "mark": ""
+       "mark": "good"
       },
       {
        "v": "0.17",
-       "mark": ""
+       "mark": "good"
       },
       {
        "v": "0.11",
@@ -2697,6 +2852,12 @@
   {
    "label": "1st item (sword)",
    "cells": [
+    {
+     "n": 16,
+     "pct": 100,
+     "med": "0.3k",
+     "mark": ""
+    },
     {
      "n": 16,
      "pct": 100,
@@ -2799,10 +2960,16 @@
    "label": "2nd item",
    "cells": [
     {
+     "n": 7,
+     "pct": 44,
+     "med": "-",
+     "mark": ""
+    },
+    {
      "n": 6,
      "pct": 38,
      "med": "-",
-     "mark": ""
+     "mark": "bad"
     },
     {
      "n": 11,
@@ -2832,7 +2999,7 @@
      "n": 7,
      "pct": 44,
      "med": "-",
-     "mark": "good"
+     "mark": ""
     },
     {
      "n": 0,
@@ -2844,7 +3011,7 @@
      "n": 7,
      "pct": 44,
      "med": "-",
-     "mark": "good"
+     "mark": ""
     },
     {
      "n": 2,
@@ -2899,6 +3066,12 @@
   {
    "label": "Enter a dungeon",
    "cells": [
+    {
+     "n": 12,
+     "pct": 75,
+     "med": "25.6k",
+     "mark": ""
+    },
     {
      "n": 12,
      "pct": 75,
@@ -3001,16 +3174,22 @@
    "label": "Pick up a key",
    "cells": [
     {
+     "n": 10,
+     "pct": 62,
+     "med": "30.1k",
+     "mark": ""
+    },
+    {
      "n": 9,
      "pct": 56,
      "med": "49.2k",
-     "mark": ""
+     "mark": "bad"
     },
     {
      "n": 10,
      "pct": 62,
      "med": "35.4k",
-     "mark": "good"
+     "mark": ""
     },
     {
      "n": 8,
@@ -3028,7 +3207,7 @@
      "n": 9,
      "pct": 56,
      "med": "37.4k",
-     "mark": ""
+     "mark": "bad"
     },
     {
      "n": 4,
@@ -3094,7 +3273,7 @@
      "n": 9,
      "pct": 56,
      "med": "47.9k",
-     "mark": ""
+     "mark": "bad"
     }
    ]
   },
@@ -3102,16 +3281,22 @@
    "label": "5 dungeon rooms",
    "cells": [
     {
+     "n": 9,
+     "pct": 56,
+     "med": "60.4k",
+     "mark": ""
+    },
+    {
      "n": 8,
      "pct": 50,
      "med": "-",
-     "mark": ""
+     "mark": "bad"
     },
     {
      "n": 9,
      "pct": 56,
      "med": "37.8k",
-     "mark": "good"
+     "mark": ""
     },
     {
      "n": 6,
@@ -3203,16 +3388,22 @@
    "label": "Use a key",
    "cells": [
     {
-     "n": 8,
-     "pct": 50,
-     "med": "-",
+     "n": 9,
+     "pct": 56,
+     "med": "60.4k",
      "mark": ""
     },
     {
      "n": 8,
      "pct": 50,
      "med": "-",
-     "mark": ""
+     "mark": "bad"
+    },
+    {
+     "n": 8,
+     "pct": 50,
+     "med": "-",
+     "mark": "bad"
     },
     {
      "n": 4,
@@ -3303,6 +3494,12 @@
   {
    "label": "Map or compass",
    "cells": [
+    {
+     "n": 2,
+     "pct": 12,
+     "med": "-",
+     "mark": ""
+    },
     {
      "n": 2,
      "pct": 12,
@@ -3404,6 +3601,12 @@
   {
    "label": "10 dungeon rooms",
    "cells": [
+    {
+     "n": 1,
+     "pct": 6,
+     "med": "-",
+     "mark": ""
+    },
     {
      "n": 1,
      "pct": 6,
@@ -3600,12 +3803,24 @@
      "pct": 0,
      "med": "-",
      "mark": ""
+    },
+    {
+     "n": 0,
+     "pct": 0,
+     "med": "-",
+     "mark": ""
     }
    ]
   },
   {
    "label": "2nd dungeon",
    "cells": [
+    {
+     "n": 0,
+     "pct": 0,
+     "med": "-",
+     "mark": ""
+    },
     {
      "n": 0,
      "pct": 0,
@@ -3802,6 +4017,12 @@
      "pct": 0,
      "med": "-",
      "mark": ""
+    },
+    {
+     "n": 0,
+     "pct": 0,
+     "med": "-",
+     "mark": ""
     }
    ]
   }
@@ -3812,8 +4033,12 @@
    "better": 1,
    "cells": [
     {
-     "v": "48.1",
+     "v": "51.2",
      "mark": ""
+    },
+    {
+     "v": "48.1",
+     "mark": "bad"
     },
     {
      "v": "55.8",
@@ -3821,11 +4046,11 @@
     },
     {
      "v": "55.5",
-     "mark": "good"
+     "mark": ""
     },
     {
      "v": "53.5",
-     "mark": "good"
+     "mark": ""
     },
     {
      "v": "51.2",
@@ -3845,11 +4070,11 @@
     },
     {
      "v": "46.2",
-     "mark": ""
+     "mark": "bad"
     },
     {
      "v": "43.1",
-     "mark": ""
+     "mark": "bad"
     },
     {
      "v": "46.6",
@@ -3882,12 +4107,16 @@
    "better": -1,
    "cells": [
     {
+     "v": "5.1",
+     "mark": ""
+    },
+    {
      "v": "4.4",
      "mark": ""
     },
     {
      "v": "6.2",
-     "mark": "bad"
+     "mark": ""
     },
     {
      "v": "5.5",
@@ -3915,7 +4144,7 @@
     },
     {
      "v": "3.3",
-     "mark": ""
+     "mark": "good"
     },
     {
      "v": "2.4",
@@ -3939,11 +4168,11 @@
     },
     {
      "v": "3.0",
-     "mark": ""
+     "mark": "good"
     },
     {
      "v": "3.3",
-     "mark": ""
+     "mark": "good"
     }
    ]
   },
@@ -3952,12 +4181,16 @@
    "better": -1,
    "cells": [
     {
+     "v": "41.1k",
+     "mark": ""
+    },
+    {
      "v": "45.8k",
      "mark": ""
     },
     {
      "v": "34.8k",
-     "mark": "good"
+     "mark": ""
     },
     {
      "v": "39.0k",
@@ -3981,7 +4214,7 @@
     },
     {
      "v": "49.6k",
-     "mark": ""
+     "mark": "bad"
     },
     {
      "v": "56.0k",
@@ -3993,7 +4226,7 @@
     },
     {
      "v": "53.5k",
-     "mark": ""
+     "mark": "bad"
     },
     {
      "v": "51.6k",
@@ -4013,7 +4246,7 @@
     },
     {
      "v": "52.8k",
-     "mark": ""
+     "mark": "bad"
     }
    ]
   },
@@ -4021,6 +4254,10 @@
    "label": "Average health",
    "better": 1,
    "cells": [
+    {
+     "v": "68%",
+     "mark": ""
+    },
     {
      "v": "67%",
      "mark": ""
@@ -4051,7 +4288,7 @@
     },
     {
      "v": "60%",
-     "mark": "bad"
+     "mark": ""
     },
     {
      "v": "72%",
@@ -4090,14 +4327,14 @@
  ],
  "ideas": [
   {
-   "id": "strike",
+   "id": "triedout",
    "name": "Current",
-   "what": "the current model: strikes enemies in the sword's line, lines up at doors, stays with the dungeon",
+   "what": "the current model: strikes enemies in the sword's line, lines up at doors, stays with the dungeon, drops exits that never open",
    "status": "current",
-   "verdict": "default now: game overs 4.4 vs 6.2, hits 24 vs 34, first game with 10 dungeon rooms, map or compass 13%; places 48 vs 56, 2nd item 38% vs 69%",
+   "verdict": "default now: places 51.2 vs 48.1 (clearly better), key used 56% vs 50%, 5+ dungeon rooms 56% vs 50%; nothing clearly worse",
    "cells": [
     {
-     "v": "38%",
+     "v": "44%",
      "mark": ""
     },
     {
@@ -4105,12 +4342,45 @@
      "mark": ""
     },
     {
-     "v": "50%",
+     "v": "56%",
      "mark": ""
     },
     {
-     "v": "48.1",
+     "v": "51.2",
      "mark": ""
+    },
+    {
+     "v": "5.1",
+     "mark": ""
+    },
+    {
+     "v": "41.1k",
+     "mark": ""
+    }
+   ]
+  },
+  {
+   "id": "strike",
+   "name": "Previous",
+   "what": "the same, before it dropped exits tried six times",
+   "status": "previous",
+   "verdict": " game overs 4.4 vs 6.2, hits 24 vs 34, first game with 10 dungeon rooms, map or compass 13%; places 48 vs 56, 2nd item 38% vs 69%",
+   "cells": [
+    {
+     "v": "38%",
+     "mark": "bad"
+    },
+    {
+     "v": "75%",
+     "mark": ""
+    },
+    {
+     "v": "50%",
+     "mark": "bad"
+    },
+    {
+     "v": "48.1",
+     "mark": "bad"
     },
     {
      "v": "4.4",
@@ -4124,8 +4394,8 @@
   },
   {
    "id": "fine",
-   "name": "Previous",
-   "what": "the same without the sword strikes",
+   "name": "No strikes",
+   "what": "before the sword strikes",
    "status": "previous",
    "verdict": "key used 50% vs 25%, 5+ dungeon rooms 56% vs 38%",
    "cells": [
@@ -4139,7 +4409,7 @@
     },
     {
      "v": "56%",
-     "mark": "good"
+     "mark": ""
     },
     {
      "v": "55.8",
@@ -4147,11 +4417,11 @@
     },
     {
      "v": "6.2",
-     "mark": "bad"
+     "mark": ""
     },
     {
      "v": "34.8k",
-     "mark": "good"
+     "mark": ""
     }
    ]
   },
@@ -4176,7 +4446,7 @@
     },
     {
      "v": "55.5",
-     "mark": "good"
+     "mark": ""
     },
     {
      "v": "5.5",
@@ -4209,7 +4479,7 @@
     },
     {
      "v": "53.5",
-     "mark": "good"
+     "mark": ""
     },
     {
      "v": "5.5",
@@ -4263,7 +4533,7 @@
    "cells": [
     {
      "v": "44%",
-     "mark": "good"
+     "mark": ""
     },
     {
      "v": "38%",
@@ -4329,7 +4599,7 @@
    "cells": [
     {
      "v": "44%",
-     "mark": "good"
+     "mark": ""
     },
     {
      "v": "31%",
@@ -4349,7 +4619,7 @@
     },
     {
      "v": "49.6k",
-     "mark": ""
+     "mark": "bad"
     }
    ]
   },
@@ -4374,11 +4644,11 @@
     },
     {
      "v": "46.2",
-     "mark": ""
+     "mark": "bad"
     },
     {
      "v": "3.3",
-     "mark": ""
+     "mark": "good"
     },
     {
      "v": "56.0k",
@@ -4407,7 +4677,7 @@
     },
     {
      "v": "43.1",
-     "mark": ""
+     "mark": "bad"
     },
     {
      "v": "2.4",
@@ -4448,7 +4718,7 @@
     },
     {
      "v": "53.5k",
-     "mark": ""
+     "mark": "bad"
     }
    ]
   },
@@ -4576,7 +4846,7 @@
     },
     {
      "v": "3.0",
-     "mark": ""
+     "mark": "good"
     },
     {
      "v": "57.1k",
@@ -4609,11 +4879,11 @@
     },
     {
      "v": "3.3",
-     "mark": ""
+     "mark": "good"
     },
     {
      "v": "52.8k",
-     "mark": ""
+     "mark": "bad"
     }
    ]
   }
