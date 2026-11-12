@@ -20,3 +20,11 @@
   over: 12
   dungeon: 22
   note: best here, but in full games it stopped reaching the dungeon (rejected)
+- way: Step out of the line of a shot (movement measured over 8 frames)
+  over: 39
+  dungeon: 76
+  note: helps alone outside; the first dungeon has no shots
+- way: Strike in line + step out of the line of a shot
+  over: 37
+  dungeon: 23
+  note: no better than striking alone, here and in 16 full games (off)
