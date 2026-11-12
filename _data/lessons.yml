@@ -43,3 +43,7 @@
   why: "First cross-game run: Minish Cap from its start 5.0 places vs 4.6 for random; A Link to the Past: the agent made zero decisions (no room map from that adapter) while random got the sword in half the games."
 - rule: "In Zelda 1 dying is cheap; what counts is progress per life."
   why: "Three survival ideas (needs, retreat, keep-distance) each delayed death and each lost keys, heals or places in full games."
+- rule: "Every scenario pool needs a case from the very start of the game."
+  why: "All my scenarios start after the sword: a fighting rule that kept Link out of the sword cave (sword in 3 of 16 games) passed them all."
+- rule: "Safety that stops progress is not a gain."
+  why: "Backing off from nearby enemies halved game overs and hits, and cut dungeon entries from 69% to 13% - twice now (trained reflex, scripted kite)."
