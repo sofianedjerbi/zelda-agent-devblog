@@ -1,5 +1,10 @@
 # Everything tried, newest phase first. status: kept / rejected / off (opt-in, no gain) / testing / dropped (whole approach).
 # switch = how to turn it on/off in ~/minish-rl (ZL_<NAME>); result = measured; lesson = what not to do again.
+- phase: "After the review: skills judged on saved scenarios (Nov 12)"
+  items:
+    - {name: "Scenario suite: 70 saved moments along the ladder, 3 minutes", status: kept, result: "current model: 3 rooms after entering 85% (empty memory) but 45% with what it had learned; key used 0-3%; heals at 1 heart 1-3%", lesson: "The agent did better with an empty memory than with its own: its beliefs were the trap."}
+    - {name: "Learned ground kinds scoped per tileset", status: testing, result: "ablation: dropping learned wall kinds brought 'enter' from 45% back to 85%. A tile number means something else in each tileset; walls learned outside closed dungeon floors and doors"}
+    - {name: "Half-step, re-judged on scenarios", switch: HALFSTEP, status: testing, result: "deeper in the dungeon 67% vs 17%, key used 10% vs 3%. Rejected earlier on full-game averages: wrong test"}
 - phase: "Zelda 1, one continuous game (Nov 11)"
   items:
     - {name: "Learned KPIs for every idea", status: kept, result: "18 KPIs from fields every Zelda shares; showed the agent is stuck 56k of 80k steps", lesson: "Places alone hid the stalls."}
