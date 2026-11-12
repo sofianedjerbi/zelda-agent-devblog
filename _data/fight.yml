@@ -1,0 +1,22 @@
+# 240 saved danger moments per place (an enemy close, Link hurt), 150 actions each, scripted fighters. tools/fight_env.py
+- way: Stand still
+  over: 53
+  dungeon: 76
+  note: the floor
+- way: Keep away from the nearest enemy
+  over: 15
+  dungeon: 51
+  note: safe outside, bad in a closed room
+- way: Walk up to enemies and strike
+  over: 56
+  dungeon: 28
+  note: most kills, but as deadly as standing still outside
+- way: Strike what is in the sword's line
+  over: 37
+  dungeon: 22
+  note: what the agent does now
+  now: true
+- way: Strike in line, back off from the rest
+  over: 12
+  dungeon: 22
+  note: best here, but in full games it stopped reaching the dungeon (rejected)
