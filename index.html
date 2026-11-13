@@ -40,6 +40,11 @@ layout: default
   </figure>
 
   <figure class="show">
+    <video src="{{ '/assets/video/minish-wake.mp4' | relative_url }}" controls muted playsinline preload="metadata"></video>
+    <figcaption>Minish Cap, 40 seconds, sped up, from a saved moment: Link asleep in a bed in the castle. The agent had stood there for 11,500 steps: the game gives no control, and all it ever did was tap one button. Now, when the game holds Link, it tries one input at a time (each button, the directions mashed, nothing) and keeps what gave control back most often. The bottom line shows its own count. It wakes him by mashing the directions, learns that the action button gets through talk, meets the king, is given a sword and walks out into the castle. Story score 92 to 146. Honest parts: I measured on the emulator that only fast mashing wakes him, and then added "mash the directions" to the inputs it may try, so that input is mine and the choice is the agent's; the waking itself is not in the clip (those frames are not recorded), it jumps from asleep to standing. In whole games from the start screen, 3 of 8 get this far within 80,000 steps; before today none left the field.</figcaption>
+  </figure>
+
+  <figure class="show">
     <video src="{{ '/assets/video/minish-scrub.mp4' | relative_url }}" controls muted playsinline preload="metadata"></video>
     <figcaption>Minish Cap, the last 42 seconds of one try from a saved arrival at the field north of the town (sped up). One enemy sits in the only gap of a hedge. Nothing about it is written into the agent. It experiments: each of its three buttons, from next to the enemy or from a few tiles away, tapped or held. The counter at the bottom shows experiments made. After the eleventh the enemy is gone and Link walks through with Zelda. Honest parts: most of the clip is Link standing under the hedge on a useless goal ("bring"), which is where the time goes; an earlier clip here showed the same move written in by me, and that version is deleted; the agent credits two ways for this (action button and item button, both held from a distance), so it does not yet know exactly which one worked. From this saved arrival it passes in 8 of 8 tries; in whole games from the start screen, 3 of 8 within 60,000 steps (0 without experiments).</figcaption>
   </figure>
