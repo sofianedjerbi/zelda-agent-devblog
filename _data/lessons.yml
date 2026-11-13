@@ -1,6 +1,8 @@
 # Rules I learned the hard way. Read at every step back.
 - rule: "Never train blind: check the real KPI during training, stop early if it doesn't move."
   why: "User rule. Reflex v1 trained 40 minutes on its own reward, then turned out barely better than standing still. Every training run now runs the combat test every 30k steps against 'stand still' and stops if it isn't ahead by the third check."
+- rule: "Test from places the learner never started from, and never tell it in training what the test rewards."
+  why: "Minish Cap's learned ranking 'won' 24 to 19 when trained with a bonus at each task's end and tested from the same six start places. Without the bonus and from ten new places: no difference at all, and fewer tasks solved."
 - rule: "Before a big number goes on the home page, have it attacked by someone who did not produce it."
   why: "80% on never-seen dungeons was partly memorised looks (71% once every dungeon drew its own), and the Minish Cap 'win' was 5 runs on the same start places. I found neither; a read-only critic found both in two minutes."
 - rule: "A practice world must not let the agent carry facts from one episode to the next, or it learns the world and not the skill."
