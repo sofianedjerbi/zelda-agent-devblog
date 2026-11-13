@@ -12,7 +12,13 @@ layout: default
     {% for l in site.data.unseen.levels %}<tr><td class="lab">Level {{ l.level }}</td><td class="lab">{{ l.solved }} of {{ l.total }} ({{ l.solved | times: 100 | divided_by: l.total }}%)</td></tr>
     {% endfor %}<tr><td class="lab"><b>All</b></td><td class="lab"><b>{{ site.data.unseen.solved }} of {{ site.data.unseen.total }} ({{ site.data.unseen.pct }}%)</b></td></tr>
   </table></div>
-  <p class="note">Of the ones it fails, it dies in {{ site.data.unseen.died }} and runs out of steps in {{ site.data.unseen.out_of_steps }}. With three times the steps: {{ site.data.unseen.pct_long }}%. These dungeons are a simple grid world, not a real game: a good score here is needed, not enough. It started at {{ site.data.unseen.start }}% on 13 Nov. What the agent learns by itself today: its map, which ground is wall or door, which kinds of wall can open, what hurts, where each room crossing worked. What I wrote by hand: how goals are ranked, the sword rule, the thresholds. From now on a change counts only if this number goes up, and the real games do not go down.</p>
+  <div class="scroll"><table class="kpi tried">
+    <tr><th>What changed</th><th>Never-seen dungeons solved</th></tr>
+    {% for h in site.data.unseen.history %}<tr><td class="lab">{{ h.what }}</td><td class="lab">{{ h.pct }}%</td></tr>
+    {% endfor %}
+  </table></div>
+  <p>The last line is the first thing the agent learned for itself about how to play. It played 2,000 other dungeons and kept count: for each look of thing (it sees that two things look alike, never what they are called) and each action, how often something happened. It found that one look answers to pulling, another to the action button, that two looks often hold something, and that the sword does nothing to any of them. On dungeons it has never seen it now tries the right action first and skips the useless ones.</p>
+  <p class="note">Of the ones it fails, it dies in {{ site.data.unseen.died }} and runs out of steps in {{ site.data.unseen.out_of_steps }}. With three times the steps: {{ site.data.unseen.pct_long }}%. These dungeons are a simple grid world, not a real game: a good score here is needed, not enough. It started at {{ site.data.unseen.start }}% on 13 Nov. What the agent learns by itself today: its map, which ground is wall or door, which kinds of wall can open, what hurts, where each room crossing worked, and (in these dungeons) what each kind of thing answers to. What I wrote by hand: how goals are ranked, the sword rule, the thresholds. From now on a change counts only if this number goes up, and the real games do not go down.</p>
 
   <h2>Watch it play</h2>
   <figure class="show">
