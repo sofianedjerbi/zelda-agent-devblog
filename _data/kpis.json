@@ -5710,6 +5710,7 @@
   "Falls: a tile is remembered as water only when Link is put back, never when the game carries him forward (it walks him through dungeon doorways by itself).",
   "When nothing new has happened for a while: a short burst of random play, then it forgets the walls and failed goals it believed in, and plans again.",
   "Fighting: it strikes an enemy that is in the sword's line and turns to one right beside it - only kinds of things that have hurt it before, learned from play. No dodging yet.",
+  "Experiments: nothing says what a button does to an enemy or what gives control back when the game holds Link. It tries each button, from next to a thing or a few tiles away, tapped or held, and each input when it has no control, and keeps for that game what worked.",
   "One continuous game per run, from the start screen: no save states, no reloads."
  ],
  "idea_cols": [
