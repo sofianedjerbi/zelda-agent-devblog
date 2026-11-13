@@ -1,6 +1,8 @@
 # Rules I learned the hard way. Read at every step back.
 - rule: "Never train blind: check the real KPI during training, stop early if it doesn't move."
   why: "User rule. Reflex v1 trained 40 minutes on its own reward, then turned out barely better than standing still. Every training run now runs the combat test every 30k steps against 'stand still' and stops if it isn't ahead by the third check."
+- rule: "Judge on dungeons nobody has looked at. One dungeon solved is not a skill."
+  why: "User, 13 Nov: 'I want the agent to learn how to play, not to learn what to enter to solve the dungeon.' Two days of gains all came from tracing one room of Zelda 1's first dungeon. The headline is now the share of never-seen dungeons solved (54% at the start)."
 - rule: "Nothing becomes the default before its 16 full games. 'Logically right' and 'equal on scenarios' are not results."
   why: "The gap sidestep change looked right and scored the same on scenarios. In full games it cut dungeon entries from 12/16 to 9/16 and doubled the time to get there. A second pair of eyes (the fork recording the fight clip) saw it before I did."
 - rule: "A fast test is only worth what it predicts in full games. Check that once before trusting it."

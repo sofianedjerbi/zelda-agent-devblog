@@ -1,5 +1,9 @@
 # Everything tried, newest phase first. status: kept / rejected / off (opt-in, no gain) / testing / dropped (whole approach).
 # switch = how to turn it on/off in ~/minish-rl (ZL_<NAME>); result = measured; lesson = what not to do again.
+- phase: "Judged on dungeons never seen (from Nov 13)"
+  items:
+    - {name: "Bench of generated dungeons nobody looks at", status: kept, result: "400 test dungeons in 8 seconds, same brain, same planner as the real games. Start: 54% solved (levels 1-2: 79%, levels 9-10: 30%); a separate set of 400 I may look at gives the same 54%", lesson: "The yardstick was one dungeon of one game. This one cannot be memorised."}
+    - {name: "Two-way crossing memory (arriving through a door teaches how to leave by it)", switch: CROSS2, status: off, result: "16 Zelda 1 games: dungeon 13 vs 14 and 10,000 steps later, map or compass 2 vs 4. No gain"}
 - phase: "After the review: skills judged on saved scenarios (Nov 12)"
   items:
     - {name: "Crossing memory: remember the pixel and direction of every room crossing that worked", switch: CROSS, status: kept, result: "the dungeon wall. Doors sit between two tiles (at pixel 128; tile centres are 120 and 136). An exit was remembered as a tile, and getting back on its line took luck: thousands of steps in one room, key in hand, both doors failing. Now a walk toward a remembered crossing first gets on its exact line, and a planner with no route to a known exit goes and stands in front of it. 16 games: 10 dungeon rooms 2 vs 0, map or compass 4 vs 1, dungeon rooms 6.2 vs 5.2. 16 held-out games: 10 rooms 6 vs 1, map or compass 7 vs 2, game overs 4.6 vs 5.7, hits 25.3 vs 30.9. A Link to the Past: 8.9 places vs 7.6, first games with 2 and 3 items. Minish Cap check 16/24, same", lesson: "The fix came from one room traced to the pixel, not from a new idea about fighting or exploring."}
