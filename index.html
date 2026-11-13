@@ -5,29 +5,32 @@ layout: default
   <h1>Devlog<span class="sub">an AI learning to finish any Zelda, on one Mac</span></h1>
   <p>Goal: an AI that finishes any top-down Zelda, on one Mac, with local models only. It must learn skills, not memorise a game. The brain is the same for every Zelda; each game needs a small adapter that reads its memory (position, room map, health, items).</p>
 
-  <h2>The number that counts: dungeons it has never seen</h2>
-  <p>The goal is an agent that knows how to play, not one that got one dungeon solved. So the first number here is no longer Zelda 1. It is how many dungeons the same agent solves when it has never seen them and I have never looked at them: {{ site.data.unseen.total }} generated dungeons with keys, locked doors, shutters, switches, enemies, item rooms and a boss door.</p>
+  <h2>Where it stands, honestly</h2>
+  <p>The goal is an agent that knows how to play any Zelda. It does not yet. Two things are measured: the real games, which are the goal, and a set of generated dungeons, which are practice. A critic I asked to attack this page found the practice number oversold; this version is the corrected one.</p>
+
+  <h3>The real games</h3>
   <div class="scroll"><table class="kpi tried">
-    <tr><th>Difficulty</th><th>Solved</th></tr>
-    {% for l in site.data.unseen.levels %}<tr><td class="lab">Level {{ l.level }}</td><td class="lab">{{ l.solved }} of {{ l.total }} ({{ l.solved | times: 100 | divided_by: l.total }}%)</td></tr>
-    {% endfor %}<tr><td class="lab"><b>All</b></td><td class="lab"><b>{{ site.data.unseen.solved }} of {{ site.data.unseen.total }} ({{ site.data.unseen.pct }}%)</b></td></tr>
+    <tr><th>Game</th><th>What happened when the agent learned to rank its own options</th></tr>
+    <tr><td class="lab"><b>Zelda 1</b>, with what it learned in generated dungeons</td><td class="lab">Fails. 0 of 16 games even pick up the sword. It had learned that world, not Zelda.</td></tr>
+    <tr><td class="lab"><b>Zelda 1</b>, learning from its own 81 games</td><td class="lab">Loses. Places 49 instead of 55, key used in 6 games instead of 9. The agent sees almost nothing to act on there: 90% of its choices are "which exit".</td></tr>
+    <tr><td class="lab"><b>Minish Cap</b>, learning from its own 216 short runs</td><td class="lab">Not shown yet. 24 of 36 tasks instead of 19, and faster, but: the test starts from the same six saved places as the training, the runs are nearly identical from seed to seed, the training was told when each task was done, and 24 against 19 can happen by chance one time in three. From the game's start it reaches the first story wall in 8 of 8 games (4 of 8 without) and never passes it.</td></tr>
   </table></div>
+  <p class="note">Zelda 1 itself, with my hand-written ranking: dungeon in 14 of 16 games, 10 dungeon rooms in 3, boss in 0. No real dungeon has been finished.</p>
+
+  <h3>Practice: generated dungeons</h3>
+  <p>{{ site.data.unseen.total }} dungeons made by one generator (keys, locked doors, shutters, switches, enemies, item rooms, a boss door), never looked at. They all follow the same rules, so this measures play inside one made-up world, not a new game. Every dungeon draws its own looks for its things, so the agent cannot carry "what this look is for" from one dungeon to the next: it has to find out inside each one.</p>
   <div class="scroll"><table class="kpi tried">
-    <tr><th>What changed</th><th>Never-seen dungeons solved</th></tr>
+    <tr><th>Who ranks the agent's options</th><th>Solved</th></tr>
     {% for h in site.data.unseen.history %}<tr><td class="lab">{{ h.what }}</td><td class="lab">{{ h.pct }}%</td></tr>
     {% endfor %}
   </table></div>
-  <p>The last line is the big one. For two days I wrote the rules that rank what the agent does next, and three more rules in a row had just failed. So I stopped: now the agent plays thousands of training dungeons, takes a random option a quarter of the time, and every choice is scored by what followed it: a new room, a key, a way opened, the dungeon solved, or death. A small network learns to predict that from a description of the option that names no game and no dungeon. Five minutes of this beat everything I had written: 64% to 80%, in half the steps, on dungeons it has never seen.</p>
-  <p>The fourth line is the first thing the agent learned for itself about how to play. It played 2,000 other dungeons and kept count: for each look of thing (it sees that two things look alike, never what they are called) and each action, how often something happened. It found that one look answers to pulling, another to the action button, that two looks often hold something, and that the sword does nothing to any of them. On dungeons it has never seen it now tries the right action first and skips the useless ones.</p>
-  <h3>Does the learning reach the real games?</h3>
   <div class="scroll"><table class="kpi tried">
-    <tr><th>Game</th><th>What happened</th></tr>
-    <tr><td class="lab"><b>Zelda 1</b>, with what it learned in generated dungeons</td><td class="lab">No. 0 of 16 games even pick up the sword. It had learned that world, not Zelda.</td></tr>
-    <tr><td class="lab"><b>Zelda 1</b>, learning from its own 81 games</td><td class="lab">No. Places 49 instead of 55, key used in 6 games instead of 9. There the agent sees almost nothing to act on: 90% of its choices are "which exit".</td></tr>
-    <tr><td class="lab"><b>Minish Cap</b>, learning from its own 216 short runs</td><td class="lab">Yes, a first. On seeds it had not seen: 24 of 36 tasks instead of 19, and two to three times faster where both succeed. It keeps a third of my hand score as a prior.</td></tr>
+    <tr><th>Difficulty (learned ranking)</th><th>Solved</th></tr>
+    {% for l in site.data.unseen.levels %}<tr><td class="lab">Level {{ l.level }}</td><td class="lab">{{ l.solved }} of {{ l.total }} ({{ l.solved | times: 100 | divided_by: l.total }}%)</td></tr>
+    {% endfor %}
   </table></div>
-  <p class="note">So the way of learning carries over, what was learned does not: each game has to learn from its own play, and it only helps where the game shows the agent things to choose between. The Minish Cap test starts from the same six saved places as its training runs, on other seeds.</p>
-  <p class="note">Of the ones it fails, it dies in {{ site.data.unseen.died }} and runs out of steps in {{ site.data.unseen.out_of_steps }}. With three times the steps: {{ site.data.unseen.pct_long }}%. These dungeons are a simple grid world, not a real game: a good score here is needed, not enough. It started at {{ site.data.unseen.start }}% on 13 Nov. What the agent learns by itself today: its map, which ground is wall or door, which kinds of wall can open, what hurts, where each room crossing worked, and (in these dungeons) what each kind of thing answers to and which option to take next. What I wrote by hand: how goals are ranked, the sword rule, the thresholds. From now on a change counts only if this number goes up, and the real games do not go down.</p>
+  <p>What is learned: the order in which the agent takes its options. It plays thousands of training dungeons, takes a random option a quarter of the time, and each choice is scored by what followed: a new room, a key, a way opened, the dungeon solved, death. A small network learns that score. What is still mine: the list of options itself, the filters, the hands that carry a goal out, the sword rule. So the fair sentence is: a learned ordering of my options beat my ordering, {{ site.data.unseen.pct }}% against {{ site.data.unseen.hand }}%, inside this world.</p>
+  <p class="note">Limits of this practice set: the score that trains the ranking comes from the simulator's own record of progress, which no real game gives so cleanly; nobody has checked that every generated dungeon can be solved (one I opened could not, after a wrong move), so the ceiling is below 100% and unknown; an earlier version of this page said 80% with looks that were the same in every dungeon - nine of those points were memorised looks.</p>
 
   <h2>Watch it play</h2>
   <figure class="show">
