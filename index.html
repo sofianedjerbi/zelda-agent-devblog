@@ -39,6 +39,11 @@ layout: default
     <figcaption>Zelda 1, game 21, current model: steps 22,000 to 28,300 of one continuous game from the start screen (35 seconds, sped up). Deep in the first dungeon: it finds the dungeon's item, opens a locked door at step 25,900 and walks into its 10th room at 26,700. The dungeon map on the top left fills in as it goes. Until yesterday no game got past 7 rooms on purpose. I checked frames of the clip, not every second of it.</figcaption>
   </figure>
 
+  <figure class="show">
+    <video src="{{ '/assets/video/minish-scrub.mp4' | relative_url }}" controls muted playsinline preload="metadata"></video>
+    <figcaption>Minish Cap, new today (25 seconds, sped up). North of the town one enemy sits in the only gap of a hedge: it comes up and shoots only when Link stands back, and it goes away only when its own shot is sent back at it. For two days Link stood under it for thousands of steps. Now the agent has one more option: use what it holds from a few tiles away, facing a thing that moves, and keep the button held. Here it steps back, holds the shield, the shot bounces, and it walks through with Zelda. Honest part: this clip starts from a saved arrival at the field, where it passes in 8 of 8 tries (0 of 8 without). Whole games from the start screen are still running, and the option is off by default until they are in. I found the mechanic by reading how the enemy works; the option names no enemy and no game.</figcaption>
+  </figure>
+
   <h2>The current model</h2>
   <ul>{% for m in site.data.kpis.model %}<li>{{ m }}</li>{% endfor %}</ul>
 
