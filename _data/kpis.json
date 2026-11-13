@@ -4,17 +4,22 @@
  "budget_k": 80,
  "seeds": "8-23",
  "updated": "2026-11-13",
- "commit": "e4b5466",
- "default": "cross2",
+ "commit": "cd8a08e",
+ "default": "opens2",
  "variants": [
   {
-   "id": "cross2",
+   "id": "opens2",
    "name": "Current",
-   "what": "the current model: it remembers the exact spot and direction of every room crossing that worked, and takes exits again the same way"
+   "what": "the current model: as the previous one, and it learns which kinds of wall can open by seeing one open, and comes back to what stayed shut when it holds something new"
+  },
+  {
+   "id": "cross2",
+   "name": "Previous",
+   "what": "crossing memory: it remembers the exact spot and direction of every room crossing that worked"
   },
   {
    "id": "fwd",
-   "name": "Previous",
+   "name": "Older 1",
    "what": "before crossing memory: a doorway the game walks Link through is no longer learned as water"
   },
   {
@@ -164,6 +169,12 @@
     {
      "n": 16,
      "pct": 100,
+     "med": "0.3k",
+     "mark": ""
+    },
+    {
+     "n": 16,
+     "pct": 100,
      "med": "16.4k",
      "mark": ""
     },
@@ -227,10 +238,16 @@
    "label": "2nd item",
    "cells": [
     {
+     "n": 3,
+     "pct": 19,
+     "med": "-",
+     "mark": ""
+    },
+    {
      "n": 2,
      "pct": 12,
      "med": "-",
-     "mark": ""
+     "mark": "bad"
     },
     {
      "n": 4,
@@ -272,7 +289,7 @@
      "n": 3,
      "pct": 19,
      "med": "-",
-     "mark": "good"
+     "mark": ""
     },
     {
      "n": 7,
@@ -296,31 +313,31 @@
      "n": 2,
      "pct": 12,
      "med": "-",
+     "mark": "bad"
+    },
+    {
+     "n": 5,
+     "pct": 31,
+     "med": "-",
+     "mark": "good"
+    },
+    {
+     "n": 5,
+     "pct": 31,
+     "med": "-",
+     "mark": "good"
+    },
+    {
+     "n": 3,
+     "pct": 19,
+     "med": "-",
      "mark": ""
     },
     {
-     "n": 5,
-     "pct": 31,
-     "med": "-",
-     "mark": "good"
-    },
-    {
-     "n": 5,
-     "pct": 31,
-     "med": "-",
-     "mark": "good"
-    },
-    {
      "n": 3,
      "pct": 19,
      "med": "-",
-     "mark": "good"
-    },
-    {
-     "n": 3,
-     "pct": 19,
-     "med": "-",
-     "mark": "good"
+     "mark": ""
     },
     {
      "n": 1,
@@ -338,13 +355,19 @@
      "n": 3,
      "pct": 19,
      "med": "-",
-     "mark": "good"
+     "mark": ""
     }
    ]
   },
   {
    "label": "Enter a dungeon",
    "cells": [
+    {
+     "n": 14,
+     "pct": 88,
+     "med": "25.8k",
+     "mark": ""
+    },
     {
      "n": 14,
      "pct": 88,
@@ -473,6 +496,12 @@
     {
      "n": 13,
      "pct": 81,
+     "med": "29.4k",
+     "mark": ""
+    },
+    {
+     "n": 13,
+     "pct": 81,
      "med": "30.9k",
      "mark": ""
     },
@@ -583,6 +612,12 @@
   {
    "label": "5 dungeon rooms",
    "cells": [
+    {
+     "n": 11,
+     "pct": 69,
+     "med": "43.5k",
+     "mark": ""
+    },
     {
      "n": 11,
      "pct": 69,
@@ -709,6 +744,12 @@
      "mark": ""
     },
     {
+     "n": 9,
+     "pct": 56,
+     "med": "56.1k",
+     "mark": ""
+    },
+    {
      "n": 11,
      "pct": 69,
      "med": "58.1k",
@@ -821,6 +862,12 @@
   {
    "label": "Map or compass",
    "cells": [
+    {
+     "n": 4,
+     "pct": 25,
+     "med": "-",
+     "mark": ""
+    },
     {
      "n": 4,
      "pct": 25,
@@ -941,10 +988,16 @@
    "label": "10 dungeon rooms",
    "cells": [
     {
+     "n": 3,
+     "pct": 19,
+     "med": "-",
+     "mark": ""
+    },
+    {
      "n": 2,
      "pct": 12,
      "med": "-",
-     "mark": ""
+     "mark": "bad"
     },
     {
      "n": 0,
@@ -1172,12 +1225,24 @@
      "pct": 0,
      "med": "-",
      "mark": ""
+    },
+    {
+     "n": 0,
+     "pct": 0,
+     "med": "-",
+     "mark": ""
     }
    ]
   },
   {
    "label": "2nd dungeon",
    "cells": [
+    {
+     "n": 0,
+     "pct": 0,
+     "med": "-",
+     "mark": ""
+    },
     {
      "n": 0,
      "pct": 0,
@@ -1297,6 +1362,12 @@
   {
    "label": "4th item",
    "cells": [
+    {
+     "n": 0,
+     "pct": 0,
+     "med": "-",
+     "mark": ""
+    },
     {
      "n": 0,
      "pct": 0,
@@ -1529,12 +1600,24 @@
      "pct": 0,
      "med": "-",
      "mark": ""
+    },
+    {
+     "n": 0,
+     "pct": 0,
+     "med": "-",
+     "mark": ""
     }
    ]
   },
   {
    "label": "10 places",
    "cells": [
+    {
+     "n": 16,
+     "pct": 100,
+     "med": "2.1k",
+     "mark": ""
+    },
     {
      "n": 16,
      "pct": 100,
@@ -1663,6 +1746,12 @@
     {
      "n": 16,
      "pct": 100,
+     "med": "7.3k",
+     "mark": ""
+    },
+    {
+     "n": 16,
+     "pct": 100,
      "med": "7.2k",
      "mark": ""
     },
@@ -1774,10 +1863,16 @@
    "label": "50 places",
    "cells": [
     {
+     "n": 9,
+     "pct": 56,
+     "med": "65.7k",
+     "mark": ""
+    },
+    {
      "n": 8,
      "pct": 50,
      "med": "-",
-     "mark": ""
+     "mark": "bad"
     },
     {
      "n": 11,
@@ -1819,7 +1914,7 @@
      "n": 9,
      "pct": 56,
      "med": "58.9k",
-     "mark": "good"
+     "mark": ""
     },
     {
      "n": 5,
@@ -1867,7 +1962,7 @@
      "n": 8,
      "pct": 50,
      "med": "-",
-     "mark": ""
+     "mark": "bad"
     },
     {
      "n": 2,
@@ -1900,6 +1995,10 @@
      "better": 1,
      "cells": [
       {
+       "v": "54.8",
+       "mark": ""
+      },
+      {
        "v": "53.1",
        "mark": ""
       },
@@ -1913,7 +2012,7 @@
       },
       {
        "v": "48.1",
-       "mark": ""
+       "mark": "bad"
       },
       {
        "v": "55.8",
@@ -1969,7 +2068,7 @@
       },
       {
        "v": "45.1",
-       "mark": ""
+       "mark": "bad"
       },
       {
        "v": "45.0",
@@ -1981,6 +2080,10 @@
      "label": "Dungeon rooms",
      "better": 1,
      "cells": [
+      {
+       "v": "6.6",
+       "mark": ""
+      },
       {
        "v": "6.2",
        "mark": ""
@@ -2063,6 +2166,10 @@
      "label": "Dungeons entered",
      "better": 1,
      "cells": [
+      {
+       "v": "0.9",
+       "mark": ""
+      },
       {
        "v": "0.9",
        "mark": ""
@@ -2164,6 +2271,10 @@
        "mark": ""
       },
       {
+       "v": "37.0",
+       "mark": ""
+      },
+      {
        "v": "36.0",
        "mark": ""
       },
@@ -2240,6 +2351,10 @@
      "better": -1,
      "cells": [
       {
+       "v": "5.3",
+       "mark": ""
+      },
+      {
        "v": "5.0",
        "mark": ""
       },
@@ -2273,7 +2388,7 @@
       },
       {
        "v": "3.3",
-       "mark": ""
+       "mark": "good"
       },
       {
        "v": "7.4",
@@ -2321,6 +2436,10 @@
      "label": "Hits taken / 10k steps",
      "better": -1,
      "cells": [
+      {
+       "v": "28.8",
+       "mark": ""
+      },
       {
        "v": "27.2",
        "mark": ""
@@ -2404,6 +2523,10 @@
      "better": -1,
      "cells": [
       {
+       "v": "14.5",
+       "mark": ""
+      },
+      {
        "v": "13.7",
        "mark": ""
       },
@@ -2486,6 +2609,10 @@
      "better": -1,
      "cells": [
       {
+       "v": "8%",
+       "mark": ""
+      },
+      {
        "v": "7%",
        "mark": ""
       },
@@ -2523,7 +2650,7 @@
       },
       {
        "v": "5%",
-       "mark": ""
+       "mark": "good"
       },
       {
        "v": "16%",
@@ -2568,6 +2695,10 @@
      "better": 1,
      "cells": [
       {
+       "v": "71%",
+       "mark": ""
+      },
+      {
        "v": "69%",
        "mark": ""
       },
@@ -2609,7 +2740,7 @@
       },
       {
        "v": "60%",
-       "mark": ""
+       "mark": "bad"
       },
       {
        "v": "72%",
@@ -2621,7 +2752,7 @@
       },
       {
        "v": "63%",
-       "mark": ""
+       "mark": "bad"
       },
       {
        "v": "69%",
@@ -2649,6 +2780,10 @@
      "label": "Longest life (steps)",
      "better": 1,
      "cells": [
+      {
+       "v": "24.8k",
+       "mark": ""
+      },
       {
        "v": "26.9k",
        "mark": ""
@@ -2738,6 +2873,10 @@
      "better": 1,
      "cells": [
       {
+       "v": "1.6",
+       "mark": ""
+      },
+      {
        "v": "1.5",
        "mark": ""
       },
@@ -2787,7 +2926,7 @@
       },
       {
        "v": "1.1",
-       "mark": ""
+       "mark": "bad"
       },
       {
        "v": "1.2",
@@ -2807,11 +2946,11 @@
       },
       {
        "v": "1.0",
-       "mark": ""
+       "mark": "bad"
       },
       {
        "v": "1.0",
-       "mark": ""
+       "mark": "bad"
       }
      ]
     },
@@ -2819,6 +2958,10 @@
      "label": "Heals taken when <= 1/2 health (%)",
      "better": 1,
      "cells": [
+      {
+       "v": "49%",
+       "mark": ""
+      },
       {
        "v": "47%",
        "mark": ""
@@ -2873,7 +3016,7 @@
       },
       {
        "v": "59%",
-       "mark": "good"
+       "mark": ""
       },
       {
        "v": "53%",
@@ -2907,6 +3050,10 @@
      "label": "Longest stall, nothing new (steps)",
      "better": -1,
      "cells": [
+      {
+       "v": "33.5k",
+       "mark": ""
+      },
       {
        "v": "35.7k",
        "mark": ""
@@ -2996,6 +3143,10 @@
      "better": -1,
      "cells": [
       {
+       "v": "0.66",
+       "mark": ""
+      },
+      {
        "v": "0.56",
        "mark": ""
       },
@@ -3029,7 +3180,7 @@
       },
       {
        "v": "0.18",
-       "mark": ""
+       "mark": "good"
       },
       {
        "v": "0.84",
@@ -3049,7 +3200,7 @@
       },
       {
        "v": "0.19",
-       "mark": ""
+       "mark": "good"
       },
       {
        "v": "0.14",
@@ -3077,6 +3228,10 @@
      "label": "Game-over rate, 2nd half / 1st half",
      "better": -1,
      "cells": [
+      {
+       "v": "0.69",
+       "mark": ""
+      },
       {
        "v": "0.60",
        "mark": ""
@@ -3111,7 +3266,7 @@
       },
       {
        "v": "0.24",
-       "mark": ""
+       "mark": "good"
       },
       {
        "v": "0.84",
@@ -3131,7 +3286,7 @@
       },
       {
        "v": "0.25",
-       "mark": ""
+       "mark": "good"
       },
       {
        "v": "0.17",
@@ -3162,6 +3317,12 @@
   {
    "label": "1st item (sword)",
    "cells": [
+    {
+     "n": 16,
+     "pct": 100,
+     "med": "0.3k",
+     "mark": ""
+    },
     {
      "n": 16,
      "pct": 100,
@@ -3282,10 +3443,16 @@
    "label": "2nd item",
    "cells": [
     {
+     "n": 3,
+     "pct": 19,
+     "med": "-",
+     "mark": ""
+    },
+    {
      "n": 2,
      "pct": 12,
      "med": "-",
-     "mark": ""
+     "mark": "bad"
     },
     {
      "n": 4,
@@ -3327,7 +3494,7 @@
      "n": 3,
      "pct": 19,
      "med": "-",
-     "mark": "good"
+     "mark": ""
     },
     {
      "n": 7,
@@ -3351,31 +3518,31 @@
      "n": 2,
      "pct": 12,
      "med": "-",
+     "mark": "bad"
+    },
+    {
+     "n": 5,
+     "pct": 31,
+     "med": "-",
+     "mark": "good"
+    },
+    {
+     "n": 5,
+     "pct": 31,
+     "med": "-",
+     "mark": "good"
+    },
+    {
+     "n": 3,
+     "pct": 19,
+     "med": "-",
      "mark": ""
     },
     {
-     "n": 5,
-     "pct": 31,
-     "med": "-",
-     "mark": "good"
-    },
-    {
-     "n": 5,
-     "pct": 31,
-     "med": "-",
-     "mark": "good"
-    },
-    {
      "n": 3,
      "pct": 19,
      "med": "-",
-     "mark": "good"
-    },
-    {
-     "n": 3,
-     "pct": 19,
-     "med": "-",
-     "mark": "good"
+     "mark": ""
     },
     {
      "n": 1,
@@ -3393,13 +3560,19 @@
      "n": 3,
      "pct": 19,
      "med": "-",
-     "mark": "good"
+     "mark": ""
     }
    ]
   },
   {
    "label": "Enter a dungeon",
    "cells": [
+    {
+     "n": 14,
+     "pct": 88,
+     "med": "25.8k",
+     "mark": ""
+    },
     {
      "n": 14,
      "pct": 88,
@@ -3528,6 +3701,12 @@
     {
      "n": 13,
      "pct": 81,
+     "med": "29.4k",
+     "mark": ""
+    },
+    {
+     "n": 13,
+     "pct": 81,
      "med": "30.9k",
      "mark": ""
     },
@@ -3638,6 +3817,12 @@
   {
    "label": "5 dungeon rooms",
    "cells": [
+    {
+     "n": 11,
+     "pct": 69,
+     "med": "43.5k",
+     "mark": ""
+    },
     {
      "n": 11,
      "pct": 69,
@@ -3764,6 +3949,12 @@
      "mark": ""
     },
     {
+     "n": 9,
+     "pct": 56,
+     "med": "56.1k",
+     "mark": ""
+    },
+    {
      "n": 11,
      "pct": 69,
      "med": "58.1k",
@@ -3876,6 +4067,12 @@
   {
    "label": "Map or compass",
    "cells": [
+    {
+     "n": 4,
+     "pct": 25,
+     "med": "-",
+     "mark": ""
+    },
     {
      "n": 4,
      "pct": 25,
@@ -3996,10 +4193,16 @@
    "label": "10 dungeon rooms",
    "cells": [
     {
+     "n": 3,
+     "pct": 19,
+     "med": "-",
+     "mark": ""
+    },
+    {
      "n": 2,
      "pct": 12,
      "med": "-",
-     "mark": ""
+     "mark": "bad"
     },
     {
      "n": 0,
@@ -4227,12 +4430,24 @@
      "pct": 0,
      "med": "-",
      "mark": ""
+    },
+    {
+     "n": 0,
+     "pct": 0,
+     "med": "-",
+     "mark": ""
     }
    ]
   },
   {
    "label": "2nd dungeon",
    "cells": [
+    {
+     "n": 0,
+     "pct": 0,
+     "med": "-",
+     "mark": ""
+    },
     {
      "n": 0,
      "pct": 0,
@@ -4465,6 +4680,12 @@
      "pct": 0,
      "med": "-",
      "mark": ""
+    },
+    {
+     "n": 0,
+     "pct": 0,
+     "med": "-",
+     "mark": ""
     }
    ]
   }
@@ -4474,6 +4695,10 @@
    "label": "Places explored",
    "better": 1,
    "cells": [
+    {
+     "v": "54.8",
+     "mark": ""
+    },
     {
      "v": "53.1",
      "mark": ""
@@ -4488,7 +4713,7 @@
     },
     {
      "v": "48.1",
-     "mark": ""
+     "mark": "bad"
     },
     {
      "v": "55.8",
@@ -4544,7 +4769,7 @@
     },
     {
      "v": "45.1",
-     "mark": ""
+     "mark": "bad"
     },
     {
      "v": "45.0",
@@ -4556,6 +4781,10 @@
    "label": "Game overs per 10k steps",
    "better": -1,
    "cells": [
+    {
+     "v": "5.3",
+     "mark": ""
+    },
     {
      "v": "5.0",
      "mark": ""
@@ -4590,7 +4819,7 @@
     },
     {
      "v": "3.3",
-     "mark": ""
+     "mark": "good"
     },
     {
      "v": "7.4",
@@ -4638,6 +4867,10 @@
    "label": "Longest time with nothing new",
    "better": -1,
    "cells": [
+    {
+     "v": "33.5k",
+     "mark": ""
+    },
     {
      "v": "35.7k",
      "mark": ""
@@ -4721,6 +4954,10 @@
    "better": 1,
    "cells": [
     {
+     "v": "71%",
+     "mark": ""
+    },
+    {
      "v": "69%",
      "mark": ""
     },
@@ -4762,7 +4999,7 @@
     },
     {
      "v": "60%",
-     "mark": ""
+     "mark": "bad"
     },
     {
      "v": "72%",
@@ -4774,7 +5011,7 @@
     },
     {
      "v": "63%",
-     "mark": ""
+     "mark": "bad"
     },
     {
      "v": "69%",
@@ -4801,15 +5038,48 @@
  ],
  "ideas": [
   {
-   "id": "cross2",
+   "id": "opens2",
    "name": "Current",
-   "what": "the current model: it remembers the exact spot and direction of every room crossing that worked, and takes exits again the same way",
+   "what": "the current model: as the previous one, and it learns which kinds of wall can open by seeing one open, and comes back to what stayed shut when it holds something new",
    "status": "current",
-   "verdict": "default now: 10 dungeon rooms 13% vs 0%, map or compass 25% vs 6%, dungeon rooms 6.2 vs 5.2; on 16 held-out games 10 rooms 38% vs 6%, map or compass 44% vs 13%, game overs 4.6 vs 5.7; key used 56% vs 69% (inside the noise)",
+   "verdict": "default now: 10 dungeon rooms 19% vs 13%, dungeon rooms 6.6 vs 6.2, places 54.8 vs 53.1; game overs 5.3 vs 5.0",
+   "cells": [
+    {
+     "v": "19%",
+     "mark": ""
+    },
+    {
+     "v": "88%",
+     "mark": ""
+    },
+    {
+     "v": "69%",
+     "mark": ""
+    },
+    {
+     "v": "54.8",
+     "mark": ""
+    },
+    {
+     "v": "5.3",
+     "mark": ""
+    },
+    {
+     "v": "33.5k",
+     "mark": ""
+    }
+   ]
+  },
+  {
+   "id": "cross2",
+   "name": "Previous",
+   "what": "crossing memory: it remembers the exact spot and direction of every room crossing that worked",
+   "status": "previous",
+   "verdict": " 10 dungeon rooms 13% vs 0%, map or compass 25% vs 6%, dungeon rooms 6.2 vs 5.2; on 16 held-out games 10 rooms 38% vs 6%, map or compass 44% vs 13%, game overs 4.6 vs 5.7; key used 56% vs 69% (inside the noise)",
    "cells": [
     {
      "v": "12%",
-     "mark": ""
+     "mark": "bad"
     },
     {
      "v": "88%",
@@ -4835,7 +5105,7 @@
   },
   {
    "id": "fwd",
-   "name": "Previous",
+   "name": "Older 1",
    "what": "before crossing memory: a doorway the game walks Link through is no longer learned as water",
    "status": "previous",
    "verdict": " dungeon 88% vs 75%, key picked 81% vs 63%, 5+ dungeon rooms 75% vs 56% and 17k steps sooner, key used 69% vs 56%; nothing clearly worse",
@@ -4920,7 +5190,7 @@
     },
     {
      "v": "48.1",
-     "mark": ""
+     "mark": "bad"
     },
     {
      "v": "4.4",
@@ -5040,7 +5310,7 @@
    "cells": [
     {
      "v": "19%",
-     "mark": "good"
+     "mark": ""
     },
     {
      "v": "62%",
@@ -5089,7 +5359,7 @@
     },
     {
      "v": "3.3",
-     "mark": ""
+     "mark": "good"
     },
     {
      "v": "55.7k",
@@ -5172,7 +5442,7 @@
    "cells": [
     {
      "v": "12%",
-     "mark": ""
+     "mark": "bad"
     },
     {
      "v": "50%",
@@ -5271,7 +5541,7 @@
    "cells": [
     {
      "v": "19%",
-     "mark": "good"
+     "mark": ""
     },
     {
      "v": "50%",
@@ -5304,7 +5574,7 @@
    "cells": [
     {
      "v": "19%",
-     "mark": "good"
+     "mark": ""
     },
     {
      "v": "62%",
@@ -5382,7 +5652,7 @@
     },
     {
      "v": "45.1",
-     "mark": ""
+     "mark": "bad"
     },
     {
      "v": "3.0",
@@ -5403,7 +5673,7 @@
    "cells": [
     {
      "v": "19%",
-     "mark": "good"
+     "mark": ""
     },
     {
      "v": "69%",
@@ -5436,6 +5706,7 @@
   "Line-up: when a step is refused although the game's fine tiles show the way open, it lines up to the pixel and tries again (a dungeon's side door is exactly one tile tall).",
   "Areas: when it looks for unexplored exits, the area it found last comes first, so it goes back into a dungeon instead of drifting across the overworld.",
   "Crossings: every time it walks from one room into the next it remembers the exact pixel and direction. Going back to that exit, it first gets on that exact line (doors sit between two tiles).",
+  "Shut doors, learned: when ground it could not walk on turns into ground it can, at the same spot, it remembers that kind and sees every tile of it as a shut passage. It tries things on a shut passage, and comes back to it when it holds something it did not hold before.",
   "Falls: a tile is remembered as water only when Link is put back, never when the game carries him forward (it walks him through dungeon doorways by itself).",
   "When nothing new has happened for a while: a short burst of random play, then it forgets the walls and failed goals it believed in, and plans again.",
   "Fighting: it strikes an enemy that is in the sword's line and turns to one right beside it - only kinds of things that have hurt it before, learned from play. No dodging yet.",

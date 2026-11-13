@@ -12,7 +12,7 @@ layout: default
     {% for l in site.data.unseen.levels %}<tr><td class="lab">Level {{ l.level }}</td><td class="lab">{{ l.solved }} of {{ l.total }} ({{ l.solved | times: 100 | divided_by: l.total }}%)</td></tr>
     {% endfor %}<tr><td class="lab"><b>All</b></td><td class="lab"><b>{{ site.data.unseen.solved }} of {{ site.data.unseen.total }} ({{ site.data.unseen.pct }}%)</b></td></tr>
   </table></div>
-  <p class="note">Of the ones it fails, it dies in {{ site.data.unseen.died }} and runs out of steps in {{ site.data.unseen.out_of_steps }}. With three times the steps: {{ site.data.unseen.pct_long }}%. These dungeons are a simple grid world, not a real game: a good score here is needed, not enough. What the agent learns by itself today: its map, which ground is wall or door, what hurts, where each room crossing worked. What I wrote by hand: how goals are ranked, the sword rule, the thresholds. From now on a change counts only if this number goes up, and the real games do not go down.</p>
+  <p class="note">Of the ones it fails, it dies in {{ site.data.unseen.died }} and runs out of steps in {{ site.data.unseen.out_of_steps }}. With three times the steps: {{ site.data.unseen.pct_long }}%. These dungeons are a simple grid world, not a real game: a good score here is needed, not enough. It started at {{ site.data.unseen.start }}% on 13 Nov. What the agent learns by itself today: its map, which ground is wall or door, which kinds of wall can open, what hurts, where each room crossing worked. What I wrote by hand: how goals are ranked, the sword rule, the thresholds. From now on a change counts only if this number goes up, and the real games do not go down.</p>
 
   <h2>Watch it play</h2>
   <figure class="show">
@@ -24,7 +24,7 @@ layout: default
   <ul>{% for m in site.data.kpis.model %}<li>{{ m }}</li>{% endfor %}</ul>
 
   <h2>Where it stands</h2>
-  {% include kpi.html ids="cross2,fwd,random" %}
+  {% include kpi.html ids="opens2,cross2,random" %}
 
   <h2>Fighting</h2>
   <figure class="show">
