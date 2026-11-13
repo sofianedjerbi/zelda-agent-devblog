@@ -1,21 +1,22 @@
 # tools/dungeon_bench.py --set test --n 400 (3,000 steps each). Generated dungeons nobody has looked at. Updated 2026-11-13.
 model: "current model"
-solved: 255
+solved: 322
 total: 400
-pct: 64
-pct_long: 72   # with 10,000 steps
-died: 52
-out_of_steps: 93
+pct: 80
+pct_long: 82   # with 10,000 steps
+died: 32
+out_of_steps: 46
 start: 54      # where this number started, 13 Nov
 levels:
-  - {level: "1-2 (a few rooms, one lock)", solved: 70, total: 80}
-  - {level: "3-4", solved: 67, total: 80}
-  - {level: "5-6", solved: 54, total: 80}
-  - {level: "7-8", solved: 37, total: 80}
-  - {level: "9-10 (many rooms, item room, boss door)", solved: 27, total: 80}
+  - {level: "1-2 (a few rooms, one lock)", solved: 73, total: 80}
+  - {level: "3-4", solved: 71, total: 80}
+  - {level: "5-6", solved: 71, total: 80}
+  - {level: "7-8", solved: 58, total: 80}
+  - {level: "9-10 (many rooms, item room, boss door)", solved: 49, total: 80}
 history:
   - {what: "Start", pct: 54}
   - {what: "Comes back to what stayed shut when it holds something new (a rule I wrote)", pct: 56}
   - {what: "Pushes a block from the side its plan chose (a bug I fixed)", pct: 57}
   - {what: "Learned by the agent: what each kind of thing answers to", pct: 63}
   - {what: "A flaw in my test fixed (memories leaked from one dungeon to the next)", pct: 64}
+  - {what: "Learned by the agent: which of its options pays off, from what followed its own choices", pct: 80}

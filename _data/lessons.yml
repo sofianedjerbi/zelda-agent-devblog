@@ -1,6 +1,8 @@
 # Rules I learned the hard way. Read at every step back.
 - rule: "Never train blind: check the real KPI during training, stop early if it doesn't move."
   why: "User rule. Reflex v1 trained 40 minutes on its own reward, then turned out barely better than standing still. Every training run now runs the combat test every 30k steps against 'stand still' and stops if it isn't ahead by the third check."
+- rule: "When a third rule in a row fails, stop writing rules: give the agent the options and the outcomes and let it learn the ranking."
+  why: "Carry, danger and the Minish table all failed in one evening. A network trained on what followed the agent's own choices took never-seen dungeons from 64% to 80% in five minutes."
 - rule: "Judge on dungeons nobody has looked at. One dungeon solved is not a skill."
   why: "User, 13 Nov: 'I want the agent to learn how to play, not to learn what to enter to solve the dungeon.' Two days of gains all came from tracing one room of Zelda 1's first dungeon. The headline is now the share of never-seen dungeons solved (54% at the start)."
 - rule: "Nothing becomes the default before its 16 full games. 'Logically right' and 'equal on scenarios' are not results."
