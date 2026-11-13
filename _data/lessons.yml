@@ -1,6 +1,8 @@
 # Rules I learned the hard way. Read at every step back.
 - rule: "Never train blind: check the real KPI during training, stop early if it doesn't move."
   why: "User rule. Reflex v1 trained 40 minutes on its own reward, then turned out barely better than standing still. Every training run now runs the combat test every 30k steps against 'stand still' and stops if it isn't ahead by the third check."
+- rule: "A result just above chance is run again on fresh seeds before anything is adopted."
+  why: "Minish Cap's late-credit learner: story score +0.78 (interval +0.05 to +1.54) on a first fair test, +0.34 (-0.35 to +1.02) on the second. The 'without' side alone moved from 2.30 to 1.79 between two runs of the same test."
 - rule: "Test from places the learner never started from, and never tell it in training what the test rewards."
   why: "Minish Cap's learned ranking 'won' 24 to 19 when trained with a bonus at each task's end and tested from the same six start places. Without the bonus and from ten new places: more rooms reached, the same ground covered, the same story progress, and fewer tasks solved."
 - rule: "Before a big number goes on the home page, have it attacked by someone who did not produce it."
